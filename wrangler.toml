@@ -1,0 +1,17 @@
+name = "lingualens-pilot"
+main = "dist/server/index.js"
+compatibility_date = "2026-05-15"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "dist/client"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "lingualens-db"
+database_id = "70f36036-84a3-4fba-b7ba-c27e69feb30e"
+
+[[d1_databases]]
+binding = "LINGUALENS_DB"
+database_name = "lingualens-db"
+database_id = "70f36036-84a3-4fba-b7ba-c27e69feb30e"

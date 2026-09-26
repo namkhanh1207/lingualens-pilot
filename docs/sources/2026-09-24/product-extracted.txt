@@ -1,0 +1,653 @@
+LinguaLens AI
+Định hướng sản phẩm và danh mục chức năng toàn diện
+Bản tổng hợp cho nhóm phát triển và giảng viên hướng dẫn
+Ngày 21 tháng 09 năm 2026 • Phiên bản định hướng 1.0
+LinguaLens được định hướng thành nền tảng đồng hành học tiếng Anh: giúp người học xác định mục tiêu, khám phá nội dung, luyện bốn kỹ năng, hiểu và sửa khó khăn, ôn tập, tham gia cộng đồng và nhìn thấy tiến bộ của bản thân.
+Tài liệu giữ đầy đủ tầm nhìn sản phẩm, đồng thời tổ chức chức năng theo các mô đun có thể triển khai và kiểm chứng. Một bản demo đủ chiều sâu cần cho người dùng hoàn thành việc học thật, có dữ liệu được giữ lại và có lý do quay lại trong những ngày tiếp theo.
+Đối tượng ban đầu đề xuất là sinh viên học tiếng Anh khoảng B1–B2. Khả năng mở rộng đến trình độ và mục tiêu khác được giữ trong thiết kế, nhưng học liệu và công cụ đánh giá cần được thẩm định tương ứng trước khi mở rộng.
+Ba giá trị cần xây dựng xuyên suốt
+Hiểu người học bằng thông tin họ cung cấp và bằng chứng hoạt động, có thể giải thích và sửa lại nhận định.
+Hỗ trợ đến khi người học thực hiện được nhiệm vụ, rồi kiểm tra khả năng vận dụng trong tình huống mới.
+Tạo cảm hứng qua sở thích, sản phẩm cá nhân, bạn học và thành quả có thể nhìn thấy.
+Quy ước: nội dung mang mã chức năng là yêu cầu đề xuất. Hiện trạng triển khai được tách riêng ở chương 2. Các ngưỡng thử nghiệm, quy mô nội dung và thứ tự phát triển trong tài liệu là đề xuất để nhóm chốt, không phải kết quả đã đạt hay tiêu chuẩn nghiệm thu của trường.
+
+Mục lục
+01 Tầm nhìn và nguyên tắc sản phẩm  ·  3
+02 Hiện trạng và khoảng cách cần hoàn thiện  ·  4
+03 Người học và những việc cần được hỗ trợ  ·  5
+04 Cấu trúc giao diện và khả năng tiếp cận  ·  6
+05 Hồ sơ năng lực và lộ trình cá nhân  ·  7
+06 Kho học liệu và tìm kiếm nội dung  ·  8
+07 Không gian đọc hiểu chuyên sâu  ·  9
+08 Luyện nghe và hiểu lời nói  ·  10
+09 Hội thoại và giao tiếp bằng giọng nói  ·  11
+10 Phát âm trực quan bằng 2D và 3D  ·  12
+11 Luyện viết và tư duy diễn đạt  ·  13
+12 Từ vựng ngữ pháp và ôn tập  ·  14
+13 AI đồng hành và tư vấn học tập  ·  15
+14 Thích ứng và liên kết các kỹ năng  ·  16
+15 Dữ liệu tương tác và thước đọc  ·  17
+16 Eye tracking và phòng nghiên cứu  ·  18
+17 Cộng đồng và hỗ trợ từ con người  ·  19
+18 Học từ mạng xã hội và ứng dụng hấp dẫn  ·  20
+19 Trò chơi hóa và động lực bền vững  ·  21
+20 Xưởng sáng tạo và học theo dự án  ·  22
+21 Các hành trình trải nghiệm mẫu  ·  23
+22 Quản trị hỗ trợ và quản lý học liệu  ·  24
+23 Kiến trúc và chất lượng AI  ·  25
+24 Quyền dữ liệu và độ tin cậy vận hành  ·  26
+25 Đánh giá trải nghiệm và nghiên cứu  ·  27
+26 Lộ trình và thứ tự triển khai  ·  28
+27 Nhân lực chi phí và khả năng duy trì  ·  29
+28 Bộ tiêu chí nghiệm thu và quyết định tiếp theo  ·  30
+29 Đối chiếu nguồn tham khảo  ·  31
+Cách sử dụng: đọc chương 1–4 để thống nhất sản phẩm; chương 5–20 để chọn yêu cầu; chương 21 để thiết kế demo; chương 22–28 để triển khai, kiểm thử và phân công. Mã chức năng giúp liên kết thiết kế, công việc lập trình và ca kiểm thử.
+
+01 Tầm nhìn và nguyên tắc sản phẩm
+Mục tiêu là một chu trình học thống nhất: xác định mục tiêu → tiếp nhận nội dung → thử diễn đạt → nhận hỗ trợ → sửa → ôn → vận dụng độc lập. Bốn kỹ năng dùng chung hồ sơ người học, nhưng bằng chứng ở từng kỹ năng được lưu riêng.
+Ví dụ, việc nhận ra một từ khi đọc chưa chứng minh nghe được hoặc dùng được từ đó trong hội thoại. Hệ thống nên biết phần nào đã quan sát được, phần nào chưa đủ dữ liệu và hoạt động nào giúp kiểm tra tiếp.
+Những nguyên tắc cần giữ
+Trải nghiệm thật: AI hoạt động thật khi được giới thiệu là AI; tính năng mô phỏng được gắn nhãn rõ; dữ liệu đã lưu phải có thể khôi phục.
+Người học có quyền chủ động: chọn mục tiêu, mức trợ giúp, thời gian, cách sửa, quyền chia sẻ và cảm biến tùy chọn.
+Bằng chứng trước kết luận: tránh suy ra sự tập trung từ con trỏ, trình độ từ một câu hỏi hoặc vị trí lưỡi từ transcript.
+Phản hồi có căn cứ: dẫn chứng từ bài đọc, tiêu chí chấm hoặc tín hiệu âm thanh tương ứng; cho phép báo sai và phản hồi của giáo viên.
+Hỗ trợ giảm dần: mục tiêu cuối là làm được mà không phụ thuộc bản dịch, gợi ý hoặc AI.
+Hấp dẫn gắn với việc học: phần thưởng, nhân vật và hoạt động xã hội dẫn đến thực hành có ý nghĩa.
+Ba cấp bằng chứng thành công
+Cấp
+Câu hỏi cần trả lời
+Bằng chứng
+Kỹ thuật
+Hệ thống có hoạt động đúng không
+Kiểm tra lưu dữ liệu, phân quyền, phục hồi và dịch vụ thật
+Trải nghiệm
+Người học có dùng được và thấy có ích không
+Quan sát nhiệm vụ, phỏng vấn, dùng tiếp qua nhiều ngày
+Giáo dục
+Người học có tiến bộ độc lập không
+Nhiệm vụ mới không trợ giúp, bài đo phù hợp, thiết kế so sánh
+
+Sổ tay ĐMST nhấn mạnh thấu hiểu, xác định vấn đề, làm mẫu và thử nghiệm [N3]. Một demo đủ sâu có thể giúp người học nhận ra nhu cầu khó diễn đạt trước đó. Nhóm vẫn cần chấp nhận phản hồi rằng một chức năng không cần thiết và điều chỉnh phân khúc hoặc giải pháp.
+
+02 Hiện trạng và khoảng cách cần hoàn thiện
+Theo báo cáo ngày 20/09/2026, phiên bản web pilot có đăng nhập ChatGPT, lưu dữ liệu theo tài khoản, năm bài đọc và 20 câu hỏi. Báo cáo ghi nhận 43 kiểm tra tích hợp cục bộ đạt và phiên bản 3 được xuất bản; chưa có số liệu người dùng thực trong phạm vi báo cáo [N1].
+Thành phần
+Hiện trạng được báo cáo
+Hướng phát triển
+Tài khoản và lưu trữ
+Có xác thực, phân quyền, lưu và khôi phục
+Kiểm tra tài khoản thật, sao lưu, phục hồi, khả năng tiếp cận
+Đọc và gợi ý
+Bài, câu hỏi, gợi ý biên soạn sẵn
+Kho học liệu lớn hơn, trợ lý theo ngữ cảnh, gợi ý thích ứng
+Câu trả lời mở
+Đáp án tham khảo và tự đối chiếu
+Rubric, phản hồi AI có kiểm tra và sửa nhiều vòng
+Từ vựng
+Sổ từ, flashcard, lịch ôn theo quy tắc
+Ôn nhận diện và vận dụng xuyên kỹ năng
+Trợ lý và hội thoại
+Phản hồi kịch bản; Gemini chưa cấu hình
+LLM thật, voice thật, đánh giá chất lượng và chi phí
+Phát âm và gaze
+Minh họa và diễn tập tương tác
+Đo lường riêng, kiểm định riêng, nhãn chất lượng
+Cộng đồng và nghiên cứu
+Có góp ý, hỗ trợ, quản trị, xuất dữ liệu
+Nhóm học, thí nghiệm thật, xuất đầy đủ và mã ổn định
+
+Bộ ZIP gốc là prototype cục bộ; README nêu có chuyển vai trò để xem giao diện, không có xác thực thật và một số thành phần dùng adapter demo. Đây là hiện vật khác với bản web pilot trong báo cáo. Không dùng khả năng chuyển vai trò của prototype làm thiết kế phân quyền cho web thật [N4].
+Khoảng cách dữ liệu phải xử lý sớm
+Mã nghiên cứu đang có thể đổi giữa lần xuất; kết quả tổng quan có thể phản ánh lần trả lời sau khi xem đáp án; bản xuất có giới hạn số bản ghi. Cần mã ổn định, lịch sử từng lần trả lời, thời điểm nhận trợ giúp và cơ chế xuất có phân trang kèm thông báo đầy đủ [N1].
+Các nhãn A2–B2 hiện là ước lượng. Tên sản phẩm có AI không thay thế bằng chứng AI đã hoạt động hoặc giúp học tốt hơn. Mỗi bản phát hành cần bảng trạng thái: đã kiểm thử, đang thử nghiệm, minh họa hoặc chưa triển khai.
+
+03 Người học và những việc cần được hỗ trợ
+Các nhóm nhu cầu ban đầu
+Nhóm
+Khó khăn cần kiểm tra
+Giá trị đề xuất
+Sinh viên B1–B2
+Tài liệu rời rạc, không hiểu lỗi, khó duy trì ôn
+Một luồng đọc, hỏi, luyện và ôn liên tục
+Người ngại giao tiếp
+Khó bắt đầu, thiếu ý, sợ bị ngắt sửa
+Luyện riêng, tình huống vừa sức, sửa sau lượt nói
+Người học chuyên ngành
+Hiểu nội dung nhưng khó trình bày
+Dự án và từ vựng gắn ngành học
+Người chuẩn bị kiểm tra
+Không rõ điểm yếu và cách luyện
+Nhiệm vụ theo mục tiêu và phản hồi theo tiêu chí
+Người bận hoặc học không đều
+Khó theo lịch cứng, nhiều bài tồn
+Buổi học theo thời gian và cơ chế quay lại
+Giảng viên
+Khó theo dõi quá trình và phản hồi từng người
+Học liệu có kiểm duyệt, xem bài, góp ý, dữ liệu có căn cứ
+
+Các khó khăn trên là giả thuyết phân khúc. Phỏng vấn cần hỏi về lần học gần nhất, công cụ đã dùng, chỗ bỏ dở và cách khắc phục; tránh chỉ hỏi người dùng có thích một ứng dụng AI hay không.
+Ba chế độ sử dụng
+Lộ trình: đi đến một mục tiêu trong nhiều tuần, có điều chỉnh khi tiến độ và lịch thay đổi.
+Việc trước mắt: hiểu tài liệu, chuẩn bị bài nói, viết email, phỏng vấn hoặc bài tập trên lớp.
+Khám phá: chọn nội dung theo tò mò, rồi chuyển sang thực hành và lưu vào hành trình.
+Tiêu chí xác định giá trị
+Một chức năng phải trả lời được: ai dùng, lúc nào, để làm gì, phải thao tác bao nhiêu, nhận được kết quả nào và bằng chứng nào xác nhận kết quả. Ví dụ, tra từ có giá trị khi nghĩa phù hợp đoạn đọc và từ được ôn lại; số lần tra lớn tự nó không chứng minh giá trị.
+Trong pilot có thể cho người thử làm nhiệm vụ bằng cách quen thuộc rồi trải nghiệm LinguaLens với nhiệm vụ tương đương. Nếu so sánh có hệ thống, cân bằng thứ tự và độ khó để giảm ảnh hưởng của việc đã quen nhiệm vụ.
+
+04 Cấu trúc giao diện và khả năng tiếp cận
+Khu vực
+Nội dung chính
+Hôm nay
+Thời gian đang có, mục tiêu buổi, tiếp tục việc dang dở, nhiệm vụ vừa sức
+Khám phá
+Chủ đề, nội dung ngắn, bộ sưu tập, tìm kiếm và dự án
+Luyện kỹ năng
+Đọc, nghe, nói, viết, phát âm, ngữ pháp và tình huống
+Ôn tập
+Từ, lỗi, cấu trúc, nội dung cần kiểm tra lại
+Người đồng hành
+Hỏi theo ngữ cảnh, tư vấn, điều chỉnh lộ trình
+Cộng đồng
+Nhóm nhỏ, phòng học, dự án chung và góp ý
+Hành trình của tôi
+Hồ sơ, sản phẩm, tiến bộ, dữ liệu và quyền riêng tư
+
+UX01 — Tiếp tục liền mạch: lưu vị trí bài, bản nháp, đoạn nghe và lượt luyện; báo trạng thái đã lưu, đang đồng bộ hoặc chưa lưu. Không hiển thị đã lưu nếu máy chủ chưa xác nhận.
+UX02 — Trợ lý cạnh nhiệm vụ: câu hỏi gửi kèm vùng văn bản được chọn, mục tiêu và phần trợ giúp đã xem; người học thấy ngữ cảnh đang dùng và có thể bỏ bớt.
+UX03 — Nhiều mức giao diện: chế độ tập trung ít thành phần, chế độ khám phá trực quan; bật/tắt mascot, hiệu ứng, nhạc và thông báo.
+UX04 — Khả năng tiếp cận: bàn phím, focus rõ, độ tương phản, cỡ chữ, khoảng dòng, phụ đề, transcript; không chỉ dùng màu để chỉ lỗi. Hỗ trợ giảm chuyển động và thay thế thao tác kéo bằng nút bấm.
+UX05 — Thiết bị và kết nối: giao diện điện thoại, tablet, máy tính; kiểm tra microphone; xử lý mạng yếu, tải lại và gián đoạn. Chế độ offline chỉ hứa cho phần thực sự lưu cục bộ, không hứa AI ngoại tuyến khi vẫn cần dịch vụ ngoài.
+UX06 — Đường dẫn rõ: mỗi buổi học và sản phẩm có trang riêng, tìm lại được. Tìm kiếm trong ghi chú, từ, hội thoại và bài viết theo quyền của chủ sở hữu.
+Nghiệm thu: người thử có thể đăng nhập, hoàn thành một nhiệm vụ, tải lại và tiếp tục trên thiết bị khác; người không bật camera/mic vẫn có luồng học phù hợp. Kiểm tra cả thao tác thất bại và thông báo hướng dẫn khắc phục.
+
+05 Hồ sơ năng lực và lộ trình cá nhân
+PF01 — Onboarding ngắn: mục tiêu, sở thích, thời gian, mức tự đánh giá, điều kiện học và cách muốn được sửa. Thông tin nâng cao được bổ sung dần; không buộc điền hết trước buổi học đầu.
+PF02 — Nhiệm vụ chẩn đoán: bài ngắn theo kỹ năng, có lựa chọn bỏ qua. Kết quả ghi là ước lượng nội bộ, kèm phạm vi và mức chắc chắn; không cấp chứng nhận CEFR tự động [S15].
+PF03 — Hồ sơ theo kỹ năng: đọc ý chính, chi tiết, suy luận; nghe nhận diện và hiểu; nói tương tác, diễn đạt; viết tổ chức và chính xác. Ngữ pháp, từ và phát âm là các lớp hỗ trợ liên kết.
+PF04 — Mục tiêu thực tế: ví dụ thuyết trình dự án sau tám tuần. Chia thành mốc và nhiệm vụ; người học chọn hoặc sửa. Kế hoạch là đề xuất, không cam kết đạt trình độ sau số ngày cố định.
+PF05 — Điều chỉnh theo lịch: buổi 5, 15 hoặc 30 phút; gợi ý nhiệm vụ không cần mic; hoãn lịch có chủ đích; phân bổ lại sau thời gian nghỉ.
+PF06 — Quyền sửa hồ sơ: xem AI đang nhận định gì, căn cứ ở đâu, sửa sở thích hoặc phản đối suy luận. Ghi nhận tác động của thiết bị, tiếng ồn và sự cố.
+Bằng chứng
+Diễn giải có thể dùng
+Điều chưa được kết luận
+Trả lời đúng lần đầu
+Làm đúng nhiệm vụ này không trợ giúp
+Đã thành thạo toàn kỹ năng
+Đúng sau gợi ý
+Đã hoàn thành với mức hỗ trợ ghi nhận
+Tiến bộ độc lập
+Dùng từ đúng trong câu mới
+Có bằng chứng vận dụng ở ngữ cảnh này
+Luôn dùng đúng trong mọi tình huống
+
+Nghiệm thu: mỗi đề xuất học tiếp có lý do ngắn; có lựa chọn khác; hồ sơ cập nhật được và lưu lịch sử. Khi thiếu dữ liệu, hệ thống hỏi hoặc đề xuất một nhiệm vụ kiểm tra thay vì khẳng định điểm yếu.
+
+06 Kho học liệu và tìm kiếm nội dung
+CT01 — Kho đa định dạng: bài đọc, hội thoại, audio, video, hình có chú thích và dự án. Tìm theo chủ đề, thời lượng, kỹ năng, độ khó dự kiến, giọng mẫu và mục tiêu.
+CT02 — Nguồn rõ: tên, tác giả, URL, ngày truy cập, điều kiện sử dụng, phiên bản và người duyệt. Tài liệu tự viết hoặc AI hỗ trợ có nhãn phù hợp; tránh trình bày nội dung hư cấu như tin tức thật.
+CT03 — Nhập tài liệu cá nhân: văn bản, tài liệu hoặc đường dẫn khi có quyền sử dụng. Xem lại nội dung trích xuất, sửa lỗi OCR, chọn đoạn học; không mặc định mọi trang có thể nhập hoặc công khai lại.
+CT04 — Thích ứng học liệu: bản đơn giản hơn hoặc chú giải thêm phải bảo toàn ý chính, đánh dấu phần chuyển thể và được kiểm tra. Có nút xem bản gốc để người học đối chiếu.
+CT05 — Đề xuất theo sở thích: kết hợp chủ đề yêu thích, độ khó, nội dung đã học và mục tiêu; có nút ít nội dung này hơn, đổi chủ đề và giải thích đề xuất.
+CT06 — Biên soạn câu hỏi: phân đoạn → sinh ứng viên → gắn bằng chứng → kiểm tra đáp án/phương án nhiễu → duyệt → xuất bản. Việc trích đoạn tồn tại không đủ xác nhận đáp án đúng.
+CT07 — Bộ sưu tập và tìm kiếm: lưu bài, playlist nghe, chủ đề theo tuần; tìm cả nội dung cá nhân. Nội dung nghiên cứu cần đóng băng phiên bản trong một đợt đo.
+Điều học hỏi từ nền tảng khác
+Readlang nối dịch trong bài với flashcard và giải thích ngữ cảnh [S1]. LingQ cho người học dùng nội dung yêu thích và nhập học liệu [S2]. EnglishCentral tổ chức xem, học từ, nói và trao đổi quanh video [S4]. LinguaLens có thể nối thêm câu hỏi suy luận, bài viết và kiểm tra vận dụng vào cùng chủ đề.
+Nghiệm thu: tài liệu hiển thị đúng, truy vết được nguồn; câu hỏi có người chịu trách nhiệm duyệt; đề xuất vẫn hoạt động khi chưa có nhiều dữ liệu. Kho nội dung phải đủ cho nhiều buổi trong đợt thử, không chỉ một màn trình diễn.
+
+07 Không gian đọc hiểu chuyên sâu
+RD01 — Đọc thuận tiện: đổi cỡ chữ, khoảng dòng, nền; đánh số đoạn; lưu vị trí; đọc thành tiếng tùy chọn và đồng bộ câu nếu có dữ liệu thời gian phù hợp.
+RD02 — Tra cứu tại chỗ: từ, cụm từ, nghĩa trong câu, từ loại, ví dụ và phát âm; giải thích tiếng Việt hoặc tiếng Anh đơn giản; lưu kèm câu gốc.
+RD03 — Hiểu cấu trúc: phân tách mệnh đề, từ nối, đối chiếu đại từ với đối tượng tham chiếu, quan hệ nguyên nhân và đối lập. Sơ đồ ý cần đối chiếu được với văn bản.
+RD04 — Đa dạng câu hỏi: ý chính, chi tiết, suy luận, quan điểm, bằng chứng, từ trong ngữ cảnh, tóm tắt và câu mở. Chọn độ khó và kỹ năng theo mục tiêu đã duyệt.
+RD05 — Đáp án cùng căn cứ: người học chọn đáp án, đoạn chứng minh và mức tự tin tùy chọn. Lưu riêng để phân biệt đúng do suy luận có căn cứ với kết quả cần kiểm tra thêm.
+RD06 — Gợi ý nhiều mức: chỉ vùng → gợi quan hệ → câu hỏi dẫn dắt → giải thích đầy đủ; cho thử lại giữa các bước. Có chế độ yêu cầu chưa tiết lộ đáp án.
+RD07 — Thảo luận phản biện: hỏi vì sao phương án khác không phù hợp, chứng cứ có đủ không, nội dung nào chỉ là suy đoán. AI phải thừa nhận khi câu hỏi có vấn đề.
+RD08 — Tổng kết: lưu lỗi, chiến lược đã thử, từ cần ôn và bài mới đề xuất. Tách điểm lần đầu khỏi điểm sau trợ giúp.
+Ví dụ trải nghiệm
+Người học hiểu từng từ nhưng chọn sai lý do nhân vật đổi quyết định. Hệ thống đề nghị xem hai câu có quan hệ đối lập, hỏi điều gì thay đổi giữa chúng, cho sửa rồi đặt một câu tương tự ở đoạn mới. Trợ giúp hướng đến cách suy luận có thể tái sử dụng.
+Nghiệm thu: câu hỏi có đáp án và dẫn chứng được duyệt; bản nháp không mất; từng lượt gợi ý được ghi; AI không bịa trích dẫn. Gợi ý hướng suy nghĩ có cơ sở từ hướng dạy siêu nhận thức, nhưng hiệu quả tại LinguaLens cần thử riêng [S16].
+
+08 Luyện nghe và hiểu lời nói
+LS01 — Trình phát học tập: tua câu, lặp đoạn A–B, điều chỉnh tốc độ, phím tắt, phụ đề/transcript bật theo mức; âm thanh rõ và phù hợp quyền sử dụng.
+LS02 — Nghe đa mục tiêu: ý chính, chi tiết, thái độ, quan hệ ý; chép chính tả, điền thiếu, chọn ý, sắp xếp sự kiện và ghi chú.
+LS03 — Giảm hỗ trợ dần: nghe không chữ → gợi từ → hiện đoạn transcript → giải thích → nghe lại không chữ. Ghi lần nào đã có trợ giúp.
+LS04 — Nhận diện khó khăn: người học chọn không nghe ra từ, không hiểu nghĩa, mất mạch ý, tốc độ hoặc âm thanh kém. Hệ thống dùng nhiệm vụ kiểm tra ngắn để bổ sung bằng chứng.
+LS05 — Nhiều giọng và bối cảnh: mẫu nói rõ, hội thoại tự nhiên, học thuật và đời sống; gắn nhãn giọng mẫu, tránh coi mọi khác biệt là lỗi.
+LS06 — Nghe nối với nói: shadowing từng đoạn, ghi âm lại, nghe mẫu và bản thân; giải thích nhịp, trọng âm và cụm ý. Không dùng độ giống âm thanh tổng thể làm bằng chứng duy nhất về chất lượng.
+LS07 — Tra ví dụ đời thực: tìm một cụm trong nhiều mẫu nói theo cách YouGlish cung cấp [S3]; từ được lưu cùng ngữ cảnh và có thể đưa sang hội thoại.
+Khó khăn tự báo
+Hoạt động đề xuất
+Cách kiểm tra lại
+Biết từ nhưng nghe không ra
+So sánh dạng đọc riêng và trong cụm
+Nghe câu mới chứa cụm tương tự
+Không hiểu quan hệ ý
+Làm rõ từ nối và ghi chú cấu trúc
+Chọn quan hệ trong đoạn khác
+Mất ý khi nghe dài
+Chia cụm và tóm tắt từng đoạn
+Ghép ý rồi nghe đoạn dài hơn
+
+Nghiệm thu: transcript khớp nội dung; mốc thời gian đủ chính xác để lặp đoạn; không lộ lời giải trong chế độ kiểm tra; kết quả từ audio kém được đánh dấu thay vì gán điểm yếu chắc chắn.
+
+09 Hội thoại và giao tiếp bằng giọng nói
+SP01 — Chọn nhiệm vụ: làm quen, hỏi đường, gọi món, thảo luận lớp, thuyết trình, phỏng vấn, thương lượng hoặc trình bày chuyên ngành. Nhân vật có vai trò và mục tiêu rõ.
+SP02 — Voice thật: kiểm tra mic, phát hiện lượt nói, nhận dạng, phản hồi, đọc lời đáp; có chế độ nhấn để nói và phương án văn bản khi thiết bị không hỗ trợ. Người học được sửa transcript nhận sai.
+SP03 — Hội thoại tiếp nối: bám câu trả lời, hỏi tiếp, xin làm rõ, đổi cách diễn đạt; cho tạm dừng, nhắc lại và điều chỉnh tốc độ. Tránh chỉ lần lượt phát câu kịch bản.
+SP04 — Cách sửa linh hoạt: giao tiếp liên tục thì góp ý sau lượt hoặc cuối buổi; luyện mục tiêu hẹp thì sửa ngay theo thỏa thuận. Có lựa chọn chỉ sửa lỗi cản trở hiểu.
+SP05 — Phản hồi theo chiều: nội dung, mạch lạc, ngữ pháp, từ, ngữ dụng, lưu loát và phát âm. Chỉ báo cáo chiều có đầu vào và công cụ đánh giá phù hợp.
+SP06 — Luyện lại: thử cùng mục tiêu với câu hỏi khác, nói lại đoạn đã sửa, đưa cụm từ mục tiêu vào tình huống mới. Có thể luyện trước với AI rồi chuyển sang bạn học.
+SP07 — Huấn luyện ngữ dụng: nói lịch sự, từ chối, xin lỗi, bất đồng, đổi phong cách thân mật và trang trọng. Giải thích lựa chọn theo bối cảnh thay vì một cách nói duy nhất.
+SP08 — Tổng kết và bộ nhớ: transcript, đoạn nổi bật, điểm cần luyện, bài tiếp theo; bộ nhớ dài hạn do người học kiểm soát. Phân biệt AI với người thật.
+Speak gắn học mẫu với luyện và hội thoại [S6]; ELSA công bố roleplay và phản hồi cá nhân [S5]; Duolingo Max có nhân vật hội thoại và xem lại transcript [S7]. Giá trị đề xuất của LinguaLens là nối hội thoại với bài vừa đọc, mục tiêu cá nhân và phòng sửa phát âm.
+Nghiệm thu: kiểm tra độ trễ, mất mạng, ngắt lời, tiếng ồn, giọng người thử; không chấm phạt vì transcript lỗi. Ghi chi phí mỗi phiên trước khi mở rộng.
+
+10 Phát âm trực quan bằng 2D và 3D
+PR01 — Thư viện âm và mẫu: IPA, từ, cụm, câu; chọn biến thể mục tiêu, nghe thường/chậm, so sánh cặp âm và luyện phân biệt bằng tai.
+PR02 — Mô hình dạy cấu âm: mặt trước và mặt cắt bên; môi, răng, lưỡi, hàm, luồng khí và hữu thanh khi phù hợp; tạm dừng, xoay 3D, bật chú thích. Nội dung cần chuyên gia thẩm định.
+PR03 — Ghi âm và phân tích: công cụ chuyên dụng đánh giá phần âm thanh phù hợp; phản hồi cấp âm/từ/câu khi được hỗ trợ. Speechace là một nguồn tham khảo về API đánh giá [S12], không phải bảo đảm độ chính xác với nhóm đích.
+PR04 — Sửa trong giao tiếp: chọn khó khăn vừa xuất hiện → xem hướng dẫn → luyện ngắn → quay lại hội thoại → kiểm tra trong câu chưa luyện.
+PR05 — Camera tùy chọn: hỗ trợ quan sát môi/hàm bên ngoài khi đủ điều kiện. Camera thông thường không đo được toàn bộ vị trí lưỡi bên trong; phải ghi rõ vùng không quan sát được.
+PR06 — Ngữ điệu và nhịp: trọng âm từ/câu, ngắt cụm, tốc độ; nghe đối chiếu; đường biểu diễn nếu có cần giải thích dễ hiểu và có tính đến chất lượng ghi âm.
+Ba thành phần không được đánh đồng
+Thành phần
+Vai trò
+Giới hạn
+Avatar khớp miệng
+Tạo hiện diện khi hội thoại
+Chưa phải mô hình cấu âm chính xác
+Mô hình 2D hoặc 3D mẫu
+Giải thích cơ chế tạo âm
+Không mô tả trực tiếp khẩu hình của người học
+Phân tích âm thanh
+Ước lượng đặc điểm phát âm
+Không xác định duy nhất nguyên nhân hay vị trí lưỡi
+
+Seeing Speech cung cấp MRI, siêu âm và hoạt hình 2D cho cơ quan phát âm [S13]. Có thể học phương pháp trình bày, nhưng việc tái sử dụng hoặc chuyển thể tài nguyên cần theo điều kiện của nguồn. So sánh 2D và 3D bằng mức hiểu, sửa âm và vận dụng; không mặc định 3D tốt hơn.
+Nghiệm thu: mô hình và âm thanh đồng bộ; không kết luận khẩu hình từ transcript; cho biết khi chưa đủ tín hiệu. Ban đầu làm một tập âm được thẩm định kỹ, công bố phạm vi hỗ trợ thay vì hứa bao phủ mọi âm.
+
+11 Luyện viết và tư duy diễn đạt
+WR01 — Đa dạng nhiệm vụ: nhật ký, mô tả, tin nhắn, email, đoạn văn, bài luận, báo cáo, CV và kịch bản thuyết trình. Chọn mục đích, người đọc và phong cách.
+WR02 — Hỗ trợ chuẩn bị: hiểu đề, động não, chọn luận điểm, dàn ý và câu hỏi tự kiểm tra. Có chế độ chỉ hỏi gợi mở để người học tự phát triển ý.
+WR03 — Góp ý nhiều lớp: mức đáp ứng đề, lập luận, tổ chức, liên kết, từ vựng, ngữ pháp, chính tả và sắc thái. Tách hiểu nội dung khỏi độ chính xác ngôn ngữ.
+WR04 — Mức can thiệp: chỉ chỉ ra vùng cần xem lại; giải thích lỗi; đề xuất cách sửa; hoặc đưa bản tham khảo sau khi người học đã thử. Giữ ý định và giọng của người viết.
+WR05 — Sửa nhiều vòng: lưu phiên bản, xem thay đổi, nhận xét điều đã cải thiện và điều còn tồn tại. Người học giải thích một lựa chọn sửa để tránh chỉ chấp nhận tự động.
+WR06 — Vận dụng lại: chuyển lỗi lặp vào bài tập ngắn; giao bài mới có cơ hội dùng cấu trúc đó. Không dùng cùng một bản đã được AI sửa để kết luận năng lực viết độc lập.
+WR07 — Góp ý từ người: gửi bài cho bạn/giáo viên với mục tiêu cụ thể, quyền truy cập rõ, lịch sử nhận xét và phản hồi. Đánh dấu nguồn góp ý là AI hay con người.
+Minh họa rubric cho đoạn nêu ý kiến
+Chiều đánh giá
+Câu hỏi người học tự kiểm tra
+Nội dung
+Tôi trả lời đúng vấn đề và nêu quan điểm rõ chưa
+Lập luận
+Có lý do và ví dụ thực sự hỗ trợ quan điểm không
+Tổ chức
+Các ý được sắp xếp và nối với nhau thế nào
+Ngôn ngữ
+Câu có rõ nghĩa và phù hợp người đọc không
+
+Write & Improve cung cấp chu trình viết, nhận phản hồi, sửa và kiểm tra lại [S8]. LinguaLens nên giữ chu trình này, thêm hồ sơ lỗi xuyên kỹ năng và cơ hội trình bày ý đã viết bằng lời nói.
+Nghiệm thu: phản hồi chỉ đúng vị trí; không sửa làm lệch nghĩa; rubric và phiên bản được lưu. Điểm AI, nếu có, cần đối chiếu người chấm chuyên môn và ghi rõ là ước lượng nội bộ.
+
+12 Từ vựng ngữ pháp và ôn tập
+VC01 — Sổ từ theo ngữ cảnh: từ/cụm, IPA, từ loại, nghĩa đang dùng, câu gốc, phát âm, từ liên quan, collocation, sắc thái và nguồn. Cho người dùng sửa hoặc gộp mục trùng.
+VC02 — Nhiều kiểu bài: nhận nghĩa, nhớ từ, nghe nhận diện, điền câu, nói/viết câu mới, phân biệt từ gần nghĩa. Mỗi kiểu cung cấp bằng chứng khác nhau.
+VC03 — Lịch ôn: dùng kết quả và mức nhớ để đề xuất lần ôn tiếp; hạn mức hằng ngày, hoãn có kiểm soát, giảm bài tồn sau thời gian nghỉ. Anki là nguồn tham khảo về lịch ôn và thẻ đa phương tiện [S9].
+VC04 — Liên kết kỹ năng: từ đã đọc xuất hiện trong đoạn nghe, nhiệm vụ nói và viết. Giữ riêng trạng thái nhận diện, nhớ lại và vận dụng; không đồng nhất số từ đã lưu với số từ thành thạo.
+GR01 — Ngữ pháp từ tình huống: giải thích dựa trên câu người học vừa dùng; có ví dụ đối chiếu và câu hỏi tại sao. Điều chỉnh mức giải thích tiếng Việt/tiếng Anh.
+GR02 — Bài luyện từ lỗi: xác định mẫu lỗi lặp, cho tự sửa rồi dùng trong câu mới; ghi nhận nếu lỗi có thể do nhận dạng giọng nói.
+GR03 — Bản đồ kiến thức: các chủ điểm liên quan và kiến thức tiền đề; cho học theo nhu cầu hoặc theo lộ trình. Không biến bản đồ thành chẩn đoán chắc chắn từ dữ liệu ít.
+Ví dụ chuyển từ lỗi sang học
+Người học viết “I am agree”. Hệ thống chỉ ra vị trí, giải thích cách dùng agree, cho sửa câu và đặt ví dụ riêng. Buổi sau, một nhiệm vụ hội thoại yêu cầu đồng ý hoặc phản đối; hệ thống kiểm tra cách dùng ở tình huống mới.
+Nghiệm thu: từ có câu gốc và nguồn; lịch ôn không mất sau đăng nhập lại; người học có quyền loại từ không muốn học. Các nhận xét về thành thạo phải truy về lần thực hiện và kiểu nhiệm vụ.
+
+13 AI đồng hành và tư vấn học tập
+CO01 — Trợ lý theo ngữ cảnh: biết nhiệm vụ đang làm, phần người học chọn và mục tiêu được phép dùng. Có thể giải thích lại, dùng ví dụ gần sở thích, đổi ngôn ngữ và mức chi tiết.
+CO02 — Tư vấn có quy trình: hỏi rõ khó khăn → xem bằng chứng được phép → nêu khả năng → đề xuất hoạt động kiểm tra → thống nhất một thay đổi → xem lại kết quả. Tránh chẩn đoán ngay từ một lời than phiền.
+CO03 — Lập và sửa kế hoạch: mục tiêu, thời gian, thứ tự bài, tuần bận, chuẩn bị kỳ thi hoặc thuyết trình. Người học chấp nhận và chỉnh sửa trước khi kế hoạch thay đổi lớn.
+CO04 — Đồng hành sau gián đoạn: hỏi thời gian hiện có, đề xuất buổi ngắn, ghi nhận việc quay lại. Không dùng thông điệp gây tội lỗi hoặc nhân vật đòi hỏi sự gắn bó độc quyền.
+CO05 — Bộ nhớ có kiểm soát: trang xem AI nhớ gì, nguồn thông tin, sửa/xóa và tắt ghi nhớ. Tách sở thích lâu dài khỏi dữ liệu tạm thời của một phiên.
+CO06 — Cá tính tùy chọn: gia sư kỹ lưỡng, bạn học thân thiện, người phỏng vấn hoặc người phản biện; vẫn giữ yêu cầu đúng nội dung và thừa nhận giới hạn.
+CO07 — Chuyển đến người thật: báo nội dung sai, yêu cầu giáo viên xem bài, gửi hỗ trợ. AI không tự nhận vai trò chuyên môn vượt phạm vi gia sư ngôn ngữ.
+Ví dụ tư vấn sâu
+Người học nói đã học nhiều từ nhưng không nói được. AI hỏi về tình huống, cho thử mô tả một vật quen thuộc, kiểm tra khả năng nhớ lại từ và khả năng ghép ý. Đề xuất luyện cụm và nói lại, rồi kiểm tra sau vài buổi. Không mặc định mọi trường hợp đều do thiếu từ.
+Nghiệm thu: phản hồi có hành động cụ thể và lý do; người học sửa được nhận định; không bịa tiến bộ hoặc lịch sử. Đánh giá mức hữu ích bằng việc người dùng thực hiện đề xuất và kết quả nhiệm vụ tiếp theo, không chỉ sự hài lòng với cách nói.
+
+14 Thích ứng và liên kết các kỹ năng
+AD01 — Hồ sơ bằng chứng chung: người học, kiến thức mục tiêu, nhiệm vụ, lần thử, mức hỗ trợ, phiên bản nội dung, thời điểm và độ chắc chắn. Lưu riêng kết quả đầu tiên và sau sửa.
+AD02 — Đề xuất giải thích được: vì sao bài được chọn, kỹ năng dự kiến luyện và lựa chọn thay thế. Cho phép ưu tiên sở thích hoặc mục tiêu trước mắt.
+AD03 — Thích ứng mức trợ giúp: chọn vùng gợi ý và độ chi tiết theo câu trả lời, yêu cầu của người dùng và lịch sử. Các quy tắc ban đầu phải kiểm tra được trước khi dùng mô hình học máy.
+AD04 — Thích ứng nội dung: giữ chủ đề nhưng đổi độ dài, dạng câu hỏi hoặc nhiệm vụ; không tự hạ toàn bộ trình độ chỉ vì sai một kỹ năng.
+AD05 — Giảm hỗ trợ: thử lại không gợi ý, nghe không transcript, viết không mẫu. Điều chỉnh khi người học yêu cầu thêm hỗ trợ.
+AD06 — Chuyển giao kỹ năng: đọc một chủ đề → nghe quan điểm khác → trao đổi → viết lập luận → ôn và dùng lại. Từ và lỗi được liên kết, không trộn điểm các kỹ năng thành một kết luận thiếu căn cứ.
+Ba phép so sánh cần phân biệt
+Thành phần
+So sánh có thể thực hiện
+Gợi ý
+Gợi ý từng bước với đáp án và giải thích cố định
+Thích ứng
+Gợi ý theo trạng thái với cùng trình tự cho mọi người
+AI
+AI tạo/chọn gợi ý với bộ gợi ý và quy tắc do người biên soạn
+
+Nghiệm thu: đề xuất có căn cứ truy vết; hoạt động kiểm tra không dùng thông tin tương lai. Nếu dự đoán khó khăn trước khi trả lời, không dùng dữ liệu sau khi đã xem lời giải làm đầu vào.
+Giá trị mới tiềm năng là chu trình hỗ trợ liên kết và có kiểm tra vận dụng. Chưa được coi đây là khoảng trống thị trường đã chứng minh; cần đối chiếu các sản phẩm và nghiên cứu tương ứng [N2].
+
+15 Dữ liệu tương tác và thước đọc
+BH01 — Log tối thiểu có mục đích: mở bài, vùng hiển thị, cuộn, chọn chữ, tra từ, đánh dấu, đổi đáp án, dùng gợi ý và chuyển nhiệm vụ. Chỉ thu dữ liệu phục vụ câu hỏi sản phẩm/nghiên cứu đã xác định.
+BH02 — Thời gian: phân biệt phiên mở, trang đang hiển thị và thời gian có tương tác. Không đặt tên số đo này là mức tập trung hoặc thời gian hiểu bài.
+BH03 — Thước đọc tự nguyện: làm nổi bật dòng/đoạn theo con trỏ hoặc nút điều khiển; hỗ trợ bàn phím và chạm. Có thể tắt mà vẫn hoàn thành bài.
+BH04 — Đọc từng đoạn: người dùng chủ động mở phần tiếp theo; phù hợp nhiệm vụ nghiên cứu cụ thể, nhưng cần ghi nhận việc thay đổi cách đọc tự nhiên.
+BH05 — Báo khó khăn trực tiếp: nút “Tôi đang vướng ở đây”, chọn từ, câu, liên kết ý hoặc suy luận. Đây là nguồn xác nhận quan trọng cho cách diễn giải log.
+BH06 — Hỗ trợ ít làm phiền: chỉ đề nghị nhẹ nhàng khi có đủ căn cứ; hạn chế số lần hiện; người học chọn bỏ qua hoặc tắt.
+Tín hiệu
+Cách mô tả chính xác
+Suy luận không được mặc định
+Con trỏ ở đoạn 2
+Vị trí con trỏ được ghi nhận
+Mắt đang đọc đoạn 2
+Cuộn quay lên
+Nội dung trước được đưa lại vào màn hình
+Người học đã đọc lại hoặc không hiểu
+Tra nhiều từ
+Nhiều thao tác tra cứu
+Năng lực thấp hoặc thiếu tập trung
+Sửa đáp án
+Có thay đổi lựa chọn
+Thiếu tự tin chắc chắn
+
+Nghiệm thu: sự kiện có mã phiên, thời gian và phiên bản; không trùng do gửi lại; định nghĩa từng trường rõ. Kiểm tra thiết bị không có chuột. Dùng phỏng vấn ngắn và nhiệm vụ kiểm tra để xác nhận giả thuyết, thay vì chỉ nhìn heatmap.
+
+16 Eye tracking và phòng nghiên cứu
+GZ01 — Chế độ tự nguyện: giải thích mục đích, dữ liệu và giới hạn; xin phép camera; có nút tạm dừng/dừng dễ thấy; không cản luồng học thông thường.
+GZ02 — Hiệu chỉnh và kiểm tra: hiệu chỉnh điểm nhìn, sau đó kiểm tra ở vị trí riêng; lưu sai số và tỷ lệ tín hiệu hợp lệ. Kiểm tra lại khi tư thế, cửa sổ hoặc bố cục thay đổi đáng kể.
+GZ03 — Vùng quan tâm: bắt đầu ở vùng bài đọc/câu hỏi hoặc đoạn lớn. Chỉ dùng cấp dòng/từ nếu kết quả đo thực tế chứng minh đủ độ phân giải.
+GZ04 — Chất lượng và dự phòng: khi tín hiệu kém, ngừng phản hồi dựa trên gaze và chuyển sang click/tra từ/tự báo. Không tạo chỉ số chính xác giả định từ dữ liệu mất hoặc trôi.
+GZ05 — Trình xem nghiên cứu: thời gian nhìn ước lượng theo vùng, chuyển vùng, tỷ lệ mất tín hiệu, chú thích điều kiện. Heatmap phục vụ xem dữ liệu, không thay thế đo hiệu quả học.
+GZ06 — Kiểm tra giá trị tăng thêm: so sánh mô hình dùng tương tác thông thường với mô hình bổ sung gaze; đánh giá cả chất lượng hỗ trợ, độ phiền và khả năng dùng thiết bị.
+WebGazer công bố chạy trong trình duyệt và không cần gửi video lên máy chủ, đồng thời có thông báo không bảo đảm cập nhật từ 24/02/2026 [S14]. Nếu sử dụng cần kiểm tra phiên bản, giấy phép và độ ổn định thực tế; dữ liệu cục bộ vẫn cần chính sách lưu/xóa rõ.
+Câu hỏi nghiên cứu phù hợp
+Người học có quay lại vùng bằng chứng sau gợi ý không? Gaze có giúp chọn thời điểm hỗ trợ tốt hơn các log sẵn có không? Kết quả có ổn định qua kính, ánh sáng, màn hình và tư thế không?
+Nghiệm thu: không mặc định chín điểm hiệu chỉnh là đủ; ngưỡng chất lượng được chốt từ thử nghiệm kỹ thuật; không kết luận cảm xúc, ý định hoặc hiểu bài chỉ từ ánh nhìn. Eye tracking là mô đun nghiên cứu cần chứng minh lợi ích, không là điều kiện để dùng toàn bộ sản phẩm.
+
+17 Cộng đồng và hỗ trợ từ con người
+CM01 — Hồ sơ cộng đồng tùy chọn: sở thích, mục tiêu, mức hỗ trợ mong muốn và khung giờ; không tự công khai điểm yếu hay lịch sử riêng.
+CM02 — Ghép bạn: ngôn ngữ, chủ đề, lịch và mục tiêu; cho chấp nhận/từ chối, chặn và báo cáo. Không cần công khai vị trí chính xác.
+CM03 — Phòng nhóm nhỏ: đọc chung, luyện nói, câu lạc bộ theo chủ đề, phòng học yên tĩnh. Có người điều phối và quy tắc rõ khi mở cho người thật.
+CM04 — Nhiệm vụ hợp tác: phỏng vấn, tranh luận, giải quyết tình huống và làm podcast. Người học có vai trò và sản phẩm cuối, tránh phòng chat không có hoạt động.
+CM05 — Góp ý có tiêu chí: tác giả chọn sửa ý, ngữ pháp, phát âm hoặc phong cách; mẫu phản hồi cụ thể; lưu bản trước–sau và quyền phản hồi lại.
+CM06 — AI hỗ trợ nhóm: chuẩn bị câu hỏi, gợi ý khi bí và tổng kết nếu cả nhóm được thông báo. Không âm thầm phân tích người khác hoặc tự công khai nhận xét cá nhân.
+CM07 — Giáo viên và mentor: giao bài, nhận bài, góp ý, duyệt phản hồi AI, xem tiến độ trong phạm vi được cấp quyền.
+CM08 — Cộng đồng nối ôn tập: người học chọn lưu câu được sửa vào sổ lỗi; hệ thống tạo bài luyện và kiểm tra lại sau đó.
+Tandem cung cấp tìm bạn và công cụ sửa/dịch trong hội thoại [S11]; Busuu công bố phản hồi từ người nói thành thạo [S10]. LinguaLens có thể học cách làm tương tác có mục đích, rồi liên kết góp ý với hành trình cá nhân.
+Nghiệm thu: kiểm thử quyền xem, sửa, xóa và báo cáo; có quy trình xử lý phản hồi; không dùng số bình luận như thước đo chất lượng học. Trong pilot năm người, ưu tiên một nhóm có lịch hoạt động thật thay vì nhiều phòng trống.
+
+18 Học từ mạng xã hội và ứng dụng hấp dẫn
+Các nguồn dưới đây mô tả cơ chế sản phẩm, không chứng minh hiệu quả giáo dục hoặc mức phổ biến tại sinh viên Việt Nam. Cách áp dụng cho LinguaLens là giả thuyết thiết kế cần kiểm tra.
+Nguồn tham khảo
+Cơ chế đáng học
+Ứng dụng đề xuất
+TikTok [S18]
+Khám phá nội dung theo tương tác
+Bộ nội dung theo sở thích có đường dẫn sang thực hành
+YouTube Shorts [S19]
+Remix và tham gia sáng tạo
+Lồng tiếng, phản hồi bằng lời, tạo phiên bản cá nhân
+BeReal [S20]
+Khoảnh khắc đời thường theo ngày
+Kể một điều hôm nay bằng câu hoặc thoại ngắn
+Discord [S21]
+Không gian nhóm và hoạt động chung
+Câu lạc bộ, phòng học, nhiệm vụ hợp tác
+Finch [S22]
+Nhân vật gắn với hành động nhỏ
+Bạn đồng hành ghi nhận nhiệm vụ đã thực hiện
+Forest [S23]
+Công sức được biểu diễn trực quan
+Khu vườn hoặc thư viện thành quả
+Spotify Wrapped [S24]
+Dữ liệu thành câu chuyện cá nhân
+Tổng kết tuần/tháng có sản phẩm và thẻ chia sẻ
+
+EN01 — Khám phá ngắn: nội dung ưa thích, từ/câu nổi bật, nghe mẫu, thử nói/viết và nút học sâu. Phiên có điểm kết thúc; đánh giá tỷ lệ chuyển từ xem sang thực hành.
+EN02 — Khoảnh khắc tiếng Anh: mô tả bữa ăn, một đồ vật hoặc điều bất ngờ; gợi ý theo trình độ; lưu bản đầu và bản sửa; quyền chia sẻ riêng/nhóm/công khai.
+EN03 — Hồ sơ cá nhân sáng tạo: avatar, chủ đề, bộ sưu tập, sản phẩm và lời giới thiệu; cho chế độ tối giản dành cho người không thích hiệu ứng.
+EN04 — Tổng kết có bằng chứng: kể lại nhiệm vụ, lỗi đã sửa nhiều lần và bản nói/viết trước–sau; không chuyển phút học thành năng lực hoặc từ đã lưu thành từ thành thạo.
+EN05 — Thử thách theo xu hướng: dùng chủ đề gần giới trẻ, có giải thích sắc thái và bối cảnh; tránh dạy tiếng lóng như lựa chọn phù hợp mọi tình huống.
+Nghiệm thu: thông tin công khai do người học chọn; nội dung ngắn tạo cơ hội thực hành; số lượt xem và lượt thích được tách khỏi kết quả học.
+
+19 Trò chơi hóa và động lực bền vững
+GM01 — Bạn đồng hành: chọn hình dáng, tên, phong cách phản hồi; tham gia câu chuyện và dẫn vào bài luyện; có thể tắt. Phản hồi ghi nhận một hành động cụ thể thay vì khen mọi câu trả lời.
+GM02 — Nhiệm vụ: mục tiêu buổi, chuỗi dự án, thử thách tuần và nhiệm vụ nhóm. Mỗi nhiệm vụ gắn một năng lực hoặc sản phẩm, có mức vừa sức và mức thử thách.
+GM03 — Phần thưởng: đồ trang trí và mở địa điểm khi hoàn thành nhiệm vụ hợp lệ. Ghi nhận sửa bài, thử lại và vận dụng; hạn chế việc lặp bài dễ chỉ để lấy điểm.
+GM04 — Không gian tích lũy: khu vườn, thư viện, phòng cá nhân hoặc bản đồ. Nhấn một vật phẩm để xem bài hoặc bản ghi liên quan; công sức gắn với ký ức học thật.
+GM05 — Nhịp học linh hoạt: mục tiêu theo tuần, ngày nghỉ, buổi tối thiểu và cơ chế quay lại; không xóa giá trị tích lũy vì một ngày bỏ lỡ.
+GM06 — Thi đua tùy chọn: nhóm nhỏ và nhiệm vụ hợp tác; so tiến bộ cá nhân hoặc đóng góp hữu ích. Không dùng bảng tổng điểm công khai để xếp hạng năng lực nếu phép đo không tương đương.
+GM07 — Nhắc học: lịch do người dùng chọn, tần suất có giới hạn, tắt được; nhắc việc đang dang dở hoặc lời mời thật. Không tạo thông báo xã hội giả.
+Vòng động lực đề xuất
+Một điều tò mò hoặc mục tiêu cá nhân đưa người học vào bài. Nhiệm vụ vừa sức giúp bắt đầu. Phản hồi cụ thể giúp sửa. Sản phẩm và tổng kết cho thấy thành quả. Việc học tiếp được đề xuất dựa trên phần cần củng cố.
+Nghiệm thu: ghi nhận người dùng quay lại, hoàn thành, sửa và vận dụng; theo dõi cả cảm giác áp lực, sự phiền và khả năng tắt hiệu ứng. Không sử dụng eye tracking để tối ưu giữ ánh nhìn lâu hơn; cảm biến chỉ phục vụ mục tiêu học đã được thông báo.
+
+20 Xưởng sáng tạo và học theo dự án
+CR01 — Lồng tiếng: cảnh do nhóm tạo hoặc có quyền dùng, kịch bản theo vai, nghe mẫu, ghi âm, đồng bộ và xem lại. Phản hồi về rõ nghĩa, nhịp và mục tiêu phát âm.
+CR02 — Podcast và phỏng vấn: lập câu hỏi, luyện trước, ghi âm đơn/đôi, transcript, chỉnh nội dung và trình bày sản phẩm.
+CR03 — Video giới thiệu: viết kịch bản, nói về game, món ăn, công nghệ hoặc trải nghiệm; có phương án chỉ giọng và hình, không bắt bật mặt.
+CR04 — Viết sáng tạo: truyện tiếp nối, nhật ký, lời thoại, bài đánh giá và meme có giải thích. AI gợi mở và phản biện; ghi rõ mức hỗ trợ trong portfolio khi cần đánh giá độc lập.
+CR05 — Tình huống tương tác: nhân vật, lựa chọn, hội thoại và kết quả; cho thử lại bằng cách diễn đạt khác. Nhánh truyện phải phục vụ mục tiêu giao tiếp.
+CR06 — Dự án chuyên ngành: giới thiệu phần mềm, đọc tài liệu, viết email học thuật, thuyết trình nghiên cứu. Có thuật ngữ theo ngành nhưng vẫn kiểm tra nguồn và nghĩa.
+CR07 — Portfolio: lưu sản phẩm, phiên bản, phản hồi, tự đánh giá và quyền chia sẻ; tìm lại và đưa vào tổng kết.
+Dự án mẫu dành cho sinh viên CNTT
+Mục tiêu: giới thiệu một trò chơi đang phát triển. Người học đọc một bài mẫu, chọn cách mô tả nhân vật, viết kịch bản ngắn, trình bày bằng giọng nói và trả lời câu hỏi từ AI hoặc bạn học. Sau góp ý, tạo phiên bản mới và thử giới thiệu một tính năng chưa luyện.
+Rubric có thể gồm rõ mục đích, tổ chức ý, ví dụ, mức dễ hiểu và xử lý câu hỏi. Không mặc định dự án hấp dẫn đồng nghĩa ngôn ngữ đã tiến bộ; đối chiếu sản phẩm và nhiệm vụ chuyển giao.
+Nghiệm thu: toàn bộ quy trình từ tạo bản đầu đến sửa và lưu chạy được; quyền tài nguyên rõ; người dùng không bị buộc công khai. Dự án có thể bắt đầu nhỏ mà vẫn hoàn chỉnh.
+
+21 Các hành trình trải nghiệm mẫu
+Hành trình một chủ đề qua bốn kỹ năng
+Chủ đề AI trong giáo dục. Người học chọn mục tiêu và thời gian, đọc bài, lưu cụm từ, trả lời câu suy luận và nhận gợi ý. Sau đó nghe một quan điểm khác, trao đổi với AI, viết đoạn ý kiến và ôn lại. Ngày sau dùng các cụm đã học trong tình huống mới. Hồ sơ giữ riêng kết quả có và không trợ giúp.
+Hành trình từ giao tiếp đến sửa phát âm
+Người học đóng vai phỏng vấn. Một khó khăn phát âm có đủ tín hiệu được đưa vào tổng kết. Người học mở phòng luyện, nghe mẫu và xem 2D/3D, ghi âm lại, rồi trả lời một câu phỏng vấn khác. Nếu âm thanh kém, hệ thống yêu cầu ghi lại thay vì đưa kết luận chắc chắn.
+Hành trình khám phá nhu cầu qua demo
+Người thử mô tả lần học gần nhất và làm một nhiệm vụ quen thuộc. Sau đó dùng LinguaLens với nhiệm vụ tương đương: tra nghĩa, hiểu lỗi và lưu từ. Hỏi điều nào muốn giữ cho lần học sau. Mời dùng tiếp tự nguyện trong vài ngày để quan sát ôn và quay lại.
+Hành trình xã hội và cảm hứng
+Một câu hỏi hằng ngày mời người học kể về món ăn. AI giúp chuẩn bị, người học đăng vào nhóm nhỏ, bạn hỏi tiếp và góp ý. Câu được sửa được chọn lưu vào ôn tập. Cuối tuần, người học xem lại bản đầu và bản sau trong tổng kết cá nhân.
+Hành trình sau thời gian nghỉ
+Người học quay lại, chọn chỉ có năm phút. Hệ thống đưa một nhiệm vụ ngắn liên quan dự án dang dở, không dồn toàn bộ lịch ôn quá hạn. Sau hoàn thành, người học quyết định lịch tiếp theo và có thể tắt nhắc học.
+Các hành trình là kịch bản thiết kế, không phải kết quả thử nghiệm. Mỗi hành trình cần ca kiểm thử gồm đường thành công, mất mạng, thiếu quyền cảm biến, API lỗi, nội dung sai và yêu cầu xóa dữ liệu.
+
+22 Quản trị hỗ trợ và quản lý học liệu
+OP01 — Quyền theo vai trò: người học, giáo viên, biên tập, kiểm duyệt, hỗ trợ, nghiên cứu và quản trị. Kiểm tra phía máy chủ, giới hạn theo lớp/nhóm và ghi nhật ký thao tác quan trọng.
+OP02 — Biên tập học liệu: tạo, nhập, kiểm tra nguồn, duyệt câu hỏi, gợi ý, rubric và âm thanh; phiên bản nháp/xuất bản/thu hồi. Khi sửa nội dung, biết buổi học nào đã dùng bản cũ.
+OP03 — Quản lý phản hồi AI: báo sai ngay tại câu trả lời, lưu ngữ cảnh cần thiết theo quyền, phân loại nguyên nhân và cập nhật ca kiểm tra hồi quy.
+OP04 — Hỗ trợ người dùng: ticket, trạng thái, phản hồi, đính kèm phù hợp, hướng dẫn thiết bị; không cho bộ phận hỗ trợ xem mọi dữ liệu nghiên cứu theo mặc định.
+OP05 — Kiểm duyệt cộng đồng: báo cáo, chặn, ẩn/khôi phục, lịch sử xử lý và yêu cầu xem lại. Quy định ai trực và thời gian xử lý dự kiến trước khi mở cộng đồng rộng.
+OP06 — Quản lý lớp: giao nhiệm vụ, hạn nộp linh hoạt, xem bài và phản hồi; người học thấy rõ nội dung nào giáo viên được xem.
+OP07 — Bảng vận hành: tỷ lệ lỗi, độ trễ, lưu dữ liệu, sử dụng AI, chi phí ước tính, nội dung bị báo sai và sức khỏe sự kiện; tách khỏi bảng năng lực người học.
+OP08 — Quản lý thí nghiệm: chỉ người đủ quyền tạo điều kiện can thiệp, phân nhóm, đóng đợt, khóa phiên bản và xuất tập dữ liệu. Một biểu mẫu lưu đề cương không được gọi là cơ chế thực nghiệm đã hoạt động.
+Nghiệm thu: thử truy cập trái quyền bằng nhiều tài khoản thật; thao tác nhạy cảm có nhật ký; mất quyền được áp dụng kịp thời. Có người chịu trách nhiệm từng nhóm chức năng và quy trình xử lý khi dịch vụ AI hoặc nội dung gặp lỗi.
+
+23 Kiến trúc và chất lượng AI
+Các lớp đề xuất
+Lớp
+Trách nhiệm
+Giao diện
+Workspace, khả năng tiếp cận, thu đầu vào và trạng thái lưu
+API nghiệp vụ
+Xác thực, quyền, phiên học, bài tập, nhóm và xuất dữ liệu
+Dữ liệu
+Nội dung có phiên bản, hồ sơ, lần thử, phản hồi, sự kiện và consent
+Điều phối AI
+Chọn ngữ cảnh, gọi model, kiểm tra đầu ra, giới hạn và fallback
+Dịch vụ chuyên dụng
+Nhận dạng/đọc lời nói, đánh giá phát âm, gaze tùy chọn
+Vận hành
+Giám sát, sao lưu, phục hồi, chi phí và kiểm tra chất lượng
+
+Giữ hạ tầng pilot nếu đáp ứng yêu cầu; chưa cần chuyển stack chỉ để khớp tầm nhìn ban đầu. Thiết kế giao diện adapter để thay nhà cung cấp và tắt riêng mô đun lỗi. Khóa API nằm phía máy chủ.
+AI01 — Ngữ cảnh có giới hạn: bài, câu hỏi, rubric, mục tiêu và lịch sử cần thiết. Không gửi toàn bộ hồ sơ khi một câu hỏi chỉ cần một đoạn văn.
+AI02 — Đầu ra có cấu trúc: nội dung phản hồi, bằng chứng, loại hỗ trợ, cảnh báo thiếu căn cứ và gợi ý tiếp. Máy chủ kiểm tra schema và điều kiện nghiệp vụ.
+AI03 — Chống chỉ dẫn từ học liệu: xem nội dung nhập là dữ liệu, không cho câu trong bài thay đổi quyền, tiết lộ đáp án hoặc gọi hành động ngoài phạm vi.
+AI04 — Bộ kiểm tra chất lượng: câu hỏi mơ hồ, dẫn chứng thiếu, người học phản biện đáp án, transcript sai, giọng khác, yêu cầu không lộ đáp án và API mất kết nối.
+AI05 — Tái lập: lưu model, phiên bản prompt/rubric/nội dung, thời điểm và đầu ra cần thiết theo chính sách. Có thể đối chiếu các lần cập nhật.
+AI06 — Fallback trung thực: báo dịch vụ chưa sẵn sàng, cho dùng học liệu/gợi ý đã duyệt; không trình bày phản hồi kịch bản như LLM thật.
+Nghiệm thu: chất lượng chuyên môn, độ trễ, tỷ lệ thất bại và chi phí được đo cùng nhau. Tăng số tính năng phải đi kèm khả năng kiểm tra và sửa lỗi từng mô đun.
+
+24 Quyền dữ liệu và độ tin cậy vận hành
+DT01 — Các lựa chọn tách biệt: sử dụng sản phẩm, tham gia nghiên cứu, gửi dữ liệu đến AI, dùng mic/camera và chia sẻ cộng đồng. Quyền thiết bị không tự thay thế giải thích mục đích thu thập.
+DT02 — Tối thiểu hóa: chỉ lưu dữ liệu cần cho nhiệm vụ. Audio, hình ảnh và tọa độ chi tiết cần quyết định riêng; mặc định hạn chế bản thô nếu mục tiêu không cần.
+DT03 — Mã ổn định: mã người tham gia ngẫu nhiên và bền giữa các lần xuất; bảng liên kết danh tính giữ riêng. Dữ liệu thay tên bằng mã vẫn có thể liên kết lại, không tự trở thành ẩn danh tuyệt đối.
+DT04 — Xuất và xóa: xuất dữ liệu cá nhân, xóa bộ nhớ AI, rút nghiên cứu và xử lý bản sao nghiên cứu theo quy trình đã công bố. Ghi rõ giới hạn với bản đã được tải xuống.
+DT05 — Lưu giữ: xác định thời hạn theo loại dữ liệu, thực hiện tác vụ tự xóa khi đã cam kết, kiểm tra lỗi tác vụ và sao lưu. Không gọi chính sách thủ công là tự động.
+DT06 — Độ tin cậy: sao lưu, diễn tập phục hồi, gửi lại an toàn, chống tạo bản ghi trùng, trạng thái đồng bộ và cách khôi phục phiên học.
+DT07 — Phân tích đầy đủ: phân trang xuất, tổng số, số bản ghi thiếu, phiên bản schema; không âm thầm cắt sự kiện. Phân biệt số người, số buổi và số lần thử.
+Các thực thể cần thiết
+User, Profile, Goal, ConsentHistory, ContentVersion, Task, Attempt, EvidenceSelection, HintExposure, Feedback, VocabularyItem, Review, Conversation, PortfolioArtifact, Group, Report, SupportTicket, ExperimentCondition và Event. Tên là gợi ý thiết kế, không buộc thay schema hiện có theo đúng tên.
+Nghiệm thu: thử hai tài khoản không thấy dữ liệu riêng của nhau; rút lựa chọn có hiệu lực; xuất không thiếu không báo; dữ liệu khôi phục khớp. Quy trình pháp lý, nghiên cứu con người và tài nguyên bên ngoài cần được xác nhận theo đơn vị, phạm vi triển khai và điều kiện hiện hành; tài liệu này không xác nhận tuân thủ pháp luật.
+
+25 Đánh giá trải nghiệm và nghiên cứu
+Các vòng kiểm tra
+Vòng kỹ thuật xác nhận tính năng thật, dữ liệu và quyền. Pilot khoảng năm người tìm lỗi và kiểm tra cách hiểu giá trị. Đợt dùng nhiều ngày xem ôn tập, động lực và quay lại. Nghiên cứu hiệu quả có thiết kế riêng, học liệu đo riêng và cỡ mẫu theo mục tiêu.
+Nhóm chỉ số
+Nên ghi nhận
+Cách diễn giải
+Khả năng dùng
+Hoàn thành từng nhiệm vụ, trợ giúp, lỗi
+Luôn nêu mẫu số và điều kiện
+Giá trị cảm nhận
+Điều muốn giữ, lý do, tính năng không cần
+Đối chiếu hành vi thực tế
+Gắn bó
+Quay lại, tạo sản phẩm, sửa bài, ôn
+Không đồng nhất với tăng năng lực
+Học tập
+Bài mới không trợ giúp, ghi nhớ sau trì hoãn
+Phân biệt với kết quả ngay sau gợi ý
+AI và cảm biến
+Sai nội dung, độ trễ, mất tín hiệu, chi phí
+Phân tích theo thiết bị và nhiệm vụ
+
+Năm người tạo nhiều sự kiện vẫn là năm người tham gia. Không coi các sự kiện cùng người là những mẫu độc lập. Nếu xây mô hình cho người mới, tách train/test theo người; nếu cần áp dụng cho bài mới, cân nhắc tách cả theo học liệu.
+Think-aloud có ích để hiểu thao tác, nhưng thời gian vừa đọc vừa nói không được mặc nhiên coi như tốc độ đọc tự nhiên. Thử nghiệm có nhiều điều kiện cần xử lý thứ tự, độ khó và tác động mang theo từ lượt trước.
+Câu hỏi ưu tiên
+Gợi ý có giúp người học tìm bằng chứng và làm bài mới tốt hơn không?
+Gaze có tăng giá trị so với tương tác sẵn có không?
+Minh họa 2D/3D có giúp sửa và duy trì mục tiêu phát âm không?
+Nhân vật, nhóm nhỏ và tổng kết có tăng thực hành có ích mà không tăng áp lực không?
+Nghiệm thu nghiên cứu: định nghĩa trước kết quả chính, dữ liệu loại trừ và cách phân tích; lưu phiên bản; báo cả kết quả không thuận lợi. Tư vấn cỡ mẫu và công cụ đo với GVHD. Nguồn về thử usability nhỏ [S17] không thay thế tính cỡ mẫu nghiên cứu hiệu quả.
+
+26 Lộ trình và thứ tự triển khai
+Các giai đoạn dưới đây là thứ tự phụ thuộc, không phải cam kết lịch. Toàn bộ tầm nhìn được giữ, còn mức sẵn sàng được xác định bằng cổng nghiệm thu.
+Giai đoạn
+Phạm vi
+Điều kiện chuyển tiếp
+A Nền tảng đáng tin
+Đăng nhập thật, lưu/khôi phục, dữ liệu, consent, học liệu duyệt
+Luồng thực không mất dữ liệu và quyền đúng
+B Demo học toàn diện
+Đọc, nghe, nói, viết, ôn, AI thật và hồ sơ chung
+Người dùng hoàn thành chu trình nhiều buổi
+C Sửa khó khăn chuyên sâu
+Phát âm 2D/3D, thích ứng, thước đọc
+Đo được chất lượng và giá trị trong nhiệm vụ
+D Đồng hành và cộng đồng
+Khoảnh khắc hằng ngày, nhóm nhỏ, mascot, portfolio
+Có tương tác thật, kiểm duyệt và bằng chứng dùng tiếp
+E Nghiên cứu mở rộng
+Gaze, mô hình dự đoán, so sánh can thiệp
+Đo lường đủ tin cậy, dữ liệu và thiết kế phù hợp
+
+Phạm vi demo đề xuất để thể hiện chiều sâu
+Một số chủ đề được chuẩn bị hoàn chỉnh, chẳng hạn công nghệ, đời sống sinh viên và ẩm thực. Mỗi chủ đề có đọc, nghe, hội thoại, viết và ôn. Chuẩn bị đủ nhiệm vụ cho nhiều ngày và ít nhất một đường chuyển từ lỗi sang luyện lại. Quy mô cụ thể chốt theo thời gian kiểm duyệt nội dung.
+Hội thoại cần hoạt động thật; phát âm bắt đầu với tập mục tiêu có phạm vi rõ; cộng đồng dùng một nhóm có người điều phối. Gaze đặt trong phòng thử nghiệm, không để chất lượng cảm biến cản trải nghiệm chính.
+Thứ tự phụ thuộc quan trọng
+Mã người học ổn định trước phân tích dọc. Rubric và học liệu trước chấm tự động. Audio và nhận dạng được kiểm tra trước phản hồi phát âm. Quyền và kiểm duyệt trước cộng đồng công khai. Định nghĩa dữ liệu trước mô hình thích ứng.
+Nghiệm thu mỗi giai đoạn phải có bản chạy, ca kiểm thử, giới hạn, chủ sở hữu và dữ liệu đánh giá. Không dùng trạng thái có giao diện để đánh dấu đã hoàn thành chức năng.
+
+27 Nhân lực chi phí và khả năng duy trì
+Phân công theo trách nhiệm cho nhóm bốn người
+Vai trò chính
+Kết quả chịu trách nhiệm
+Sản phẩm và điều phối
+Mục tiêu, backlog, kịch bản thử, quyết định và tài liệu
+Kỹ thuật
+Luồng chạy thật, dữ liệu, AI, kiểm thử và vận hành
+Học liệu và sư phạm
+Bài, câu hỏi, rubric, mẫu phát âm, kiểm duyệt phản hồi
+Người dùng và đánh giá
+Tuyển thử, quan sát, cộng đồng, phân tích và tổng hợp
+
+Một người có thể kiêm vai trò nhưng cần người kiểm tra chéo. GVHD nên hỗ trợ mục tiêu sư phạm và phương pháp; có thể tìm cộng tác chuyên môn ngữ âm hoặc kỹ thuật nếu mô đun vượt năng lực nhóm.
+Các nhóm chi phí cần theo dõi
+LLM theo lượng đầu vào/đầu ra; nhận dạng và tổng hợp tiếng nói theo thời lượng; đánh giá phát âm; hosting, database, lưu audio và truyền dữ liệu; sản xuất học liệu; kiểm duyệt và hỗ trợ. Giá và chính sách từng nhà cung cấp cần kiểm tra ở thời điểm chọn dịch vụ.
+Ngân sách API dưới 100.000 đồng từng được đặt cho đợt demo ban đầu [N1]. Không xem đó là trần khả thi đã xác nhận cho voice, đánh giá âm vị, cộng đồng và 3D toàn diện. Cần đo một phiên thật rồi ước lượng số người × số phiên, cộng tài nguyên và công vận hành.
+Kiểm soát và mô hình duy trì
+Hạn mức theo người và toàn pilot, cảnh báo, công tắc dừng dịch vụ, cache nội dung dùng lại và giới hạn đầu ra. Hạn mức lượt gọi không tự là trần thanh toán; phải kiểm tra cách tính phí và cơ chế chặn.
+Hướng triển khai có thể là công cụ tự học hoặc công cụ hỗ trợ lớp. Phân biệt người dùng, người quyết định đưa vào dùng và người chi trả. Trước khi chốt gói thuê bao/lớp học, kiểm tra nhu cầu và chi phí; không tự coi dự án ĐMST bắt buộc có doanh thu ngay.
+Nghiệm thu: mỗi dịch vụ có chủ tài khoản, người vận hành, giới hạn và phương án khi hết ngân sách. Mỗi chức năng có người chịu trách nhiệm sau ngày demo.
+
+28 Bộ tiêu chí nghiệm thu và quyết định tiếp theo
+Định nghĩa một chức năng hoàn thành
+Thành phần
+Bằng chứng tối thiểu
+Giá trị
+Nêu người dùng, tình huống và kết quả mong muốn
+Hoạt động
+Luồng thật hoàn chỉnh, lưu dữ liệu và xử lý lỗi
+Chất lượng
+Kiểm tra nội dung, AI/cảm biến đúng phạm vi
+Quyền
+Đúng chủ sở hữu, lựa chọn dữ liệu và khả năng tắt
+Trải nghiệm
+Quan sát người thử và cách khắc phục chỗ vướng
+Vận hành
+Theo dõi lỗi, chi phí, người phụ trách và fallback
+
+Checklist trước đợt thử
+Đăng nhập thật, dùng trên điện thoại/máy tính, tiếp tục phiên sau tải lại.
+Chạy ít nhất một hành trình đọc–nghe–nói–viết–ôn có dữ liệu xuyên suốt.
+Nội dung và rubric được duyệt; chức năng mô phỏng được gắn nhãn.
+AI sai hoặc mất kết nối có cách báo và tiếp tục phù hợp.
+Người học phân biệt dữ liệu riêng, dữ liệu nhóm và dữ liệu nghiên cứu.
+Có hướng dẫn nhiệm vụ, phiếu quan sát và câu hỏi phỏng vấn không dẫn dắt.
+Biết cách xuất dữ liệu đầy đủ, sửa lỗi và xử lý yêu cầu xóa.
+Những quyết định nhóm cần chốt
+Chọn nhóm người học đầu tiên; mục tiêu demo; chủ đề và số ngày thử; tập phát âm được hỗ trợ; có bật gaze hay chỉ thử riêng; người duyệt học liệu; nhà cung cấp và ngân sách; người vận hành nhóm; kết quả chính muốn đo.
+Bảng công việc cần lập từ tài liệu này
+Mỗi việc có mã chức năng, câu chuyện người dùng, thiết kế màn hình, dữ liệu đầu vào/đầu ra, phụ thuộc, tiêu chí chấp nhận, người phụ trách và trạng thái. Giữ các trạng thái: đề xuất, đã thiết kế, đang xây, đã kiểm thử, thử với người dùng và sẵn sàng mở rộng.
+Mục tiêu phiên bản toàn diện là chu trình học đủ sâu và các chức năng liên kết được với nhau. Điểm khác biệt cần kiểm chứng là khả năng nhận biết khó khăn có căn cứ, hỗ trợ phù hợp, giúp luyện lại và cho thấy người học vận dụng được ở tình huống mới.
+
+29 Đối chiếu nguồn tham khảo
+Nguồn nội bộ
+[N1] BAO_CAO_LINGUALENS_PILOT_2026-09-20.md. Hiện trạng được báo cáo ngày 20/09/2026; không thay cho kiểm thử website độc lập.
+[N2] De_xuat_NCKH_AI_Adaptive_English_ULIS.pdf. Bản định hướng ngày 17/09/2026, trục đọc, từ vựng, hành vi và hỗ trợ thích ứng.
+[N3] SỔ TAY ĐMST.pdf. Phần tư duy thiết kế, Lean Startup, Canvas và quy trình. Cần dùng biểu mẫu và yêu cầu đợt đăng ký đang áp dụng.
+[N4] LinguaLens_AI_Release_Demo_Pack.zip. README, PRD và FRS; phân biệt prototype cục bộ với web pilot.
+Nguồn sản phẩm và phương pháp đã đối chiếu trong quá trình tư vấn ngày 20/09/2026. Trang sản phẩm mô tả tính năng công bố, không tự chứng minh hiệu quả hay sự vắng mặt của tính năng tương tự ở đối thủ. Điều kiện và phạm vi hỗ trợ có thể thay đổi.
+[S1] Readlang — đọc, tra cứu, flashcard và giải thích ngữ cảnh.
+[S2] LingQ — nội dung thực tế và nhập học liệu.
+[S3] YouGlish — ví dụ phát âm trong video.
+[S4] EnglishCentral — xem, học từ, nói và trao đổi.
+[S5] ELSA Speak — hội thoại và phản hồi nói.
+[S6] Speak — mẫu diễn đạt, thực hành và hội thoại.
+[S7] Duolingo Max — nhân vật hội thoại và roleplay.
+[S8] Write & Improve — viết, nhận phản hồi và sửa lại.
+[S9] Anki — lịch ôn và thẻ đa phương tiện.
+[S10] Busuu — học có cộng đồng phản hồi.
+[S11] Tandem — trao đổi ngôn ngữ và công cụ hội thoại.
+[S12] Speechace — đánh giá phát âm và lưu loát.
+
+Nguồn phương pháp và thiết kế trải nghiệm
+[S13] Seeing Speech — hình ảnh cơ quan phát âm và hoạt hình 2D.
+[S14] WebGazer — ước lượng ánh nhìn trong trình duyệt, tài liệu và công bố liên quan.
+[S15] Council of Europe — liên hệ bài kiểm tra với CEFR.
+[S16] Education Endowment Foundation — metacognition and self regulation.
+[S17] Nielsen Norman Group — thử nghiệm usability quy mô nhỏ theo vòng lặp.
+[S18] TikTok — mô tả cơ chế đề xuất For You.
+[S19] YouTube Help — remix trong Shorts.
+[S20] BeReal — khoảnh khắc đời thường hằng ngày.
+[S21] Discord — không gian nhóm và hoạt động chung.
+[S22] Finch — nhân vật gắn với hành động chăm sóc bản thân.
+[S23] Forest — biểu diễn phiên tập trung bằng cây.
+[S24] Spotify — trải nghiệm Wrapped 2025.
+Giới hạn áp dụng nguồn
+Các kết quả về siêu nhận thức trong giáo dục không được chuyển thành cam kết hiệu quả của LinguaLens. Tài liệu thử usability nhỏ không thay cho thiết kế thực nghiệm hiệu quả học tập. Mô tả API không bảo đảm chất lượng với giọng, thiết bị và bối cảnh người dùng đích.
+Các hướng như tích hợp gaze, sửa phát âm trực quan trong hội thoại, hồ sơ xuyên kỹ năng và cộng đồng nối với ôn tập được xem là cơ hội phát triển. Muốn khẳng định tính mới nghiên cứu hoặc khác biệt thị trường cần khảo sát chuyên sâu hơn, thử sản phẩm và đối chiếu nghiên cứu liên quan.

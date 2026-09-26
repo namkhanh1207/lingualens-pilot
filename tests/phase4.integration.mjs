@@ -1,0 +1,44 @@
+import assert from 'node:assert/strict';
+const base=process.env.PILOT_TEST_URL || 'http://127.0.0.1:8787';
+assert.ok(['127.0.0.1','localhost'].includes(new URL(base).hostname));
+const stamp=crypto.randomUUID(), users={a:'p4-a-'+stamp,b:'p4-b-'+stamp};let count=0;
+const check=(ok,name)=>{assert.ok(ok,name);count++;console.log('PASS',name);};
+async function api(user,body,view='skill_path') {const r=await fetch(base+'/api/pilot?view='+view,{method:body?'POST':'GET',headers:{'oai-authenticated-user-id':users[user],'oai-authenticated-user-email':user+'@sites.test','Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});return {status:r.status,data:await r.json()};}
+const update=(revision,operation,extra={})=>({op:'path_update',requestId:crypto.randomUUID(),expectedRevision:revision,operation,...extra});
+try{
+ const initial=(await api('a')).data;check(initial.state===null && !JSON.stringify(initial.unit).includes('answerKey'),'new unit hides answer key and has no fabricated progress');
+ const started=await Promise.all([api('a',{op:'path_start'}),api('a',{op:'path_start'})]);
+ let s=started[0].data.state;check(started.every(r=>r.status===200&&r.data.state.revision===0),'concurrent start creates one persistent path');
+ check(s.contentVersion.length===64,'path references immutable content version');
+ check((await api('b')).data.state===null,'other account cannot read path');
+ check((await api('b',update(0,'draft',{text:'private'}))).status===404,'other account cannot update path before starting own');
+ check((await api('a',update(0,'listen',{answers:[0]}))).status===400,'incomplete listening answers rejected');
+ const listen=update(0,'listen',{answers:[1,0,0],transcriptViewed:true,audioPlayed:false});
+ const duplicated=await Promise.all([api('a',listen),api('a',listen)]);
+ check(duplicated.every(r=>r.status===200&&r.data.revision===1&&r.data.listening.attempt===1),'duplicate listening submission saved once');
+ check((await api('a',{...listen,answers:[0,1,2]})).status===409,'idempotency key cannot change payload');
+ s=(await api('a',update(1,'listen',{answers:[0,1,2],transcriptViewed:true}))).data;
+ check(s.listening.correct.every(Boolean)&&s.firstListening.correct.every(v=>!v),'first listening outcome preserved after correction');
+ check(s.firstListening.transcriptViewed && !s.firstListening.audioPlayed,'support and audio exposure retained without claiming a listening test');
+ const text='I think the cup trial should continue because it reduces paper waste. However washing takes staff time. I suggest adding clear return instructions beside the library.';
+ const write=update(2,'write',{text,checks:[true,true,true,false]});s=(await api('a',write)).data;
+ check(s.writingReview.adapter==='self-review' && s.writingReview.text===text && s.writingReview.revision===3,'self review tied to exact writing revision without AI score');
+ const edited=text+' The group should record the costs.';
+ s=(await api('a',update(3,'draft',{text:edited}))).data;
+ check(s.writing===edited && s.writingReview.text===text,'editing preserves historical review without applying it to changed text');
+ check((await api('a',update(3,'draft',{text:'stale overwrite'}))).status===409,'stale second tab cannot overwrite writing');
+ const speech=update(4,'speak',{text:'I need to practise explaining the deposit.',checks:[true,false,true]});s=(await api('a',speech)).data;
+ check(s.speakingReview.adapter==='self-review' && s.writing===edited,'speaking reflection saved without replacing writing');
+ check((await api('a',update(5,'write',{text:'Too short',checks:[true,true,true,true]}))).status===400,'empty or too-short final writing rejected');
+ const conflict=await Promise.all([api('a',update(5,'draft',{text:edited+' A.'})),api('a',update(5,'draft',{text:edited+' B.'}))]);
+ check(conflict.filter(r=>r.status===200).length===1 && conflict.filter(r=>r.status===409).length===1,'concurrent distinct writing updates do not silently overwrite');
+ const reload=(await api('a')).data;
+ check(reload.state.revision===6 && reload.history.length===6,'reload returns persisted path and complete history');
+ check(reload.history.some(h=>h.operation==='write'&&h.writing===text),'original submitted writing recoverable in history');
+ check(!JSON.stringify(reload.unit).includes('answerKey'),'frozen public unit still hides answer keys');
+ const own=(await api('a',null,'export')).data;
+ check(own.records.filter(r=>r.kind==='skill_path_event').length===6,'personal export includes all path revisions');
+ await api('b',{op:'path_start'});check((await api('b')).data.history.length===0,'path history isolated between accounts');
+ await api('a',{op:'delete_data',confirmation:'DELETE'});check((await api('a')).data.state===null && (await api('a')).data.history.length===0,'personal deletion removes path and history');
+ console.log(count+' Phase 4 checks passed.');
+}finally{for(const u of Object.keys(users))await api(u,{op:'delete_data',confirmation:'DELETE'});}

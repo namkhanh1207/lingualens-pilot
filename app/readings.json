@@ -1,0 +1,447 @@
+{
+  "version": "pilot-2",
+  "status": "integrated_human_review_recommended",
+  "provenance": "Original AI-authored fictional teaching passages, prepared 2026-09-18 and 2026-09-20; no external article copied.",
+  "review_required": "Human review before pilot. CEFR labels are estimates, not validated classifications. Open answers require semantic review, not exact string matching.",
+  "readings": [
+    {
+      "id": "campus-cups",
+      "title": "A Cup You Can Borrow",
+      "cefr_estimate": "B1",
+      "topic": "Campus life and sustainability",
+      "paragraphs": [
+        "At Greenfield College, students often bought coffee before class. Most drinks came in paper cups, and the bins near the library filled quickly. A student group wanted to reduce this waste. At first, they put up posters asking everyone to bring a reusable cup. Many students supported the idea, but they often forgot their cups at home.",
+        "The group then tried a different plan. Students could borrow a cup from the campus cafe by paying a small deposit. They received the money back when they returned it. The cafe washed the cups before using them again. Students did not need to buy or remember their own cup.",
+        "During the first week, some students complained that returning a cup took too long because the cafe was far from their final class. The group added a return point beside the library. More students began returning cups before going home.",
+        "After a month, the cafe was using fewer paper cups. However, some borrowed cups were still missing, and washing required staff time. The group decided to continue the trial while recording these costs. Their experience suggested that making a useful action convenient could matter as much as explaining why it was important."
+      ],
+      "vocabulary": [
+        {
+          "word": "deposit",
+          "definition": "Money paid temporarily and returned when an item is brought back."
+        },
+        {
+          "word": "convenient",
+          "definition": "Easy to do or use in a particular situation."
+        }
+      ],
+      "questions": [
+        {
+          "id": "cups-1",
+          "skill": "detail",
+          "type": "mcq",
+          "prompt": "Why did the posters alone fail to solve the problem?",
+          "options": [
+            "Students disliked coffee.",
+            "Students often forgot their reusable cups.",
+            "The library removed all bins.",
+            "The cafe stopped selling drinks."
+          ],
+          "correct_index": 1,
+          "evidence_paragraph": 1,
+          "evidence_quote": "Many students supported the idea, but they often forgot their cups at home.",
+          "hint": "Look for the difference between supporting an idea and doing it."
+        },
+        {
+          "id": "cups-2",
+          "skill": "inference",
+          "type": "mcq",
+          "prompt": "What does the extra return point suggest?",
+          "options": [
+            "Students preferred more expensive drinks.",
+            "The cafe no longer needed to wash cups.",
+            "Reducing inconvenience can help people participate.",
+            "Every borrowed cup was returned."
+          ],
+          "correct_index": 2,
+          "evidence_paragraph": 3,
+          "evidence_quote": "The group added a return point beside the library. More students began returning cups before going home.",
+          "hint": "Compare what happened before and after the return point was added."
+        },
+        {
+          "id": "cups-3",
+          "skill": "vocabulary_in_context",
+          "type": "mcq",
+          "prompt": "In paragraph 2, a deposit is money that students…",
+          "options": [
+            "can get back after returning the cup.",
+            "receive for buying coffee.",
+            "must donate to the library.",
+            "pay for every wash."
+          ],
+          "correct_index": 0,
+          "evidence_paragraph": 2,
+          "evidence_quote": "They received the money back when they returned it.",
+          "hint": "Read the sentence immediately after the word deposit."
+        },
+        {
+          "id": "cups-4",
+          "skill": "evidence_based_explanation",
+          "type": "open",
+          "prompt": "Why did the group keep recording costs after paper-cup use decreased?",
+          "sample_answer": "The trial reduced paper waste, but missing cups and staff time for washing still created costs that needed evaluation.",
+          "rubric": [
+            "Identifies at least one ongoing cost: missing cups or washing staff time.",
+            "Explains that reducing paper-cup use does not by itself show the overall cost of the trial."
+          ],
+          "evidence_paragraph": 4,
+          "evidence_quote": "However, some borrowed cups were still missing, and washing required staff time.",
+          "hint": "Look at the limitation introduced by However."
+        }
+      ]
+    },
+    {
+      "id": "quiet-library",
+      "title": "One Library, Different Needs",
+      "cefr_estimate": "B1+",
+      "topic": "Study habits and shared spaces",
+      "paragraphs": [
+        "When Westbridge University extended its library opening hours, students welcomed the change. Yet complaints soon appeared. Some visitors wanted silence for individual reading, while others needed to discuss group projects. Keeping the building open longer had increased access without resolving how people should share the space.",
+        "The library first asked everyone to speak quietly. This rule was simple, but students interpreted it differently. A conversation that seemed quiet to a project team could still disturb someone reading a difficult chapter nearby. Staff spent a great deal of time settling disagreements.",
+        "A new trial divided one floor into two areas. Near the entrance, students could discuss work at shared tables. Beyond a glass door, a silent area offered individual desks. Clear signs explained the purpose of each space. The library also provided a booking system for two small meeting rooms.",
+        "Complaints fell during the trial, although the meeting rooms were often fully booked. A student survey suggested that visitors appreciated knowing what to expect before choosing a seat. However, the survey was voluntary, so it might not represent everyone who used the library. Staff planned to compare the responses with room bookings and observations before making the arrangement permanent."
+      ],
+      "vocabulary": [
+        {
+          "word": "interpreted",
+          "definition": "Understood the meaning of something in a particular way."
+        },
+        {
+          "word": "voluntary",
+          "definition": "Done by choice rather than because it is required."
+        }
+      ],
+      "questions": [
+        {
+          "id": "library-1",
+          "skill": "main_idea",
+          "type": "mcq",
+          "prompt": "What is the passage mainly about?",
+          "options": [
+            "Replacing libraries with online classes.",
+            "Charging students for study desks.",
+            "Why all group work should happen outside.",
+            "Adapting a shared library to different study needs."
+          ],
+          "correct_index": 3,
+          "evidence_paragraph": 3,
+          "evidence_quote": "A new trial divided one floor into two areas.",
+          "hint": "Consider the problem in paragraph 1 and the response in paragraph 3."
+        },
+        {
+          "id": "library-2",
+          "skill": "reference",
+          "type": "mcq",
+          "prompt": "What does This rule in paragraph 2 refer to?",
+          "options": [
+            "Booking every desk in advance.",
+            "Asking everyone to speak quietly.",
+            "Closing the library earlier.",
+            "Allowing discussion only outside."
+          ],
+          "correct_index": 1,
+          "evidence_paragraph": 2,
+          "evidence_quote": "The library first asked everyone to speak quietly.",
+          "hint": "Check the previous sentence."
+        },
+        {
+          "id": "library-3",
+          "skill": "detail",
+          "type": "mcq",
+          "prompt": "Which difficulty remained during the new trial?",
+          "options": [
+            "Meeting rooms were often fully booked.",
+            "There were no signs.",
+            "The silent area had no desks.",
+            "Students could no longer enter at night."
+          ],
+          "correct_index": 0,
+          "evidence_paragraph": 4,
+          "evidence_quote": "Complaints fell during the trial, although the meeting rooms were often fully booked.",
+          "hint": "Find the information after although."
+        },
+        {
+          "id": "library-4",
+          "skill": "critical_reading",
+          "type": "open",
+          "prompt": "Why should staff avoid relying only on the survey?",
+          "sample_answer": "Participation was voluntary, so the respondents might not represent all library users. Bookings and observations can add other evidence.",
+          "rubric": [
+            "Notes that survey respondents chose to participate.",
+            "Connects voluntary participation to possible lack of representativeness."
+          ],
+          "evidence_paragraph": 4,
+          "evidence_quote": "However, the survey was voluntary, so it might not represent everyone who used the library.",
+          "hint": "Does everyone who uses the library necessarily answer the survey?"
+        }
+      ]
+    },
+    {
+      "id": "adaptive-reminders",
+      "title": "When a Helpful Reminder Becomes a Distraction",
+      "cefr_estimate": "B2",
+      "topic": "Technology and learning",
+      "paragraphs": [
+        "A university study group developed an app that reminded students to review new vocabulary. Initially, every participant received a notification at seven each evening. Although this made the system easy to manage, it ignored differences in daily routines. Some students were travelling home at that time, while others were working or attending classes.",
+        "The developers introduced a setting that allowed students to choose their own review window. They also limited repeated notifications. Over the following fortnight, a larger proportion of reminders led to a completed review. The team was encouraged, but recognised that this result measured participation rather than vocabulary learning itself.",
+        "One proposal was to personalise reminders automatically using the time at which each student usually opened the app. However, opening an app does not necessarily indicate a good moment to study. A student might check a message while waiting for a bus but have neither the time nor the attention for a review session. Treating every recorded action as a reliable expression of preference could therefore produce unhelpful recommendations.",
+        "The group chose a compromise: the app suggested a review window, explained which recent activity informed the suggestion, and allowed the student to change or reject it. To evaluate learning, the team planned a later vocabulary test alongside its participation measures. The project illustrated why adaptation requires both careful interpretation of behavioural data and opportunities for users to correct the system."
+      ],
+      "vocabulary": [
+        {
+          "word": "participation",
+          "definition": "The act of taking part in an activity."
+        },
+        {
+          "word": "compromise",
+          "definition": "An approach that combines elements of different options."
+        }
+      ],
+      "questions": [
+        {
+          "id": "reminders-1",
+          "skill": "detail",
+          "type": "mcq",
+          "prompt": "What improved after students could choose a review window?",
+          "options": [
+            "Every student's vocabulary score doubled.",
+            "Students stopped working in the evening.",
+            "A larger proportion of reminders resulted in completed reviews.",
+            "The app no longer collected any activity data."
+          ],
+          "correct_index": 2,
+          "evidence_paragraph": 2,
+          "evidence_quote": "Over the following fortnight, a larger proportion of reminders led to a completed review.",
+          "hint": "Distinguish the measured result from outcomes that were not yet tested."
+        },
+        {
+          "id": "reminders-2",
+          "skill": "author_purpose",
+          "type": "mcq",
+          "prompt": "Why does the author mention a student waiting for a bus?",
+          "options": [
+            "To illustrate that opening an app may not mean readiness to study.",
+            "To prove that buses prevent learning.",
+            "To recommend longer journeys.",
+            "To show that all students prefer automatic reminders."
+          ],
+          "correct_index": 0,
+          "evidence_paragraph": 3,
+          "evidence_quote": "A student might check a message while waiting for a bus but have neither the time nor the attention for a review session.",
+          "hint": "Which general claim comes immediately before this example?"
+        },
+        {
+          "id": "reminders-3",
+          "skill": "inference",
+          "type": "mcq",
+          "prompt": "Which design principle best matches the final approach?",
+          "options": [
+            "Collect as much personal data as possible.",
+            "Hide how recommendations are produced.",
+            "Prevent students from changing the schedule.",
+            "Make recommendations explainable and allow users to override them."
+          ],
+          "correct_index": 3,
+          "evidence_paragraph": 4,
+          "evidence_quote": "the app suggested a review window, explained which recent activity informed the suggestion, and allowed the student to change or reject it.",
+          "hint": "Identify the choices given to the student."
+        },
+        {
+          "id": "reminders-4",
+          "skill": "critical_reading",
+          "type": "open",
+          "prompt": "Why is a later vocabulary test needed even if more reviews are completed?",
+          "sample_answer": "Completing reviews measures participation, but does not establish that students learned or retained the words. A later test provides evidence about vocabulary learning.",
+          "rubric": [
+            "Distinguishes participation from learning.",
+            "Explains that the later test checks vocabulary knowledge or retention."
+          ],
+          "evidence_paragraph": 2,
+          "evidence_quote": "this result measured participation rather than vocabulary learning itself.",
+          "hint": "Does finishing an activity necessarily mean remembering what was studied?"
+        }
+      ]
+    },
+    {
+      "id": "bus-notebook",
+      "title": "The Notebook on the Bus",
+      "cefr_estimate": "A2",
+      "topic": "Daily life and helping others",
+      "paragraphs": [
+        "Mai takes the bus to college every morning. One Tuesday, she saw a blue notebook on an empty seat. There was a name on the first page, but there was no phone number. Inside were drawings and notes for a class project. Mai wanted to help the owner get it back.",
+        "She first asked the driver what to do. He told her about the lost-property desk at the bus station. Mai had a class at nine, so she could not go there immediately. She put the notebook in her bag and went to college.",
+        "After class, Mai took the notebook to the desk. A worker wrote down the bus number and the time when she found it. The worker said these details could help the owner find the right item. Mai did not post pictures of the private notes online.",
+        "The next day, a student called Nam came to the desk. He described the blue cover and gave his name. The worker checked the notebook before returning it. Nam was happy because his project drawings were inside. Mai learned where to take lost things in the future."
+      ],
+      "vocabulary": [
+        {
+          "word": "owner",
+          "definition": "The person that something belongs to."
+        },
+        {
+          "word": "immediately",
+          "definition": "At once, without waiting."
+        },
+        {
+          "word": "details",
+          "definition": "Small pieces of information about something."
+        }
+      ],
+      "questions": [
+        {
+          "id": "bus-1",
+          "skill": "detail",
+          "type": "mcq",
+          "prompt": "What was missing from the first page?",
+          "options": [
+            "A name.",
+            "A phone number.",
+            "A blue cover.",
+            "A drawing of a bus."
+          ],
+          "correct_index": 1,
+          "evidence_paragraph": 1,
+          "evidence_quote": "There was a name on the first page, but there was no phone number.",
+          "hint": "Look for the words there was no."
+        },
+        {
+          "id": "bus-2",
+          "skill": "detail",
+          "type": "mcq",
+          "prompt": "Why did Mai wait until after class to visit the desk?",
+          "options": [
+            "The station was closed.",
+            "She wanted to keep the notebook.",
+            "She had a class at nine.",
+            "The driver took the notebook."
+          ],
+          "correct_index": 2,
+          "evidence_paragraph": 2,
+          "evidence_quote": "Mai had a class at nine, so she could not go there immediately.",
+          "hint": "Find the reason after Mai had."
+        },
+        {
+          "id": "bus-3",
+          "skill": "reference",
+          "type": "mcq",
+          "prompt": "Who does He refer to in the second sentence of paragraph 2?",
+          "options": [
+            "Nam.",
+            "The driver.",
+            "A teacher.",
+            "The owner."
+          ],
+          "correct_index": 1,
+          "evidence_paragraph": 2,
+          "evidence_quote": "She first asked the driver what to do. He told her about the lost-property desk at the bus station.",
+          "hint": "Read the sentence before He."
+        },
+        {
+          "id": "bus-4",
+          "skill": "evidence_based_explanation",
+          "type": "open",
+          "prompt": "What two things did Nam tell the worker to help identify the notebook?",
+          "sample_answer": "He described its blue cover and gave his name.",
+          "rubric": [
+            "Mentions the blue cover.",
+            "Mentions his name."
+          ],
+          "evidence_paragraph": 4,
+          "evidence_quote": "He described the blue cover and gave his name.",
+          "hint": "Look at what Nam did before the worker returned the notebook."
+        }
+      ]
+    },
+    {
+      "id": "repair-weekend",
+      "title": "What a Repair Weekend Can Tell Us",
+      "cefr_estimate": "B2",
+      "topic": "Community projects and evaluating evidence",
+      "paragraphs": [
+        "A student association at Northlake College organised a weekend repair event after a survey suggested that many residents owned broken household items. Volunteers offered to examine lamps, bags and bicycles. The organisers hoped both to reduce waste and to help residents learn practical skills. Attendance was free, although visitors had to pay for any replacement parts.",
+        "By Sunday evening, volunteers had repaired 42 of the 60 items brought to the event. The association described this as an encouraging result. Yet the volunteers had refused several complex electrical devices because they lacked the appropriate training. Consequently, the items accepted for repair were not a representative sample of everything residents might otherwise throw away.",
+        "Visitors were invited to complete a short questionnaire before leaving. Most respondents said they would attend another event, but only half of the visitors filled it in. People pleased with their repair may have been more willing to respond. In addition, an intention to return does not establish whether an item will remain in use for months or whether its owner has learned to repair similar problems independently.",
+        "The association proposed a follow-up survey six weeks later, asking whether repaired items were still working. It also planned to record volunteer hours and the cost of spare parts. These measures would not answer every question, but they would support a more balanced assessment. The initial results justified another small trial, rather than a claim that the project had already solved the community's waste problem."
+      ],
+      "vocabulary": [
+        {
+          "word": "representative",
+          "definition": "Showing the main characteristics of the larger group being considered."
+        },
+        {
+          "word": "intention",
+          "definition": "Something a person plans or wants to do."
+        },
+        {
+          "word": "assessment",
+          "definition": "A judgement based on examining available information."
+        }
+      ],
+      "questions": [
+        {
+          "id": "repair-1",
+          "skill": "detail",
+          "type": "mcq",
+          "prompt": "What did visitors have to pay for?",
+          "options": [
+            "Admission to the event.",
+            "All volunteer hours.",
+            "Replacement parts.",
+            "The follow-up survey."
+          ],
+          "correct_index": 2,
+          "evidence_paragraph": 1,
+          "evidence_quote": "Attendance was free, although visitors had to pay for any replacement parts.",
+          "hint": "Distinguish attendance from materials."
+        },
+        {
+          "id": "repair-2",
+          "skill": "critical_reading",
+          "type": "mcq",
+          "prompt": "Why should the repair result not be applied to all broken household items?",
+          "options": [
+            "Only students owned broken items.",
+            "Some complex devices were not accepted.",
+            "No items were successfully repaired.",
+            "The volunteers surveyed every resident."
+          ],
+          "correct_index": 1,
+          "evidence_paragraph": 2,
+          "evidence_quote": "Yet the volunteers had refused several complex electrical devices because they lacked the appropriate training.",
+          "hint": "Consider how the accepted items were selected."
+        },
+        {
+          "id": "repair-3",
+          "skill": "author_purpose",
+          "type": "mcq",
+          "prompt": "Why does the writer mention that only half of visitors completed the questionnaire?",
+          "options": [
+            "To prove all visitors disliked the event.",
+            "To show the questionnaire cost too much.",
+            "To explain why repairs were delayed.",
+            "To identify a possible limitation in the feedback."
+          ],
+          "correct_index": 3,
+          "evidence_paragraph": 3,
+          "evidence_quote": "People pleased with their repair may have been more willing to respond.",
+          "hint": "Ask whether respondents necessarily represent all visitors."
+        },
+        {
+          "id": "repair-4",
+          "skill": "evidence_based_explanation",
+          "type": "open",
+          "prompt": "How would the proposed follow-up improve the evaluation? Give one outcome measure and one resource measure.",
+          "sample_answer": "It would check whether repaired items still worked and record resources such as volunteer hours or spare-part costs.",
+          "rubric": [
+            "Identifies whether repaired items still work after six weeks.",
+            "Identifies volunteer hours or spare-part costs as a resource measure.",
+            "Explains that these measures go beyond immediate repair totals or visitor intentions."
+          ],
+          "evidence_paragraph": 4,
+          "evidence_quote": "It also planned to record volunteer hours and the cost of spare parts.",
+          "hint": "Compare evidence of a lasting result with the resources needed to produce it."
+        }
+      ]
+    }
+  ]
+}

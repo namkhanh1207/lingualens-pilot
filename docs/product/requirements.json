@@ -1,0 +1,1295 @@
+[
+  {
+    "id": "UX01",
+    "requirement": "Tiếp tục liền mạch: lưu vị trí bài, bản nháp, đoạn nghe và lượt luyện; báo trạng thái đã lưu, đang đồng bộ hoặc chưa lưu. Không hiển thị đã lưu nếu máy chủ chưa xác nhận.",
+    "source": "DOCX 04 Cấu trúc giao diện và khả năng tiếp cận",
+    "status": "Một phần",
+    "gap": "Có lưu draft/note/highlight và session URL; thiếu vị trí cuộn, audio và đồng bộ chống xung đột.",
+    "evidence": "app/workspace.tsx",
+    "phase": "R1"
+  },
+  {
+    "id": "UX02",
+    "requirement": "Trợ lý cạnh nhiệm vụ: câu hỏi gửi kèm vùng văn bản được chọn, mục tiêu và phần trợ giúp đã xem; người học thấy ngữ cảnh đang dùng và có thể bỏ bớt.",
+    "source": "DOCX 04 Cấu trúc giao diện và khả năng tiếp cận",
+    "status": "Một phần",
+    "gap": "Chat theo bài có sẵn; chưa có selection context và cho người học loại bỏ ngữ cảnh.",
+    "evidence": "app/workspace.tsx",
+    "phase": "R1"
+  },
+  {
+    "id": "UX03",
+    "requirement": "Nhiều mức giao diện: chế độ tập trung ít thành phần, chế độ khám phá trực quan; bật/tắt mascot, hiệu ứng, nhạc và thông báo.",
+    "source": "DOCX 04 Cấu trúc giao diện và khả năng tiếp cận",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "UX04",
+    "requirement": "Khả năng tiếp cận: bàn phím, focus rõ, độ tương phản, cỡ chữ, khoảng dòng, phụ đề, transcript; không chỉ dùng màu để chỉ lỗi. Hỗ trợ giảm chuyển động và thay thế thao tác kéo bằng nút bấm.",
+    "source": "DOCX 04 Cấu trúc giao diện và khả năng tiếp cận",
+    "status": "Một phần",
+    "gap": "Có nhãn, nút, responsive cơ bản; chưa có bằng chứng kiểm tra toàn bộ focus/zoom/reduced motion.",
+    "evidence": "app/workspace.tsx",
+    "phase": "R1"
+  },
+  {
+    "id": "UX05",
+    "requirement": "Thiết bị và kết nối: giao diện điện thoại, tablet, máy tính; kiểm tra microphone; xử lý mạng yếu, tải lại và gián đoạn. Chế độ offline chỉ hứa cho phần thực sự lưu cục bộ, không hứa AI ngoại tuyến khi vẫn cần dịch vụ ngoài.",
+    "source": "DOCX 04 Cấu trúc giao diện và khả năng tiếp cận",
+    "status": "Một phần",
+    "gap": "Có CSS mobile và fallback nhập chữ; chưa kiểm thử thiết bị thật/mạng yếu đầy đủ.",
+    "evidence": "app/workspace.tsx",
+    "phase": "R1"
+  },
+  {
+    "id": "UX06",
+    "requirement": "Đường dẫn rõ: mỗi buổi học và sản phẩm có trang riêng, tìm lại được. Tìm kiếm trong ghi chú, từ, hội thoại và bài viết theo quyền của chủ sở hữu.",
+    "source": "DOCX 04 Cấu trúc giao diện và khả năng tiếp cận",
+    "status": "Một phần",
+    "gap": "Có URL buổi đọc và thư viện; chưa có tìm kiếm xuyên ghi chú/chat/viết.",
+    "evidence": "app/workspace.tsx",
+    "phase": "R1"
+  },
+  {
+    "id": "PF01",
+    "requirement": "Onboarding ngắn: mục tiêu, sở thích, thời gian, mức tự đánh giá, điều kiện học và cách muốn được sửa. Thông tin nâng cao được bổ sung dần; không buộc điền hết trước buổi học đầu.",
+    "source": "DOCX 05 Hồ sơ năng lực và lộ trình cá nhân",
+    "status": "Một phần",
+    "gap": "Có tên, mục tiêu, CEFR tự đánh giá; thiếu sở thích, thời gian và kiểu sửa.",
+    "evidence": "app/workspace.tsx; db/schema.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "PF02",
+    "requirement": "Nhiệm vụ chẩn đoán: bài ngắn theo kỹ năng, có lựa chọn bỏ qua. Kết quả ghi là ước lượng nội bộ, kèm phạm vi và mức chắc chắn; không cấp chứng nhận CEFR tự động [S15].",
+    "source": "DOCX 05 Hồ sơ năng lực và lộ trình cá nhân",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "PF03",
+    "requirement": "Hồ sơ theo kỹ năng: đọc ý chính, chi tiết, suy luận; nghe nhận diện và hiểu; nói tương tác, diễn đạt; viết tổ chức và chính xác. Ngữ pháp, từ và phát âm là các lớp hỗ trợ liên kết.",
+    "source": "DOCX 05 Hồ sơ năng lực và lộ trình cá nhân",
+    "status": "Một phần",
+    "gap": "Tổng quan có tỷ lệ đúng theo kỹ năng trắc nghiệm; chưa có hồ sơ bốn kỹ năng.",
+    "evidence": "app/workspace.tsx; db/schema.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "PF04",
+    "requirement": "Mục tiêu thực tế: ví dụ thuyết trình dự án sau tám tuần. Chia thành mốc và nhiệm vụ; người học chọn hoặc sửa. Kế hoạch là đề xuất, không cam kết đạt trình độ sau số ngày cố định.",
+    "source": "DOCX 05 Hồ sơ năng lực và lộ trình cá nhân",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "PF05",
+    "requirement": "Điều chỉnh theo lịch: buổi 5, 15 hoặc 30 phút; gợi ý nhiệm vụ không cần mic; hoãn lịch có chủ đích; phân bổ lại sau thời gian nghỉ.",
+    "source": "DOCX 05 Hồ sơ năng lực và lộ trình cá nhân",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "PF06",
+    "requirement": "Quyền sửa hồ sơ: xem AI đang nhận định gì, căn cứ ở đâu, sửa sở thích hoặc phản đối suy luận. Ghi nhận tác động của thiết bị, tiếng ồn và sự cố.",
+    "source": "DOCX 05 Hồ sơ năng lực và lộ trình cá nhân",
+    "status": "Một phần",
+    "gap": "Sửa được hồ sơ cơ bản; chưa có trang nhận định AI và phản đối suy luận.",
+    "evidence": "app/workspace.tsx; db/schema.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "CT01",
+    "requirement": "Kho đa định dạng: bài đọc, hội thoại, audio, video, hình có chú thích và dự án. Tìm theo chủ đề, thời lượng, kỹ năng, độ khó dự kiến, giọng mẫu và mục tiêu.",
+    "source": "DOCX 06 Kho học liệu và tìm kiếm nội dung",
+    "status": "Một phần",
+    "gap": "Có 5 bài text, lọc trình độ và tên/chủ đề; chưa có audio/video và bộ lọc đa chiều.",
+    "evidence": "app/readings.json; app/lib/content.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "CT02",
+    "requirement": "Nguồn rõ: tên, tác giả, URL, ngày truy cập, điều kiện sử dụng, phiên bản và người duyệt. Tài liệu tự viết hoặc AI hỗ trợ có nhãn phù hợp; tránh trình bày nội dung hư cấu như tin tức thật.",
+    "source": "DOCX 06 Kho học liệu và tìm kiếm nội dung",
+    "status": "Một phần",
+    "gap": "Có provenance chung cho seed; chưa có nguồn/giấy phép/người duyệt theo phiên bản từng bài.",
+    "evidence": "app/readings.json; app/lib/content.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "CT03",
+    "requirement": "Nhập tài liệu cá nhân: văn bản, tài liệu hoặc đường dẫn khi có quyền sử dụng. Xem lại nội dung trích xuất, sửa lỗi OCR, chọn đoạn học; không mặc định mọi trang có thể nhập hoặc công khai lại.",
+    "source": "DOCX 06 Kho học liệu và tìm kiếm nội dung",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "CT04",
+    "requirement": "Thích ứng học liệu: bản đơn giản hơn hoặc chú giải thêm phải bảo toàn ý chính, đánh dấu phần chuyển thể và được kiểm tra. Có nút xem bản gốc để người học đối chiếu.",
+    "source": "DOCX 06 Kho học liệu và tìm kiếm nội dung",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "CT05",
+    "requirement": "Đề xuất theo sở thích: kết hợp chủ đề yêu thích, độ khó, nội dung đã học và mục tiêu; có nút ít nội dung này hơn, đổi chủ đề và giải thích đề xuất.",
+    "source": "DOCX 06 Kho học liệu và tìm kiếm nội dung",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "CT06",
+    "requirement": "Biên soạn câu hỏi: phân đoạn → sinh ứng viên → gắn bằng chứng → kiểm tra đáp án/phương án nhiễu → duyệt → xuất bản. Việc trích đoạn tồn tại không đủ xác nhận đáp án đúng.",
+    "source": "DOCX 06 Kho học liệu và tìm kiếm nội dung",
+    "status": "Một phần",
+    "gap": "Có đáp án/dẫn chứng seed; chưa có pipeline biên tập/sinh/duyệt/xuất bản.",
+    "evidence": "app/readings.json; app/lib/content.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "CT07",
+    "requirement": "Bộ sưu tập và tìm kiếm: lưu bài, playlist nghe, chủ đề theo tuần; tìm cả nội dung cá nhân. Nội dung nghiên cứu cần đóng băng phiên bản trong một đợt đo.",
+    "source": "DOCX 06 Kho học liệu và tìm kiếm nội dung",
+    "status": "Một phần",
+    "gap": "Có bookmark; thiếu playlist, bộ sưu tập và đóng băng phiên bản nghiên cứu.",
+    "evidence": "app/readings.json; app/lib/content.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "RD01",
+    "requirement": "Đọc thuận tiện: đổi cỡ chữ, khoảng dòng, nền; đánh số đoạn; lưu vị trí; đọc thành tiếng tùy chọn và đồng bộ câu nếu có dữ liệu thời gian phù hợp.",
+    "source": "DOCX 07 Không gian đọc hiểu chuyên sâu",
+    "status": "Một phần",
+    "gap": "Có đoạn đánh số và hiển thị bài; chưa có tùy chỉnh đọc/lưu vị trí/đồng bộ câu.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "RD02",
+    "requirement": "Tra cứu tại chỗ: từ, cụm từ, nghĩa trong câu, từ loại, ví dụ và phát âm; giải thích tiếng Việt hoặc tiếng Anh đơn giản; lưu kèm câu gốc.",
+    "source": "DOCX 07 Không gian đọc hiểu chuyên sâu",
+    "status": "Một phần",
+    "gap": "Có lookup từ seed và lưu từ; chưa tra cụm chọn tự do, câu gốc và nghĩa theo ngữ cảnh.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "RD03",
+    "requirement": "Hiểu cấu trúc: phân tách mệnh đề, từ nối, đối chiếu đại từ với đối tượng tham chiếu, quan hệ nguyên nhân và đối lập. Sơ đồ ý cần đối chiếu được với văn bản.",
+    "source": "DOCX 07 Không gian đọc hiểu chuyên sâu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "RD04",
+    "requirement": "Đa dạng câu hỏi: ý chính, chi tiết, suy luận, quan điểm, bằng chứng, từ trong ngữ cảnh, tóm tắt và câu mở. Chọn độ khó và kỹ năng theo mục tiêu đã duyệt.",
+    "source": "DOCX 07 Không gian đọc hiểu chuyên sâu",
+    "status": "Một phần",
+    "gap": "Có 20 câu với một số kỹ năng; chưa chọn mục tiêu/độ khó hoặc tóm tắt đầy đủ.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "RD05",
+    "requirement": "Đáp án cùng căn cứ: người học chọn đáp án, đoạn chứng minh và mức tự tin tùy chọn. Lưu riêng để phân biệt đúng do suy luận có căn cứ với kết quả cần kiểm tra thêm.",
+    "source": "DOCX 07 Không gian đọc hiểu chuyên sâu",
+    "status": "Một phần",
+    "gap": "Có đáp án nhưng chưa lưu lựa chọn bằng chứng và mức tự tin.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "RD06",
+    "requirement": "Gợi ý nhiều mức: chỉ vùng → gợi quan hệ → câu hỏi dẫn dắt → giải thích đầy đủ; cho thử lại giữa các bước. Có chế độ yêu cầu chưa tiết lộ đáp án.",
+    "source": "DOCX 07 Không gian đọc hiểu chuyên sâu",
+    "status": "Một phần",
+    "gap": "Có 3 mức hint cố định; chưa có chuỗi mức hỗ trợ đầy đủ theo yêu cầu mới.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "RD07",
+    "requirement": "Thảo luận phản biện: hỏi vì sao phương án khác không phù hợp, chứng cứ có đủ không, nội dung nào chỉ là suy đoán. AI phải thừa nhận khi câu hỏi có vấn đề.",
+    "source": "DOCX 07 Không gian đọc hiểu chuyên sâu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "RD08",
+    "requirement": "Tổng kết: lưu lỗi, chiến lược đã thử, từ cần ôn và bài mới đề xuất. Tách điểm lần đầu khỏi điểm sau trợ giúp.",
+    "source": "DOCX 07 Không gian đọc hiểu chuyên sâu",
+    "status": "Một phần",
+    "gap": "Có lịch sử/kết quả gần nhất; thiếu điểm lần đầu và tổng kết trợ giúp.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R1/R2",
+    "phase1_update": "Phase 1 tách firstResults và kết quả gần nhất; chưa đủ tổng kết chiến lược/từ/bài mới."
+  },
+  {
+    "id": "LS01",
+    "requirement": "Trình phát học tập: tua câu, lặp đoạn A–B, điều chỉnh tốc độ, phím tắt, phụ đề/transcript bật theo mức; âm thanh rõ và phù hợp quyền sử dụng.",
+    "source": "DOCX 08 Luyện nghe và hiểu lời nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "LS02",
+    "requirement": "Nghe đa mục tiêu: ý chính, chi tiết, thái độ, quan hệ ý; chép chính tả, điền thiếu, chọn ý, sắp xếp sự kiện và ghi chú.",
+    "source": "DOCX 08 Luyện nghe và hiểu lời nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "LS03",
+    "requirement": "Giảm hỗ trợ dần: nghe không chữ → gợi từ → hiện đoạn transcript → giải thích → nghe lại không chữ. Ghi lần nào đã có trợ giúp.",
+    "source": "DOCX 08 Luyện nghe và hiểu lời nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "LS04",
+    "requirement": "Nhận diện khó khăn: người học chọn không nghe ra từ, không hiểu nghĩa, mất mạch ý, tốc độ hoặc âm thanh kém. Hệ thống dùng nhiệm vụ kiểm tra ngắn để bổ sung bằng chứng.",
+    "source": "DOCX 08 Luyện nghe và hiểu lời nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "LS05",
+    "requirement": "Nhiều giọng và bối cảnh: mẫu nói rõ, hội thoại tự nhiên, học thuật và đời sống; gắn nhãn giọng mẫu, tránh coi mọi khác biệt là lỗi.",
+    "source": "DOCX 08 Luyện nghe và hiểu lời nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "LS06",
+    "requirement": "Nghe nối với nói: shadowing từng đoạn, ghi âm lại, nghe mẫu và bản thân; giải thích nhịp, trọng âm và cụm ý. Không dùng độ giống âm thanh tổng thể làm bằng chứng duy nhất về chất lượng.",
+    "source": "DOCX 08 Luyện nghe và hiểu lời nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "LS07",
+    "requirement": "Tra ví dụ đời thực: tìm một cụm trong nhiều mẫu nói theo cách YouGlish cung cấp [S3]; từ được lưu cùng ngữ cảnh và có thể đưa sang hội thoại.",
+    "source": "DOCX 08 Luyện nghe và hiểu lời nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "SP01",
+    "requirement": "Chọn nhiệm vụ: làm quen, hỏi đường, gọi món, thảo luận lớp, thuyết trình, phỏng vấn, thương lượng hoặc trình bày chuyên ngành. Nhân vật có vai trò và mục tiêu rõ.",
+    "source": "DOCX 09 Hội thoại và giao tiếp bằng giọng nói",
+    "status": "Một phần",
+    "gap": "Có 3 persona mẫu; thiếu nhiệm vụ/đích giao tiếp mở rộng.",
+    "evidence": "app/media-lab.tsx; app/lib/learning.ts; app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "SP02",
+    "requirement": "Voice thật: kiểm tra mic, phát hiện lượt nói, nhận dạng, phản hồi, đọc lời đáp; có chế độ nhấn để nói và phương án văn bản khi thiết bị không hỗ trợ. Người học được sửa transcript nhận sai.",
+    "source": "DOCX 09 Hội thoại và giao tiếp bằng giọng nói",
+    "status": "Một phần",
+    "gap": "Có nhận dạng/đọc bằng trình duyệt; chưa voice pipeline thật đã kiểm chứng.",
+    "evidence": "app/media-lab.tsx; app/lib/learning.ts; app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "SP03",
+    "requirement": "Hội thoại tiếp nối: bám câu trả lời, hỏi tiếp, xin làm rõ, đổi cách diễn đạt; cho tạm dừng, nhắc lại và điều chỉnh tốc độ. Tránh chỉ lần lượt phát câu kịch bản.",
+    "source": "DOCX 09 Hội thoại và giao tiếp bằng giọng nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "SP04",
+    "requirement": "Cách sửa linh hoạt: giao tiếp liên tục thì góp ý sau lượt hoặc cuối buổi; luyện mục tiêu hẹp thì sửa ngay theo thỏa thuận. Có lựa chọn chỉ sửa lỗi cản trở hiểu.",
+    "source": "DOCX 09 Hội thoại và giao tiếp bằng giọng nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "SP05",
+    "requirement": "Phản hồi theo chiều: nội dung, mạch lạc, ngữ pháp, từ, ngữ dụng, lưu loát và phát âm. Chỉ báo cáo chiều có đầu vào và công cụ đánh giá phù hợp.",
+    "source": "DOCX 09 Hội thoại và giao tiếp bằng giọng nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "SP06",
+    "requirement": "Luyện lại: thử cùng mục tiêu với câu hỏi khác, nói lại đoạn đã sửa, đưa cụm từ mục tiêu vào tình huống mới. Có thể luyện trước với AI rồi chuyển sang bạn học.",
+    "source": "DOCX 09 Hội thoại và giao tiếp bằng giọng nói",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "SP07",
+    "requirement": "Huấn luyện ngữ dụng: nói lịch sự, từ chối, xin lỗi, bất đồng, đổi phong cách thân mật và trang trọng. Giải thích lựa chọn theo bối cảnh thay vì một cách nói duy nhất.",
+    "source": "DOCX 09 Hội thoại và giao tiếp bằng giọng nói",
+    "status": "Một phần",
+    "gap": "Có ví dụ register soạn sẵn; chưa phản hồi phù hợp ngữ cảnh động.",
+    "evidence": "app/media-lab.tsx; app/lib/learning.ts; app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "SP08",
+    "requirement": "Tổng kết và bộ nhớ: transcript, đoạn nổi bật, điểm cần luyện, bài tiếp theo; bộ nhớ dài hạn do người học kiểm soát. Phân biệt AI với người thật.",
+    "source": "DOCX 09 Hội thoại và giao tiếp bằng giọng nói",
+    "status": "Một phần",
+    "gap": "Lưu hội thoại; chưa tổng kết ưu tiên/bộ nhớ người dùng kiểm soát.",
+    "evidence": "app/media-lab.tsx; app/lib/learning.ts; app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "PR01",
+    "requirement": "Thư viện âm và mẫu: IPA, từ, cụm, câu; chọn biến thể mục tiêu, nghe thường/chậm, so sánh cặp âm và luyện phân biệt bằng tai.",
+    "source": "DOCX 10 Phát âm trực quan bằng 2D và 3D",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2 cơ bản / R4 đo lường"
+  },
+  {
+    "id": "PR02",
+    "requirement": "Mô hình dạy cấu âm: mặt trước và mặt cắt bên; môi, răng, lưỡi, hàm, luồng khí và hữu thanh khi phù hợp; tạm dừng, xoay 3D, bật chú thích. Nội dung cần chuyên gia thẩm định.",
+    "source": "DOCX 10 Phát âm trực quan bằng 2D và 3D",
+    "status": "Một phần",
+    "gap": "Có sơ đồ 2D minh họa; chưa thẩm định ngữ âm hoặc mô hình cấu âm đầy đủ.",
+    "evidence": "app/media-lab.tsx",
+    "phase": "R2 cơ bản / R4 đo lường"
+  },
+  {
+    "id": "PR03",
+    "requirement": "Ghi âm và phân tích: công cụ chuyên dụng đánh giá phần âm thanh phù hợp; phản hồi cấp âm/từ/câu khi được hỗ trợ. Speechace là một nguồn tham khảo về API đánh giá [S12], không phải bảo đảm độ chính xác với nhóm đích.",
+    "source": "DOCX 10 Phát âm trực quan bằng 2D và 3D",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2 cơ bản / R4 đo lường"
+  },
+  {
+    "id": "PR04",
+    "requirement": "Sửa trong giao tiếp: chọn khó khăn vừa xuất hiện → xem hướng dẫn → luyện ngắn → quay lại hội thoại → kiểm tra trong câu chưa luyện.",
+    "source": "DOCX 10 Phát âm trực quan bằng 2D và 3D",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2 cơ bản / R4 đo lường"
+  },
+  {
+    "id": "PR05",
+    "requirement": "Camera tùy chọn: hỗ trợ quan sát môi/hàm bên ngoài khi đủ điều kiện. Camera thông thường không đo được toàn bộ vị trí lưỡi bên trong; phải ghi rõ vùng không quan sát được.",
+    "source": "DOCX 10 Phát âm trực quan bằng 2D và 3D",
+    "status": "Một phần",
+    "gap": "Có camera preview tùy chọn; chưa phân tích môi/hàm.",
+    "evidence": "app/media-lab.tsx",
+    "phase": "R2 cơ bản / R4 đo lường"
+  },
+  {
+    "id": "PR06",
+    "requirement": "Ngữ điệu và nhịp: trọng âm từ/câu, ngắt cụm, tốc độ; nghe đối chiếu; đường biểu diễn nếu có cần giải thích dễ hiểu và có tính đến chất lượng ghi âm.",
+    "source": "DOCX 10 Phát âm trực quan bằng 2D và 3D",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2 cơ bản / R4 đo lường"
+  },
+  {
+    "id": "WR01",
+    "requirement": "Đa dạng nhiệm vụ: nhật ký, mô tả, tin nhắn, email, đoạn văn, bài luận, báo cáo, CV và kịch bản thuyết trình. Chọn mục đích, người đọc và phong cách.",
+    "source": "DOCX 11 Luyện viết và tư duy diễn đạt",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "WR02",
+    "requirement": "Hỗ trợ chuẩn bị: hiểu đề, động não, chọn luận điểm, dàn ý và câu hỏi tự kiểm tra. Có chế độ chỉ hỏi gợi mở để người học tự phát triển ý.",
+    "source": "DOCX 11 Luyện viết và tư duy diễn đạt",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "WR03",
+    "requirement": "Góp ý nhiều lớp: mức đáp ứng đề, lập luận, tổ chức, liên kết, từ vựng, ngữ pháp, chính tả và sắc thái. Tách hiểu nội dung khỏi độ chính xác ngôn ngữ.",
+    "source": "DOCX 11 Luyện viết và tư duy diễn đạt",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "WR04",
+    "requirement": "Mức can thiệp: chỉ chỉ ra vùng cần xem lại; giải thích lỗi; đề xuất cách sửa; hoặc đưa bản tham khảo sau khi người học đã thử. Giữ ý định và giọng của người viết.",
+    "source": "DOCX 11 Luyện viết và tư duy diễn đạt",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "WR05",
+    "requirement": "Sửa nhiều vòng: lưu phiên bản, xem thay đổi, nhận xét điều đã cải thiện và điều còn tồn tại. Người học giải thích một lựa chọn sửa để tránh chỉ chấp nhận tự động.",
+    "source": "DOCX 11 Luyện viết và tư duy diễn đạt",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "WR06",
+    "requirement": "Vận dụng lại: chuyển lỗi lặp vào bài tập ngắn; giao bài mới có cơ hội dùng cấu trúc đó. Không dùng cùng một bản đã được AI sửa để kết luận năng lực viết độc lập.",
+    "source": "DOCX 11 Luyện viết và tư duy diễn đạt",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "WR07",
+    "requirement": "Góp ý từ người: gửi bài cho bạn/giáo viên với mục tiêu cụ thể, quyền truy cập rõ, lịch sử nhận xét và phản hồi. Đánh dấu nguồn góp ý là AI hay con người.",
+    "source": "DOCX 11 Luyện viết và tư duy diễn đạt",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "VC01",
+    "requirement": "Sổ từ theo ngữ cảnh: từ/cụm, IPA, từ loại, nghĩa đang dùng, câu gốc, phát âm, từ liên quan, collocation, sắc thái và nguồn. Cho người dùng sửa hoặc gộp mục trùng.",
+    "source": "DOCX 12 Từ vựng ngữ pháp và ôn tập",
+    "status": "Một phần",
+    "gap": "Lưu word/meaning/reading; thiếu đoạn trích, IPA, nghĩa theo ngữ cảnh, gộp theo nghĩa.",
+    "evidence": "app/lib/learning.ts; app/api/pilot/route.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "VC02",
+    "requirement": "Nhiều kiểu bài: nhận nghĩa, nhớ từ, nghe nhận diện, điền câu, nói/viết câu mới, phân biệt từ gần nghĩa. Mỗi kiểu cung cấp bằng chứng khác nhau.",
+    "source": "DOCX 12 Từ vựng ngữ pháp và ôn tập",
+    "status": "Một phần",
+    "gap": "Flashcard lật thẻ; chưa đủ bài nghe/nói/viết và recall riêng.",
+    "evidence": "app/lib/learning.ts; app/api/pilot/route.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "VC03",
+    "requirement": "Lịch ôn: dùng kết quả và mức nhớ để đề xuất lần ôn tiếp; hạn mức hằng ngày, hoãn có kiểm soát, giảm bài tồn sau thời gian nghỉ. Anki là nguồn tham khảo về lịch ôn và thẻ đa phương tiện [S9].",
+    "source": "DOCX 12 Từ vựng ngữ pháp và ôn tập",
+    "status": "Một phần",
+    "gap": "Lịch ôn theo quy tắc; chưa FSRS, lịch sử Review và chống gửi lặp phía server.",
+    "evidence": "app/lib/learning.ts; app/api/pilot/route.ts",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "VC04",
+    "requirement": "Liên kết kỹ năng: từ đã đọc xuất hiện trong đoạn nghe, nhiệm vụ nói và viết. Giữ riêng trạng thái nhận diện, nhớ lại và vận dụng; không đồng nhất số từ đã lưu với số từ thành thạo.",
+    "source": "DOCX 12 Từ vựng ngữ pháp và ôn tập",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R2"
+  },
+  {
+    "id": "GR01",
+    "requirement": "Ngữ pháp từ tình huống: giải thích dựa trên câu người học vừa dùng; có ví dụ đối chiếu và câu hỏi tại sao. Điều chỉnh mức giải thích tiếng Việt/tiếng Anh.",
+    "source": "DOCX 12 Từ vựng ngữ pháp và ôn tập",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "GR02",
+    "requirement": "Bài luyện từ lỗi: xác định mẫu lỗi lặp, cho tự sửa rồi dùng trong câu mới; ghi nhận nếu lỗi có thể do nhận dạng giọng nói.",
+    "source": "DOCX 12 Từ vựng ngữ pháp và ôn tập",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "GR03",
+    "requirement": "Bản đồ kiến thức: các chủ điểm liên quan và kiến thức tiền đề; cho học theo nhu cầu hoặc theo lộ trình. Không biến bản đồ thành chẩn đoán chắc chắn từ dữ liệu ít.",
+    "source": "DOCX 12 Từ vựng ngữ pháp và ôn tập",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "CO01",
+    "requirement": "Trợ lý theo ngữ cảnh: biết nhiệm vụ đang làm, phần người học chọn và mục tiêu được phép dùng. Có thể giải thích lại, dùng ví dụ gần sở thích, đổi ngôn ngữ và mức chi tiết.",
+    "source": "DOCX 13 AI đồng hành và tư vấn học tập",
+    "status": "Một phần",
+    "gap": "Chat theo bài có fallback; chưa selection context, sở thích và thay đổi độ chi tiết.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "CO02",
+    "requirement": "Tư vấn có quy trình: hỏi rõ khó khăn → xem bằng chứng được phép → nêu khả năng → đề xuất hoạt động kiểm tra → thống nhất một thay đổi → xem lại kết quả. Tránh chẩn đoán ngay từ một lời than phiền.",
+    "source": "DOCX 13 AI đồng hành và tư vấn học tập",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "CO03",
+    "requirement": "Lập và sửa kế hoạch: mục tiêu, thời gian, thứ tự bài, tuần bận, chuẩn bị kỳ thi hoặc thuyết trình. Người học chấp nhận và chỉnh sửa trước khi kế hoạch thay đổi lớn.",
+    "source": "DOCX 13 AI đồng hành và tư vấn học tập",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "CO04",
+    "requirement": "Đồng hành sau gián đoạn: hỏi thời gian hiện có, đề xuất buổi ngắn, ghi nhận việc quay lại. Không dùng thông điệp gây tội lỗi hoặc nhân vật đòi hỏi sự gắn bó độc quyền.",
+    "source": "DOCX 13 AI đồng hành và tư vấn học tập",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "CO05",
+    "requirement": "Bộ nhớ có kiểm soát: trang xem AI nhớ gì, nguồn thông tin, sửa/xóa và tắt ghi nhớ. Tách sở thích lâu dài khỏi dữ liệu tạm thời của một phiên.",
+    "source": "DOCX 13 AI đồng hành và tư vấn học tập",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "CO06",
+    "requirement": "Cá tính tùy chọn: gia sư kỹ lưỡng, bạn học thân thiện, người phỏng vấn hoặc người phản biện; vẫn giữ yêu cầu đúng nội dung và thừa nhận giới hạn.",
+    "source": "DOCX 13 AI đồng hành và tư vấn học tập",
+    "status": "Một phần",
+    "gap": "Có persona mẫu; chưa cá tính xuyên phiên hoặc AI thật.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "CO07",
+    "requirement": "Chuyển đến người thật: báo nội dung sai, yêu cầu giáo viên xem bài, gửi hỗ trợ. AI không tự nhận vai trò chuyên môn vượt phạm vi gia sư ngôn ngữ.",
+    "source": "DOCX 13 AI đồng hành và tư vấn học tập",
+    "status": "Một phần",
+    "gap": "Có ticket; thiếu báo sai gắn câu trả lời và giáo viên xem bài.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "AD01",
+    "requirement": "Hồ sơ bằng chứng chung: người học, kiến thức mục tiêu, nhiệm vụ, lần thử, mức hỗ trợ, phiên bản nội dung, thời điểm và độ chắc chắn. Lưu riêng kết quả đầu tiên và sau sửa.",
+    "source": "DOCX 14 Thích ứng và liên kết các kỹ năng",
+    "status": "Một phần",
+    "gap": "Có session/results/attempt count; thiếu lịch sử Attempt, version và HintExposure đầy đủ.",
+    "evidence": "app/api/pilot/route.ts; app/workspace.tsx",
+    "phase": "R1 dữ liệu / R2 thích ứng",
+    "phase1_update": "Phase 1 có contentVersion, từng Attempt và HintExposure; chưa hồ sơ bằng chứng xuyên kỹ năng hoặc độ chắc chắn."
+  },
+  {
+    "id": "AD02",
+    "requirement": "Đề xuất giải thích được: vì sao bài được chọn, kỹ năng dự kiến luyện và lựa chọn thay thế. Cho phép ưu tiên sở thích hoặc mục tiêu trước mắt.",
+    "source": "DOCX 14 Thích ứng và liên kết các kỹ năng",
+    "status": "Một phần",
+    "gap": "Có gợi ý theo đúng/sai đơn giản; chưa lý do truy vết tới bằng chứng đa kỹ năng.",
+    "evidence": "app/api/pilot/route.ts; app/workspace.tsx",
+    "phase": "R1 dữ liệu / R2 thích ứng"
+  },
+  {
+    "id": "AD03",
+    "requirement": "Thích ứng mức trợ giúp: chọn vùng gợi ý và độ chi tiết theo câu trả lời, yêu cầu của người dùng và lịch sử. Các quy tắc ban đầu phải kiểm tra được trước khi dùng mô hình học máy.",
+    "source": "DOCX 14 Thích ứng và liên kết các kỹ năng",
+    "status": "Một phần",
+    "gap": "Có hint tăng mức khi bấm; chưa thích ứng theo bằng chứng hoặc thử nghiệm can thiệp.",
+    "evidence": "app/api/pilot/route.ts; app/workspace.tsx",
+    "phase": "R1 dữ liệu / R2 thích ứng"
+  },
+  {
+    "id": "AD04",
+    "requirement": "Thích ứng nội dung: giữ chủ đề nhưng đổi độ dài, dạng câu hỏi hoặc nhiệm vụ; không tự hạ toàn bộ trình độ chỉ vì sai một kỹ năng.",
+    "source": "DOCX 14 Thích ứng và liên kết các kỹ năng",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1 dữ liệu / R2 thích ứng"
+  },
+  {
+    "id": "AD05",
+    "requirement": "Giảm hỗ trợ: thử lại không gợi ý, nghe không transcript, viết không mẫu. Điều chỉnh khi người học yêu cầu thêm hỗ trợ.",
+    "source": "DOCX 14 Thích ứng và liên kết các kỹ năng",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1 dữ liệu / R2 thích ứng"
+  },
+  {
+    "id": "AD06",
+    "requirement": "Chuyển giao kỹ năng: đọc một chủ đề → nghe quan điểm khác → trao đổi → viết lập luận → ôn và dùng lại. Từ và lỗi được liên kết, không trộn điểm các kỹ năng thành một kết luận thiếu căn cứ.",
+    "source": "DOCX 14 Thích ứng và liên kết các kỹ năng",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1 dữ liệu / R2 thích ứng"
+  },
+  {
+    "id": "BH01",
+    "requirement": "Log tối thiểu có mục đích: mở bài, vùng hiển thị, cuộn, chọn chữ, tra từ, đánh dấu, đổi đáp án, dùng gợi ý và chuyển nhiệm vụ. Chỉ thu dữ liệu phục vụ câu hỏi sản phẩm/nghiên cứu đã xác định.",
+    "source": "DOCX 15 Dữ liệu tương tác và thước đọc",
+    "status": "Một phần",
+    "gap": "Có một số event; thiếu event ID chống retry và nhiều loại sự kiện mới.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R1",
+    "phase1_update": "Phase 1 chống gửi trùng event và ledger; chưa đủ mọi loại sự kiện của đặc tả."
+  },
+  {
+    "id": "BH02",
+    "requirement": "Thời gian: phân biệt phiên mở, trang đang hiển thị và thời gian có tương tác. Không đặt tên số đo này là mức tập trung hoặc thời gian hiểu bài.",
+    "source": "DOCX 15 Dữ liệu tương tác và thước đọc",
+    "status": "Một phần",
+    "gap": "Có visible dwell gần đúng; chưa định nghĩa đủ thời gian mở/hiển thị/tương tác.",
+    "evidence": "app/workspace.tsx; app/api/pilot/route.ts",
+    "phase": "R1"
+  },
+  {
+    "id": "BH03",
+    "requirement": "Thước đọc tự nguyện: làm nổi bật dòng/đoạn theo con trỏ hoặc nút điều khiển; hỗ trợ bàn phím và chạm. Có thể tắt mà vẫn hoàn thành bài.",
+    "source": "DOCX 15 Dữ liệu tương tác và thước đọc",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "BH04",
+    "requirement": "Đọc từng đoạn: người dùng chủ động mở phần tiếp theo; phù hợp nhiệm vụ nghiên cứu cụ thể, nhưng cần ghi nhận việc thay đổi cách đọc tự nhiên.",
+    "source": "DOCX 15 Dữ liệu tương tác và thước đọc",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "BH05",
+    "requirement": "Báo khó khăn trực tiếp: nút “Tôi đang vướng ở đây”, chọn từ, câu, liên kết ý hoặc suy luận. Đây là nguồn xác nhận quan trọng cho cách diễn giải log.",
+    "source": "DOCX 15 Dữ liệu tương tác và thước đọc",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "BH06",
+    "requirement": "Hỗ trợ ít làm phiền: chỉ đề nghị nhẹ nhàng khi có đủ căn cứ; hạn chế số lần hiện; người học chọn bỏ qua hoặc tắt.",
+    "source": "DOCX 15 Dữ liệu tương tác và thước đọc",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "GZ01",
+    "requirement": "Chế độ tự nguyện: giải thích mục đích, dữ liệu và giới hạn; xin phép camera; có nút tạm dừng/dừng dễ thấy; không cản luồng học thông thường.",
+    "source": "DOCX 16 Eye tracking và phòng nghiên cứu",
+    "status": "Một phần",
+    "gap": "Có xin phép camera và nút dừng trong lab; chưa consent/phạm vi dữ liệu gaze thực.",
+    "evidence": "app/media-lab.tsx",
+    "phase": "R4"
+  },
+  {
+    "id": "GZ02",
+    "requirement": "Hiệu chỉnh và kiểm tra: hiệu chỉnh điểm nhìn, sau đó kiểm tra ở vị trí riêng; lưu sai số và tỷ lệ tín hiệu hợp lệ. Kiểm tra lại khi tư thế, cửa sổ hoặc bố cục thay đổi đáng kể.",
+    "source": "DOCX 16 Eye tracking và phòng nghiên cứu",
+    "status": "Một phần",
+    "gap": "Chỉ diễn tập 9 điểm; chưa hiệu chỉnh/validation hoặc đo sai số.",
+    "evidence": "app/media-lab.tsx",
+    "phase": "R4"
+  },
+  {
+    "id": "GZ03",
+    "requirement": "Vùng quan tâm: bắt đầu ở vùng bài đọc/câu hỏi hoặc đoạn lớn. Chỉ dùng cấp dòng/từ nếu kết quả đo thực tế chứng minh đủ độ phân giải.",
+    "source": "DOCX 16 Eye tracking và phòng nghiên cứu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R4"
+  },
+  {
+    "id": "GZ04",
+    "requirement": "Chất lượng và dự phòng: khi tín hiệu kém, ngừng phản hồi dựa trên gaze và chuyển sang click/tra từ/tự báo. Không tạo chỉ số chính xác giả định từ dữ liệu mất hoặc trôi.",
+    "source": "DOCX 16 Eye tracking và phòng nghiên cứu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R4"
+  },
+  {
+    "id": "GZ05",
+    "requirement": "Trình xem nghiên cứu: thời gian nhìn ước lượng theo vùng, chuyển vùng, tỷ lệ mất tín hiệu, chú thích điều kiện. Heatmap phục vụ xem dữ liệu, không thay thế đo hiệu quả học.",
+    "source": "DOCX 16 Eye tracking và phòng nghiên cứu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R4"
+  },
+  {
+    "id": "GZ06",
+    "requirement": "Kiểm tra giá trị tăng thêm: so sánh mô hình dùng tương tác thông thường với mô hình bổ sung gaze; đánh giá cả chất lượng hỗ trợ, độ phiền và khả năng dùng thiết bị.",
+    "source": "DOCX 16 Eye tracking và phòng nghiên cứu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R4"
+  },
+  {
+    "id": "CM01",
+    "requirement": "Hồ sơ cộng đồng tùy chọn: sở thích, mục tiêu, mức hỗ trợ mong muốn và khung giờ; không tự công khai điểm yếu hay lịch sử riêng.",
+    "source": "DOCX 17 Cộng đồng và hỗ trợ từ con người",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CM02",
+    "requirement": "Ghép bạn: ngôn ngữ, chủ đề, lịch và mục tiêu; cho chấp nhận/từ chối, chặn và báo cáo. Không cần công khai vị trí chính xác.",
+    "source": "DOCX 17 Cộng đồng và hỗ trợ từ con người",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CM03",
+    "requirement": "Phòng nhóm nhỏ: đọc chung, luyện nói, câu lạc bộ theo chủ đề, phòng học yên tĩnh. Có người điều phối và quy tắc rõ khi mở cho người thật.",
+    "source": "DOCX 17 Cộng đồng và hỗ trợ từ con người",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CM04",
+    "requirement": "Nhiệm vụ hợp tác: phỏng vấn, tranh luận, giải quyết tình huống và làm podcast. Người học có vai trò và sản phẩm cuối, tránh phòng chat không có hoạt động.",
+    "source": "DOCX 17 Cộng đồng và hỗ trợ từ con người",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CM05",
+    "requirement": "Góp ý có tiêu chí: tác giả chọn sửa ý, ngữ pháp, phát âm hoặc phong cách; mẫu phản hồi cụ thể; lưu bản trước–sau và quyền phản hồi lại.",
+    "source": "DOCX 17 Cộng đồng và hỗ trợ từ con người",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CM06",
+    "requirement": "AI hỗ trợ nhóm: chuẩn bị câu hỏi, gợi ý khi bí và tổng kết nếu cả nhóm được thông báo. Không âm thầm phân tích người khác hoặc tự công khai nhận xét cá nhân.",
+    "source": "DOCX 17 Cộng đồng và hỗ trợ từ con người",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CM07",
+    "requirement": "Giáo viên và mentor: giao bài, nhận bài, góp ý, duyệt phản hồi AI, xem tiến độ trong phạm vi được cấp quyền.",
+    "source": "DOCX 17 Cộng đồng và hỗ trợ từ con người",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CM08",
+    "requirement": "Cộng đồng nối ôn tập: người học chọn lưu câu được sửa vào sổ lỗi; hệ thống tạo bài luyện và kiểm tra lại sau đó.",
+    "source": "DOCX 17 Cộng đồng và hỗ trợ từ con người",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "EN01",
+    "requirement": "Khám phá ngắn: nội dung ưa thích, từ/câu nổi bật, nghe mẫu, thử nói/viết và nút học sâu. Phiên có điểm kết thúc; đánh giá tỷ lệ chuyển từ xem sang thực hành.",
+    "source": "DOCX 18 Học từ mạng xã hội và ứng dụng hấp dẫn",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "EN02",
+    "requirement": "Khoảnh khắc tiếng Anh: mô tả bữa ăn, một đồ vật hoặc điều bất ngờ; gợi ý theo trình độ; lưu bản đầu và bản sửa; quyền chia sẻ riêng/nhóm/công khai.",
+    "source": "DOCX 18 Học từ mạng xã hội và ứng dụng hấp dẫn",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "EN03",
+    "requirement": "Hồ sơ cá nhân sáng tạo: avatar, chủ đề, bộ sưu tập, sản phẩm và lời giới thiệu; cho chế độ tối giản dành cho người không thích hiệu ứng.",
+    "source": "DOCX 18 Học từ mạng xã hội và ứng dụng hấp dẫn",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "EN04",
+    "requirement": "Tổng kết có bằng chứng: kể lại nhiệm vụ, lỗi đã sửa nhiều lần và bản nói/viết trước–sau; không chuyển phút học thành năng lực hoặc từ đã lưu thành từ thành thạo.",
+    "source": "DOCX 18 Học từ mạng xã hội và ứng dụng hấp dẫn",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "EN05",
+    "requirement": "Thử thách theo xu hướng: dùng chủ đề gần giới trẻ, có giải thích sắc thái và bối cảnh; tránh dạy tiếng lóng như lựa chọn phù hợp mọi tình huống.",
+    "source": "DOCX 18 Học từ mạng xã hội và ứng dụng hấp dẫn",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "GM01",
+    "requirement": "Bạn đồng hành: chọn hình dáng, tên, phong cách phản hồi; tham gia câu chuyện và dẫn vào bài luyện; có thể tắt. Phản hồi ghi nhận một hành động cụ thể thay vì khen mọi câu trả lời.",
+    "source": "DOCX 19 Trò chơi hóa và động lực bền vững",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "GM02",
+    "requirement": "Nhiệm vụ: mục tiêu buổi, chuỗi dự án, thử thách tuần và nhiệm vụ nhóm. Mỗi nhiệm vụ gắn một năng lực hoặc sản phẩm, có mức vừa sức và mức thử thách.",
+    "source": "DOCX 19 Trò chơi hóa và động lực bền vững",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "GM03",
+    "requirement": "Phần thưởng: đồ trang trí và mở địa điểm khi hoàn thành nhiệm vụ hợp lệ. Ghi nhận sửa bài, thử lại và vận dụng; hạn chế việc lặp bài dễ chỉ để lấy điểm.",
+    "source": "DOCX 19 Trò chơi hóa và động lực bền vững",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "GM04",
+    "requirement": "Không gian tích lũy: khu vườn, thư viện, phòng cá nhân hoặc bản đồ. Nhấn một vật phẩm để xem bài hoặc bản ghi liên quan; công sức gắn với ký ức học thật.",
+    "source": "DOCX 19 Trò chơi hóa và động lực bền vững",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "GM05",
+    "requirement": "Nhịp học linh hoạt: mục tiêu theo tuần, ngày nghỉ, buổi tối thiểu và cơ chế quay lại; không xóa giá trị tích lũy vì một ngày bỏ lỡ.",
+    "source": "DOCX 19 Trò chơi hóa và động lực bền vững",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "GM06",
+    "requirement": "Thi đua tùy chọn: nhóm nhỏ và nhiệm vụ hợp tác; so tiến bộ cá nhân hoặc đóng góp hữu ích. Không dùng bảng tổng điểm công khai để xếp hạng năng lực nếu phép đo không tương đương.",
+    "source": "DOCX 19 Trò chơi hóa và động lực bền vững",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "GM07",
+    "requirement": "Nhắc học: lịch do người dùng chọn, tần suất có giới hạn, tắt được; nhắc việc đang dang dở hoặc lời mời thật. Không tạo thông báo xã hội giả.",
+    "source": "DOCX 19 Trò chơi hóa và động lực bền vững",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CR01",
+    "requirement": "Lồng tiếng: cảnh do nhóm tạo hoặc có quyền dùng, kịch bản theo vai, nghe mẫu, ghi âm, đồng bộ và xem lại. Phản hồi về rõ nghĩa, nhịp và mục tiêu phát âm.",
+    "source": "DOCX 20 Xưởng sáng tạo và học theo dự án",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CR02",
+    "requirement": "Podcast và phỏng vấn: lập câu hỏi, luyện trước, ghi âm đơn/đôi, transcript, chỉnh nội dung và trình bày sản phẩm.",
+    "source": "DOCX 20 Xưởng sáng tạo và học theo dự án",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CR03",
+    "requirement": "Video giới thiệu: viết kịch bản, nói về game, món ăn, công nghệ hoặc trải nghiệm; có phương án chỉ giọng và hình, không bắt bật mặt.",
+    "source": "DOCX 20 Xưởng sáng tạo và học theo dự án",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CR04",
+    "requirement": "Viết sáng tạo: truyện tiếp nối, nhật ký, lời thoại, bài đánh giá và meme có giải thích. AI gợi mở và phản biện; ghi rõ mức hỗ trợ trong portfolio khi cần đánh giá độc lập.",
+    "source": "DOCX 20 Xưởng sáng tạo và học theo dự án",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CR05",
+    "requirement": "Tình huống tương tác: nhân vật, lựa chọn, hội thoại và kết quả; cho thử lại bằng cách diễn đạt khác. Nhánh truyện phải phục vụ mục tiêu giao tiếp.",
+    "source": "DOCX 20 Xưởng sáng tạo và học theo dự án",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CR06",
+    "requirement": "Dự án chuyên ngành: giới thiệu phần mềm, đọc tài liệu, viết email học thuật, thuyết trình nghiên cứu. Có thuật ngữ theo ngành nhưng vẫn kiểm tra nguồn và nghĩa.",
+    "source": "DOCX 20 Xưởng sáng tạo và học theo dự án",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "CR07",
+    "requirement": "Portfolio: lưu sản phẩm, phiên bản, phản hồi, tự đánh giá và quyền chia sẻ; tìm lại và đưa vào tổng kết.",
+    "source": "DOCX 20 Xưởng sáng tạo và học theo dự án",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R3"
+  },
+  {
+    "id": "OP01",
+    "requirement": "Quyền theo vai trò: người học, giáo viên, biên tập, kiểm duyệt, hỗ trợ, nghiên cứu và quản trị. Kiểm tra phía máy chủ, giới hạn theo lớp/nhóm và ghi nhật ký thao tác quan trọng.",
+    "source": "DOCX 22 Quản trị hỗ trợ và quản lý học liệu",
+    "status": "Một phần",
+    "gap": "Có role allowlist server; chưa quyền giáo viên/biên tập/theo lớp và đầy đủ audit.",
+    "evidence": "app/api/pilot/route.ts",
+    "phase": "R1/R3"
+  },
+  {
+    "id": "OP02",
+    "requirement": "Biên tập học liệu: tạo, nhập, kiểm tra nguồn, duyệt câu hỏi, gợi ý, rubric và âm thanh; phiên bản nháp/xuất bản/thu hồi. Khi sửa nội dung, biết buổi học nào đã dùng bản cũ.",
+    "source": "DOCX 22 Quản trị hỗ trợ và quản lý học liệu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R3"
+  },
+  {
+    "id": "OP03",
+    "requirement": "Quản lý phản hồi AI: báo sai ngay tại câu trả lời, lưu ngữ cảnh cần thiết theo quyền, phân loại nguyên nhân và cập nhật ca kiểm tra hồi quy.",
+    "source": "DOCX 22 Quản trị hỗ trợ và quản lý học liệu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R3"
+  },
+  {
+    "id": "OP04",
+    "requirement": "Hỗ trợ người dùng: ticket, trạng thái, phản hồi, đính kèm phù hợp, hướng dẫn thiết bị; không cho bộ phận hỗ trợ xem mọi dữ liệu nghiên cứu theo mặc định.",
+    "source": "DOCX 22 Quản trị hỗ trợ và quản lý học liệu",
+    "status": "Một phần",
+    "gap": "Có ticket/trả lời/trạng thái; chưa đính kèm và phân vai hỗ trợ riêng.",
+    "evidence": "app/api/pilot/route.ts",
+    "phase": "R1/R3"
+  },
+  {
+    "id": "OP05",
+    "requirement": "Kiểm duyệt cộng đồng: báo cáo, chặn, ẩn/khôi phục, lịch sử xử lý và yêu cầu xem lại. Quy định ai trực và thời gian xử lý dự kiến trước khi mở cộng đồng rộng.",
+    "source": "DOCX 22 Quản trị hỗ trợ và quản lý học liệu",
+    "status": "Một phần",
+    "gap": "Có report/ẩn/khôi phục; thiếu block, yêu cầu xem lại và quy trình trực.",
+    "evidence": "app/api/pilot/route.ts",
+    "phase": "R1/R3"
+  },
+  {
+    "id": "OP06",
+    "requirement": "Quản lý lớp: giao nhiệm vụ, hạn nộp linh hoạt, xem bài và phản hồi; người học thấy rõ nội dung nào giáo viên được xem.",
+    "source": "DOCX 22 Quản trị hỗ trợ và quản lý học liệu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R3"
+  },
+  {
+    "id": "OP07",
+    "requirement": "Bảng vận hành: tỷ lệ lỗi, độ trễ, lưu dữ liệu, sử dụng AI, chi phí ước tính, nội dung bị báo sai và sức khỏe sự kiện; tách khỏi bảng năng lực người học.",
+    "source": "DOCX 22 Quản trị hỗ trợ và quản lý học liệu",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1/R3"
+  },
+  {
+    "id": "OP08",
+    "requirement": "Quản lý thí nghiệm: chỉ người đủ quyền tạo điều kiện can thiệp, phân nhóm, đóng đợt, khóa phiên bản và xuất tập dữ liệu. Một biểu mẫu lưu đề cương không được gọi là cơ chế thực nghiệm đã hoạt động.",
+    "source": "DOCX 22 Quản trị hỗ trợ và quản lý học liệu",
+    "status": "Một phần",
+    "gap": "Chỉ lưu đề cương; chưa phân nhóm, khóa phiên bản hay điều kiện thật.",
+    "evidence": "app/api/pilot/route.ts",
+    "phase": "R1/R3"
+  },
+  {
+    "id": "AI01",
+    "requirement": "Ngữ cảnh có giới hạn: bài, câu hỏi, rubric, mục tiêu và lịch sử cần thiết. Không gửi toàn bộ hồ sơ khi một câu hỏi chỉ cần một đoạn văn.",
+    "source": "DOCX 23 Kiến trúc và chất lượng AI",
+    "status": "Một phần",
+    "gap": "Có giới hạn history và bài cho Gemini; chưa chọn riêng đoạn/context người học kiểm soát.",
+    "evidence": "app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "AI02",
+    "requirement": "Đầu ra có cấu trúc: nội dung phản hồi, bằng chứng, loại hỗ trợ, cảnh báo thiếu căn cứ và gợi ý tiếp. Máy chủ kiểm tra schema và điều kiện nghiệp vụ.",
+    "source": "DOCX 23 Kiến trúc và chất lượng AI",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "AI03",
+    "requirement": "Chống chỉ dẫn từ học liệu: xem nội dung nhập là dữ liệu, không cho câu trong bài thay đổi quyền, tiết lộ đáp án hoặc gọi hành động ngoài phạm vi.",
+    "source": "DOCX 23 Kiến trúc và chất lượng AI",
+    "status": "Một phần",
+    "gap": "Có system instruction coi học liệu là dữ liệu; chưa đánh giá chống injection thực tế.",
+    "evidence": "app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "AI04",
+    "requirement": "Bộ kiểm tra chất lượng: câu hỏi mơ hồ, dẫn chứng thiếu, người học phản biện đáp án, transcript sai, giọng khác, yêu cầu không lộ đáp án và API mất kết nối.",
+    "source": "DOCX 23 Kiến trúc và chất lượng AI",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "AI05",
+    "requirement": "Tái lập: lưu model, phiên bản prompt/rubric/nội dung, thời điểm và đầu ra cần thiết theo chính sách. Có thể đối chiếu các lần cập nhật.",
+    "source": "DOCX 23 Kiến trúc và chất lượng AI",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R2"
+  },
+  {
+    "id": "AI06",
+    "requirement": "Fallback trung thực: báo dịch vụ chưa sẵn sàng, cho dùng học liệu/gợi ý đã duyệt; không trình bày phản hồi kịch bản như LLM thật.",
+    "source": "DOCX 23 Kiến trúc và chất lượng AI",
+    "status": "Một phần",
+    "gap": "Có prepared fallback gắn nhãn; AI provider thật chưa kiểm thử.",
+    "evidence": "app/api/pilot/route.ts",
+    "phase": "R2"
+  },
+  {
+    "id": "DT01",
+    "requirement": "Các lựa chọn tách biệt: sử dụng sản phẩm, tham gia nghiên cứu, gửi dữ liệu đến AI, dùng mic/camera và chia sẻ cộng đồng. Quyền thiết bị không tự thay thế giải thích mục đích thu thập.",
+    "source": "DOCX 24 Quyền dữ liệu và độ tin cậy vận hành",
+    "status": "Một phần",
+    "gap": "Có consent nghiên cứu/AI riêng và quyền thiết bị; chưa mô hình chia sẻ nhóm đầy đủ.",
+    "evidence": "db/schema.ts; app/api/pilot/route.ts",
+    "phase": "R1"
+  },
+  {
+    "id": "DT02",
+    "requirement": "Tối thiểu hóa: chỉ lưu dữ liệu cần cho nhiệm vụ. Audio, hình ảnh và tọa độ chi tiết cần quyết định riêng; mặc định hạn chế bản thô nếu mục tiêu không cần.",
+    "source": "DOCX 24 Quyền dữ liệu và độ tin cậy vận hành",
+    "status": "Một phần",
+    "gap": "Không lưu audio/camera thô ở pilot; chưa chính sách chi tiết cho module mới.",
+    "evidence": "db/schema.ts; app/api/pilot/route.ts",
+    "phase": "R1"
+  },
+  {
+    "id": "DT03",
+    "requirement": "Mã ổn định: mã người tham gia ngẫu nhiên và bền giữa các lần xuất; bảng liên kết danh tính giữ riêng. Dữ liệu thay tên bằng mã vẫn có thể liên kết lại, không tự trở thành ẩn danh tuyệt đối.",
+    "source": "DOCX 24 Quyền dữ liệu và độ tin cậy vận hành",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1",
+    "phase1_update": "Đã triển khai mã ngẫu nhiên bền, ánh xạ riêng, kiểm tra rút/đồng ý lại/xóa trong Phase 1."
+  },
+  {
+    "id": "DT04",
+    "requirement": "Xuất và xóa: xuất dữ liệu cá nhân, xóa bộ nhớ AI, rút nghiên cứu và xử lý bản sao nghiên cứu theo quy trình đã công bố. Ghi rõ giới hạn với bản đã được tải xuống.",
+    "source": "DOCX 24 Quyền dữ liệu và độ tin cậy vận hành",
+    "status": "Một phần",
+    "gap": "Có export/delete/withdraw; chưa bộ nhớ AI riêng và quy trình bản sao hoàn chỉnh.",
+    "evidence": "db/schema.ts; app/api/pilot/route.ts",
+    "phase": "R1"
+  },
+  {
+    "id": "DT05",
+    "requirement": "Lưu giữ: xác định thời hạn theo loại dữ liệu, thực hiện tác vụ tự xóa khi đã cam kết, kiểm tra lỗi tác vụ và sao lưu. Không gọi chính sách thủ công là tự động.",
+    "source": "DOCX 24 Quyền dữ liệu và độ tin cậy vận hành",
+    "status": "Một phần",
+    "gap": "Chính sách 30 ngày thủ công; chưa tự purge/giám sát backup.",
+    "evidence": "db/schema.ts; app/api/pilot/route.ts",
+    "phase": "R1"
+  },
+  {
+    "id": "DT06",
+    "requirement": "Độ tin cậy: sao lưu, diễn tập phục hồi, gửi lại an toàn, chống tạo bản ghi trùng, trạng thái đồng bộ và cách khôi phục phiên học.",
+    "source": "DOCX 24 Quyền dữ liệu và độ tin cậy vận hành",
+    "status": "Một phần",
+    "gap": "Có lưu server/khôi phục session; thiếu idempotency, backup và diễn tập restore.",
+    "evidence": "db/schema.ts; app/api/pilot/route.ts",
+    "phase": "R1",
+    "phase1_update": "Phase 1 có transaction/CAS chống trùng đáp án/gợi ý và khôi phục; backup/restore và các thao tác khác chưa đầy đủ."
+  },
+  {
+    "id": "DT07",
+    "requirement": "Phân tích đầy đủ: phân trang xuất, tổng số, số bản ghi thiếu, phiên bản schema; không âm thầm cắt sự kiện. Phân biệt số người, số buổi và số lần thử.",
+    "source": "DOCX 24 Quyền dữ liệu và độ tin cậy vận hành",
+    "status": "Một phần",
+    "gap": "Xuất giới hạn 500/5000 bản ghi; chưa phân trang/tổng/thiếu dữ liệu.",
+    "evidence": "db/schema.ts; app/api/pilot/route.ts",
+    "phase": "R1",
+    "phase1_update": "Đã triển khai phân trang, tổng, revision và từ chối bản xuất không nhất quán; UI tải đủ trang."
+  },
+  {
+    "id": "CP01",
+    "requirement": "Kéo bằng chuột/cảm ứng: Có vùng nắm rõ; phân biệt click và drag; chỉ vùng kéo chặn gesture cuộn",
+    "source": "Markdown §18.2",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "CP02",
+    "requirement": "Giới hạn vị trí: Nhân vật không ra khỏi vùng nhìn thấy; chừa safe area, thanh điều hướng, vùng bàn phím ảo",
+    "source": "Markdown §18.2",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "CP03",
+    "requirement": "Ghim cạnh: Tuỳ chọn bám cạnh gần nhất; không bật quán tính khiến nhân vật trượt khó kiểm soát",
+    "source": "Markdown §18.2",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "CP04",
+    "requirement": "Lưu vị trí: Lưu sau khi thả, không ghi từng pixel; khôi phục khi tải lại hoặc chuyển trang",
+    "source": "Markdown §18.2",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "CP05",
+    "requirement": "Thích nghi kích thước: Resize/zoom/xoay màn hình thì tính lại vị trí; toạ độ desktop không áp cứng cho mobile",
+    "source": "Markdown §18.2",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "CP06",
+    "requirement": "Không cần kéo: Menu “Đặt ở góc trái/phải”, “Đặt lại vị trí”; hỗ trợ bàn phím",
+    "source": "Markdown §18.2",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "CP07",
+    "requirement": "Mở panel: Panel tự chọn phía đủ chỗ; không tràn viewport hay đè lên nhân vật",
+    "source": "Markdown §18.2",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  },
+  {
+    "id": "CP08",
+    "requirement": "Thu gọn/ẩn: Có nút hiển thị rõ, khôi phục được, không làm mất nội dung đang trao đổi",
+    "source": "Markdown §18.2",
+    "status": "Chưa triển khai theo đặc tả mới",
+    "gap": "Chưa tìm thấy luồng hoàn chỉnh đáp ứng yêu cầu này trong mã pilot đã rà soát.",
+    "evidence": "—",
+    "phase": "R1"
+  }
+]

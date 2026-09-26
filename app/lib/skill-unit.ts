@@ -1,0 +1,12 @@
+export const skillUnit = {
+ id:'campus-cups-path',edition:'pilot-1',title:'Một chiếc cốc, nhiều góc nhìn',reading:'campus-cups',level:'B1 ước lượng',
+ provenance:'Nội dung hư cấu tự biên soạn cho demo; cần nhóm/GVHD duyệt trước khi dùng để đo hiệu quả học tập.',
+ listening:{title:'A conversation at the campus cafe',transcript:'Maya: I like the new cup scheme, but the cafe closes before my evening class ends. Tom: You do not have to return your cup to the cafe. There is a return point beside the library, and it stays open until eight. Maya: That helps. Do I get my deposit back there? Tom: Yes. Keep the small receipt and show it when you return the cup. Maya: The posters did not explain that. Tom: The student group is updating them this week. They also want to find out how much time the staff spend washing cups.',questions:[
+  {id:'return',prompt:'Where can Maya return her cup after the cafe closes?',options:['Beside the library','In her classroom','At the bus stop']},
+  {id:'receipt',prompt:'What should Maya keep to get her deposit back?',options:['A library card','A small receipt','A coffee menu']},
+  {id:'cost',prompt:'What other cost does the group want to investigate?',options:['The price of posters','The cost of evening classes','Staff time spent washing cups']}
+ ]},
+ speaking:{title:'Explain the scheme to a new student',turns:['I have never used the cup scheme. How does it work?','What if I forget to return my cup before the cafe closes?','Do you think the trial should continue? Give one benefit and one concern.'],criteria:['Tôi đã giải thích tiền đặt cọc và cách trả cốc.','Tôi đã nêu một lợi ích và một giới hạn.','Tôi đã thử nói lại một câu muốn cải thiện.']},
+ writing:{prompt:'Write an email (100–140 words) to the student group. Recommend whether the cup trial should continue. Explain one benefit, one remaining cost, and one practical improvement. Use details from the reading or conversation.',criteria:['Email có ý kiến rõ về việc tiếp tục thử nghiệm.','Có ít nhất một lợi ích và một chi phí/giới hạn.','Có một đề xuất thực tế cùng dẫn chứng từ nội dung đã học.','Tôi đã rà lại bố cục, từ nối và câu khó hiểu.'],example:'Opening: I am writing to share my view on the cup trial.\nBenefit: One useful result is …\nConcern: However, we still need to consider …\nSuggestion: I suggest … because …\nClosing: Thank you for considering this idea.'}
+};
+export type SkillUnit=typeof skillUnit;

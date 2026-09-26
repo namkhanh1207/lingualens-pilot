@@ -1,0 +1,16 @@
+{
+  "imported": "2026-09-24",
+  "sources": [
+    {
+      "file": "LinguaLens_Tong_hop_toan_dien.docx",
+      "original_path": "D:\\WorkSpace\\NCKH\\Me\\LinguaLens_AI_Release_Demo_Pack\\ai_english_release_demo\\docs\\LinguaLens_Tong_hop_toan_dien.docx",
+      "sha256": "acc1254951cae9686eb8bde8117ab0b2785e0fa590dbf61f51de415ee28a534f"
+    },
+    {
+      "file": "LinguaLens_Nghien_cuu_GitHub_AI_Coding_UI_Chuc_nang.md",
+      "original_path": "D:\\WorkSpace\\NCKH\\Me\\New folder\\LinguaLens_Nghien_cuu_GitHub_AI_Coding_UI_Chuc_nang.md",
+      "sha256": "e932bde50a14d151ea731fa2929a31c606ee8133d30d1f43e30c9d6a9e383d7e"
+    }
+  ],
+  "extraction": "DOCX paragraphs and table-cell text in document order; original DOCX retained for layout and table relationships. No embedded images."
+}

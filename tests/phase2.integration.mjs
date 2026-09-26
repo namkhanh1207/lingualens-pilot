@@ -1,0 +1,50 @@
+import assert from 'node:assert/strict';
+const base=process.env.PILOT_TEST_URL || 'http://127.0.0.1:8787';
+assert.ok(['localhost','127.0.0.1'].includes(new URL(base).hostname));
+const stamp=crypto.randomUUID(), users={a:'p2-a-'+stamp,b:'p2-b-'+stamp};
+let checks=0;
+const check=(condition,label)=>{assert.ok(condition,label);checks++;console.log('PASS',label);};
+async function api(user,body,view='bootstrap') {
+ const response=await fetch(base+'/api/pilot?view='+view,{method:body?'POST':'GET',headers:{'oai-authenticated-user-id':users[user],'oai-authenticated-user-email':user+'@sites.test','Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
+ return {status:response.status,data:await response.json()};
+}
+try {
+ const s=(await api('a',{op:'start',reading:'campus-cups'})).data;
+ const quote=s.data.readingContent.paragraphs[0], word=quote.split(' ').slice(0,3).join(' ');
+ const input={op:'vocab',word,meaning:'Nghĩa xác nhận thứ nhất',reading:'campus-cups',session:s.id,paragraph:0};
+ const saves=await Promise.all([api('a',input),api('a',input)]), id=saves[0].data.id;
+ check(saves.every(r=>r.status===200 && r.data.id===id),'concurrent repeated saves create one context card');
+ let records=(await api('a')).data.records, card=records.find(r=>r.id===id);
+ check(records.filter(r=>r.kind==='vocab').length===1,'duplicate save does not create extra card');
+ check(card.data.quote===quote && card.data.contentVersion===s.data.contentVersion && card.data.session===s.id,'source paragraph and immutable version recovered on reload');
+ check(card.data.word===word && card.data.meaning===input.meaning,'multiword phrase and confirmed meaning retained');
+ const another=await api('a',{...input,meaning:'Nghĩa thứ hai'});
+ check(another.status===200 && another.data.id!==id,'same phrase with different meaning is a separate card');
+ check((await api('a',{...input,word:'not present in this paragraph'})).status===400,'phrase absent from source rejected');
+ check((await api('a',{...input,paragraph:99})).status===400,'invalid paragraph rejected');
+ check((await api('b',input)).status===404,'cannot save context from another account session');
+ check((await api('b',{op:'review',id,rating:'good'})).status===404,'cannot review another account card');
+ const review={op:'review',id,rating:'good',expectedReviews:0,requestId:crypto.randomUUID()};
+ const duplicate=await Promise.all([api('a',review),api('a',review)]);
+ check(duplicate.every(r=>r.status===200),'concurrent duplicate review returns success');
+ records=(await api('a')).data.records;card=records.find(r=>r.id===id);
+ check(card.data.reviews===1 && card.data.level===1,'retry changes interval and review count once');
+ check(records.filter(r=>r.kind==='vocab_review').length===1,'retry creates one review history record');
+ check((await api('a',{...review,rating:'easy'})).status===409,'reused request with different rating rejected');
+ check((await api('a',{...review,requestId:crypto.randomUUID()})).status===409,'stale second tab cannot review the same card state again');
+ await api('a',input);
+ card=(await api('a')).data.records.find(r=>r.id===id);
+ check(card.data.reviews===1 && card.data.level===1,'saving existing context does not reset learning progress');
+ const two=await Promise.all(['good','easy'].map(rating=>api('a',{...review,rating,expectedReviews:1,requestId:crypto.randomUUID()})));
+ check(two.filter(r=>r.status===200).length===1 && two.filter(r=>r.status===409).length===1,'distinct concurrent review requests use optimistic concurrency');
+ const own=(await api('a',null,'export')).data;
+ check(own.records.filter(r=>r.kind==='vocab_review').length===2,'personal export contains complete review history');
+ check(!(await api('b')).data.records.some(r=>r.kind==='vocab' || r.kind==='vocab_review'),'cards and reviews isolated between accounts');
+ const manual=await api('a',{op:'vocab',word:'stand out',meaning:'nổi bật',reading:''});
+ check(manual.status===200 && !(await api('a')).data.records.find(r=>r.id===manual.data.id).data.quote,'manual cards supported without invented context');
+ await api('a',{op:'remove_vocab',id});
+ check(!(await api('a')).data.records.some(r=>r.kind==='vocab'&&r.id===id),'card removal persists');
+ await api('a',{op:'delete_data',confirmation:'DELETE'});
+ check((await api('a')).data.records.length===0,'delete personal data removes vocabulary and review history');
+ console.log(checks+' Phase 2 checks passed.');
+} finally {for(const u of Object.keys(users))await api(u,{op:'delete_data',confirmation:'DELETE'});}
