@@ -101,8 +101,13 @@ export async function POST(req: Request) {
                 const sid = crypto.randomUUID();
                 const contentVersion = await freezeReading(findReading(b.reading)!);
                 const data = { contentVersion, historyVersion: 2, historyRevision: 0, firstResults: {}, readingContent: publicReadings().find(r => r.id === b.reading), reading: b.reading, started: now(), draft: {}, note: '', highlights: [], results: {}, hints: {}, finished: null };
-                await save(u.userId, 'session', sid, data);
-                return json({ id: sid, data });
+                // One atomic statement prevents simultaneous tabs from creating two unfinished sessions.
+                await db().prepare("INSERT INTO records (owner,kind,id,data,updated) SELECT ?,'session',?,?,? WHERE NOT EXISTS (SELECT 1 FROM records WHERE owner=? AND kind='session' AND json_extract(data,'$.reading')=? AND json_extract(data,'$.finished') IS NULL)")
+                    .bind(u.userId, sid, JSON.stringify(data), now(), u.userId, b.reading).run();
+                const active = await db().prepare("SELECT id,data FROM records WHERE owner=? AND kind='session' AND json_extract(data,'$.reading')=? AND json_extract(data,'$.finished') IS NULL ORDER BY updated DESC LIMIT 1")
+                    .bind(u.userId, b.reading).first<{id:string;data:string}>();
+                if (!active) throw new HttpError(409, 'Buổi đọc vừa thay đổi. Hãy thử lại.');
+                return json({ id: active.id, data: JSON.parse(active.data) });
             }
             case 'draft': {
                 const s = await sessionFor(u.userId, b.session);

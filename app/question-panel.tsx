@@ -134,7 +134,7 @@ function MCQOption({
     const isSelected = selectedIndex === String(index);
     const hasResult  = result != null;
     const isCorrectAnswer = hasResult && result.correctIndex === index;
-    const isWrongAnswer   = hasResult && isSelected && result.correct === false;
+    const isWrongAnswer   = hasResult && result.answer === String(index) && result.correct === false;
 
     let cls = 'option';
     if (isCorrectAnswer) cls += ' option--correct';
@@ -146,7 +146,7 @@ function MCQOption({
                 type="radio"
                 name={questionId}
                 checked={isSelected}
-                disabled={busy || finished || hasResult}
+                disabled={busy || finished}
                 onChange={onChange}
             />
             {optionText}
@@ -244,7 +244,7 @@ export default function QuestionPanel({
                             {skillNames[q.skill] || q.skill}
                         </span>
 
-                        <fieldset disabled={busy || finished || hasResult}>
+                        <fieldset disabled={busy || finished}>
                             <legend>{i + 1}. {q.prompt}</legend>
 
                             {q.type === 'mcq' ? (
@@ -274,14 +274,14 @@ export default function QuestionPanel({
                                 />
                             )}
 
-                            {!hasResult && (
+                            {!finished && (
                                 <div className="row" style={{ marginTop: 12 }}>
                                     <button
                                         className="btn"
                                         disabled={!answers[q.id]?.trim()}
                                         onClick={() => onSubmit(q)}
                                     >
-                                        Gửi câu trả lời
+                                        {hasResult ? 'Gửi lại câu trả lời' : 'Gửi câu trả lời'}
                                     </button>
                                     <button
                                         className="secondary"
@@ -294,7 +294,7 @@ export default function QuestionPanel({
                         </fieldset>
 
                         {/* Animated hint reveal */}
-                        {hint && !hasResult && <HintBlock hint={hint} />}
+                        {hint && <HintBlock hint={hint} />}
 
                         {/* Animated feedback reveal (ll-reveal keyframe) */}
                         {hasResult && (

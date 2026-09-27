@@ -1,12 +1,14 @@
 # LinguaLens AI — Remote pilot
 
-Web học tiếng Anh dùng thử cho 5 người. Đăng nhập bằng ChatGPT, chọn một bài đọc, lưu từ mới và gửi góp ý.
+Web học tiếng Anh dùng thử cho 5 người. Bản Cloudflare riêng đăng nhập bằng Cloudflare Access; bản Sites cũ dùng ChatGPT. Chọn một bài đọc, lưu từ mới và gửi góp ý.
+
+**Triển khai hiện tại:** [Hướng dẫn Cloudflare](docs/CLOUDFLARE_DEPLOY.md) · [Kết quả rà soát mã nguồn 27/09/2026](docs/CODE_REVIEW_2026-09-27.md).
 
 Định hướng mở rộng mới nhất: [Đặc tả và kế hoạch tiếp nhận ngày 24/09/2026](docs/README.md). Bao gồm 135 yêu cầu sản phẩm, 8 yêu cầu Companion, đối chiếu pilot, thiết kế và danh mục repo tham khảo; không đồng nghĩa toàn bộ đã triển khai.
 
 ## Bắt đầu
 
-1. Mở đường link triển khai và đăng nhập bằng ChatGPT.
+1. Mở đường link triển khai và xác thực theo hướng dẫn đăng nhập của bản đang dùng.
 2. Vào **Hồ sơ & riêng tư** để đặt biệt danh, mục tiêu và chọn có tham gia nghiên cứu hay không.
 3. Đọc một bài, trả lời đủ 4 câu, xem dẫn chứng và hoàn thành buổi đọc.
 4. Lưu từ vào sổ tay, ôn flashcard, thử hội thoại/phát âm.
@@ -32,7 +34,7 @@ Xem [bàn giao pilot và kịch bản cho 5 người](docs/product/pilot-handoff
 
 Dữ liệu bài làm, từ vựng, bài đăng, hỗ trợ và phản hồi lưu thật trên cơ sở dữ liệu. Chưa cấu hình khóa API nên tutor/hội thoại mặc định dùng nội dung soạn sẵn và được ghi nhãn. Gaze là diễn tập camera/hiệu chỉnh; phát âm là sơ đồ giảng dạy và nhận dạng chữ, chưa có chấm điểm âm vị. Xem đầy đủ giới hạn và ma trận yêu cầu trong [IMPLEMENTATION.md](IMPLEMENTATION.md).
 
-Không đưa khóa API vào frontend, mã nguồn hoặc Git. Runtime secrets của bản triển khai được quản lý tại Sites.
+Không đưa khóa API vào frontend, mã nguồn hoặc Git. Runtime secrets của bản Cloudflare riêng được quản lý tại Cloudflare Workers; không dùng header ChatGPT làm đăng nhập trực tiếp.
 
 ## Phase 1 về dữ liệu nghiên cứu
 

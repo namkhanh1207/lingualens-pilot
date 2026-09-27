@@ -5,7 +5,7 @@ export class HttpError extends Error {
     constructor(public status: number, message: string) { super(message); }
 }
 export const db = () => {
-    const database = env.DB || (env as any).LINGUALENS_DB;
+    const database = env.DB || env.LINGUALENS_DB;
     if (!database) throw new HttpError(503, 'Kho dữ liệu chưa sẵn sàng. Vui lòng thử lại.');
     return database;
 };

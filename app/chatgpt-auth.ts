@@ -1,5 +1,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { env } from 'cloudflare:workers';
+import { verifyAccessToken } from './lib/access-auth';
 
 export type ChatGPTUser = {
   userId: string;
@@ -20,6 +22,11 @@ const CALLBACK_PATH = "/callback";
 
 export async function getChatGPTUser(): Promise<ChatGPTUser | null> {
   const requestHeaders = await headers();
+  if (env.AUTH_MODE !== 'local-test' && env.AUTH_MODE !== 'sites') {
+    return verifyAccessToken(requestHeaders.get('Cf-Access-Jwt-Assertion'), env);
+  }
+  if (env.AUTH_MODE === 'local-test' &&
+      !/^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(requestHeaders.get('host') || '')) return null;
   const userId = requestHeaders.get(USER_ID_HEADER);
   const email = requestHeaders.get(USER_EMAIL_HEADER);
   if (!userId || !email) return null;
@@ -50,10 +57,12 @@ export async function requireChatGPTUser(
 
 export function chatGPTSignInPath(returnTo: string): string {
   const safeReturnTo = safeRelativeReturnPath(returnTo);
+  if (env.AUTH_MODE !== 'sites' && env.AUTH_MODE !== 'local-test') return safeReturnTo;
   return `${SIGN_IN_PATH}?return_to=${encodeURIComponent(safeReturnTo)}`;
 }
 
 export function chatGPTSignOutPath(returnTo = "/"): string {
+  if (env.AUTH_MODE !== 'sites' && env.AUTH_MODE !== 'local-test') return '/cdn-cgi/access/logout';
   const safeReturnTo = safeRelativeReturnPath(returnTo);
   return `${SIGN_OUT_PATH}?return_to=${encodeURIComponent(safeReturnTo)}`;
 }

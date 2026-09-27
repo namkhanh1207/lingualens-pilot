@@ -14,6 +14,8 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 const managedLinux = readExecutionProfile() === "managed-linux";
 
 const localBindingConfig = {
+  name: "lingualens-pilot",
+  keep_vars: true,
   main: "vinext/server/fetch-handler",
   compatibility_flags: ["nodejs_compat"],
   d1_databases: [
@@ -21,11 +23,13 @@ const localBindingConfig = {
       binding: "DB",
       database_name: "lingualens-db",
       database_id: SITE_CREATOR_DATABASE_ID,
+      migrations_dir: "drizzle",
     },
     {
       binding: "LINGUALENS_DB",
       database_name: "lingualens-db",
       database_id: SITE_CREATOR_DATABASE_ID,
+      migrations_dir: "drizzle",
     },
   ],
   r2_buckets: r2
@@ -38,7 +42,7 @@ const localBindingConfig = {
     : [],
 };
 
-export default defineConfig(async () => {
+export default defineConfig(async ({ command }) => {
   // Use Miniflare's local Request.cf placeholder unless fetching is requested.
   process.env.CLOUDFLARE_CF_FETCH_ENABLED ??= "false";
   process.env.WRANGLER_SEND_METRICS ??= "false";
@@ -64,7 +68,18 @@ export default defineConfig(async () => {
       cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         inspectorPort: false,
-        config: localBindingConfig,
+        config(config) {
+          // Assign arrays instead of merging them with wrangler.toml (duplicate D1 bindings).
+          Object.assign(config, localBindingConfig, {
+          vars: {
+            ...config.vars,
+            AUTH_MODE: command === 'serve' && !managedLinux ? 'local-test' : 'cloudflare-access',
+            ...(process.env.ACCESS_TEAM_DOMAIN ? { ACCESS_TEAM_DOMAIN: process.env.ACCESS_TEAM_DOMAIN } : {}),
+            ...(process.env.ACCESS_AUD ? { ACCESS_AUD: process.env.ACCESS_AUD } : {}),
+            ...(process.env.ADMIN_EMAILS ? { ADMIN_EMAILS: process.env.ADMIN_EMAILS } : {}),
+          },
+          });
+        },
       }),
     ],
   };

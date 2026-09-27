@@ -1,0 +1,36 @@
+name: Pilot checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm install --global npm@10.9.2
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run test:unit
+      - run: python3 tests/migration-phase1.py
+      - run: npm run build
+      - run: npm run db:migrate:local
+      - name: Integration suites against localhost only
+        shell: bash
+        run: |
+          node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 127.0.0.1 --port 8787 --inspector-port 0 --var AUTH_MODE:local-test --var ADMIN_EMAILS:test-admin@sites.test > worker-test.log 2>&1 &
+          worker_pid=$!
+          trap 'kill "$worker_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for attempt in $(seq 1 45); do
+            if curl -fsS 'http://127.0.0.1:8787/api/pilot?view=readings' > /dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          if [ "$ready" -ne 1 ]; then cat worker-test.log; exit 1; fi
+          for suite in pilot phase1 phase2 phase4 completion review; do
+            node "tests/$suite.integration.mjs"
+          done
