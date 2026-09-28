@@ -1,6 +1,6 @@
 import { getPath, startPath, updatePath } from '../../lib/skill-path';
 import { saveVocabulary, reviewVocabulary } from '../../lib/vocabulary';
-import { env } from 'cloudflare:workers';
+import { env } from '../../lib/runtime';
 import { z } from 'zod';
 import { db, now, identity, profile, record, save, list, requireRole, checkOrigin, json, boundedBody, limited, HttpError } from '../../lib/server';
 import { publicReadings, findReading } from '../../lib/content';

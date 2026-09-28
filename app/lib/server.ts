@@ -1,13 +1,13 @@
-import { env } from 'cloudflare:workers';
+import { env } from './runtime';
+import { database } from './database';
+import { expectedOrigin } from './request-origin';
 import { getChatGPTUser } from '../chatgpt-auth';
 import { roleForEmail } from './learning';
 export class HttpError extends Error {
     constructor(public status: number, message: string) { super(message); }
 }
 export const db = () => {
-    const database = env.DB || env.LINGUALENS_DB;
-    if (!database) throw new HttpError(503, 'Kho dữ liệu chưa sẵn sàng. Vui lòng thử lại.');
-    return database;
+    return database();
 };
 export const now = () => new Date().toISOString();
 export async function identity() {
@@ -49,7 +49,7 @@ export function checkOrigin(req: Request) {
     if (req.headers.get('sec-fetch-site') === 'cross-site')
         throw new HttpError(403, 'Yêu cầu khác nguồn bị từ chối.');
     const origin = req.headers.get('origin');
-    if (origin && new URL(origin).host !== new URL(req.url).host)
+    if ((origin && origin !== expectedOrigin(req)) || (!origin && process.env.NODE_ENV === 'production'))
         throw new HttpError(403, 'Nguồn yêu cầu không hợp lệ.');
 }
 export function json(data: unknown, status = 200) { return Response.json(data, { status, headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' } }); }

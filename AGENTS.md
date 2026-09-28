@@ -4,8 +4,9 @@
 - Sản phẩm: LinguaLens — nền tảng học tiếng Anh (đọc hiểu có dẫn chứng, từ vựng theo
   ngữ cảnh, hành trình nghe-nói-viết, phát âm minh họa, người đồng hành, cộng đồng).
   Đang ở giai đoạn pilot bản 8 → nâng cấp UI/UX lên v9.
-- Stack: React 19 + TypeScript, chạy trên Vinext/Vite, deploy Cloudflare Workers,
-  dữ liệu Cloudflare D1 qua Drizzle. Vai trò/quyền xác định phía máy chủ.
+- Stack trên nhánh `pilot-simple-login`: React 19 + Next.js + TypeScript,
+  deploy Vercel, SQLite qua Turso/libSQL. Bản Cloudflare cũ giữ ở commit cfeb287.
+  Vai trò/quyền xác định phía máy chủ, đăng nhập bằng phiên cookie và tài khoản pilot.
 - Cách viết style: **Tailwind CSS 4** (`@import "tailwindcss"`) + shadcn/ui
   (`vendor/shadcn-tailwind-4.13.0.css`) + tw-animate-css. CSS variable token khai
   báo tại `app/globals.css` trong `:root`.
@@ -69,3 +70,13 @@ Trước khi làm bất kỳ việc gì liên quan giao diện, đọc
 - Sau mỗi thay đổi: chạy `npm run build` và test tích hợp hiện có
   (`tests/*.integration.mjs`) — không được để bộ test tích hợp hiện tại bị fail vì
   lý do UI.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

@@ -51,3 +51,7 @@ next-env.d.ts
 *.tsbuildinfo
 .dev.vars*
 .git_backup/
+/.pilot-private/
+*.db
+*.db-shm
+*.db-wal

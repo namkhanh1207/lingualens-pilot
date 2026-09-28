@@ -1,14 +1,9 @@
-import { env } from "cloudflare:workers";
-import { drizzle } from "drizzle-orm/d1";
-import * as schema from "./schema";
+import { createClient } from '@libsql/client';
+import { drizzle } from 'drizzle-orm/libsql';
+import * as schema from './schema';
 
 export function getDb() {
-  const database = env.DB || env.LINGUALENS_DB;
-  if (!database) {
-    throw new Error(
-      "Cloudflare D1 binding `DB` or `LINGUALENS_DB` is unavailable."
-    );
-  }
-
-  return drizzle(database, { schema });
+  const url = process.env.TURSO_DATABASE_URL;
+  if (!url) throw new Error('TURSO_DATABASE_URL is not configured');
+  return drizzle(createClient({ url, authToken: process.env.TURSO_AUTH_TOKEN }), { schema });
 }
