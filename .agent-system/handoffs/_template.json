@@ -1,0 +1,18 @@
+{
+  "task": "T000",
+  "agent": "codex",
+  "status": "ready_for_review",
+  "branch": "agent/T000-codex",
+  "commit": "",
+  "changed_files": [],
+  "verification": {
+    "check": "pass | fail",
+    "build": "pass | fail",
+    "integration": "pass (N checks) | fail | not_run (lý do)",
+    "ui_snapshot": "artifacts/ui-snapshots/<label>/"
+  },
+  "decisions": [],
+  "illustrative_only": [],
+  "risks": [],
+  "open_questions": []
+}

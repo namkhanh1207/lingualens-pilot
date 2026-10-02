@@ -1,0 +1,6 @@
+# Cấu hình Codex cho dự án LinguaLens. Kiểm tra lại khóa cấu hình theo phiên bản Codex đang dùng.
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+[sandbox_workspace_write]
+network_access = false
