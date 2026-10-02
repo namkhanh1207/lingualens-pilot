@@ -18,11 +18,13 @@ jobs:
       - run: npm run test:unit
       - run: python3 tests/migration-phase1.py
       - run: npm run build
-      - run: npm run db:migrate:local
+      - run: npm run db:migrate
+        env:
+          TURSO_DATABASE_URL: file:ci-pilot.db
       - name: Integration suites against localhost only
         shell: bash
         run: |
-          node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 127.0.0.1 --port 8787 --inspector-port 0 --var AUTH_MODE:local-test --var ADMIN_EMAILS:test-admin@sites.test > worker-test.log 2>&1 &
+          AUTH_MODE=local-test ADMIN_EMAILS=test-admin@sites.test TURSO_DATABASE_URL=file:ci-pilot.db npm run dev -- --hostname 127.0.0.1 --port 8787 > worker-test.log 2>&1 &
           worker_pid=$!
           trap 'kill "$worker_pid" 2>/dev/null || true' EXIT
           ready=0
@@ -34,3 +36,22 @@ jobs:
           for suite in pilot phase1 phase2 phase4 completion review; do
             node "tests/$suite.integration.mjs"
           done
+      - name: Real login tests against production build
+        shell: bash
+        env:
+          TURSO_DATABASE_URL: file:ci-auth.db
+          ADMIN_EMAILS: test-admin@sites.test
+          AUTH_MODE: local-test
+          APP_ORIGIN: http://127.0.0.1:5182
+        run: |
+          npm run db:migrate
+          npm run start -- --hostname 127.0.0.1 --port 5182 > auth-test.log 2>&1 &
+          auth_pid=$!
+          trap 'kill "$auth_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for attempt in $(seq 1 30); do
+            if curl -fsS 'http://127.0.0.1:5182/login' > /dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          if [ "$ready" -ne 1 ]; then cat auth-test.log; exit 1; fi
+          node tests/pilot-auth.integration.mjs

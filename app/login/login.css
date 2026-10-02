@@ -1,0 +1,17 @@
+.pilot-auth-page{min-height:100dvh;display:grid;place-items:center;padding:32px 20px;background:var(--background);color:var(--foreground)}
+.pilot-auth-card{width:100%;max-width:460px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;box-shadow:0 12px 40px #192a4308}
+.pilot-auth-brand{font-family:var(--font-display),serif;font-size:28px;font-weight:700;color:var(--primary);text-decoration:none;display:block;margin-bottom:32px}
+.pilot-auth-brand span{display:block;font-family:var(--font-body),sans-serif;font-size:10px;letter-spacing:.16em;color:var(--muted-foreground);margin-top:4px}
+.pilot-auth-eyebrow{font-size:11px!important;font-weight:700;letter-spacing:.1em;color:var(--primary)!important}
+.pilot-auth-card h1{font-family:var(--font-display),serif;font-size:29px;line-height:1.25;margin:12px 0}
+.pilot-auth-card p{font-size:14px;line-height:1.65;color:var(--muted-foreground)}
+.pilot-auth-card form{display:grid;gap:10px;margin:24px 0}
+.pilot-auth-card label{font-weight:600;font-size:14px}
+.pilot-auth-card input{width:100%;min-height:46px;border:1px solid var(--border);border-radius:9px;padding:10px 12px;font-size:16px;background:var(--card);color:var(--foreground);margin-bottom:8px}
+.pilot-auth-card button{background:var(--primary);color:var(--primary-foreground);border:0;border-radius:9px;min-height:46px;padding:12px;font-weight:600;cursor:pointer;margin-top:8px}
+.pilot-auth-card button:disabled{opacity:.65;cursor:wait}
+.pilot-auth-card :is(input,button,a):focus-visible{outline:3px solid var(--ring);outline-offset:3px}
+.pilot-auth-card .pilot-auth-error{color:var(--destructive);border-left:3px solid var(--destructive);padding-left:12px}
+.pilot-auth-card .pilot-auth-help{font-size:12px;margin:20px 0}
+.pilot-auth-card>a:last-child{font-size:13px;color:var(--primary)}
+@media(max-width:480px){.pilot-auth-card{padding:24px}.pilot-auth-card h1{font-size:26px}}

@@ -1,0 +1,18 @@
+id: T000
+title: ""
+status: ready            # ready | claimed | running | verifying | reviewing | changes_requested | approved | merged | blocked | failed | cancelled
+complexity: medium       # simple | medium | complex
+depends_on: []
+preferred_agent: [codex] # gợi ý, không bắt buộc
+reviewer_rule: different-vendor-from-implementer
+branch: agent/T000-<agent>
+context:                 # đọc trước khi làm
+  - AGENTS.md
+allowed_paths: []        # chỉ được sửa các đường dẫn này
+read_only_paths: []
+goal: |
+  Mô tả cái gì và tại sao.
+acceptance:              # lệnh phải đạt + điều kiện quan sát được
+  - npm run check
+  - npm run build
+notes: ""

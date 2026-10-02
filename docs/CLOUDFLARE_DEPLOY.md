@@ -1,5 +1,7 @@
 # Triển khai LinguaLens trên Cloudflare riêng
 
+> Tài liệu lịch sử cho bản Cloudflare ở commit `cfeb287`. Nhánh chuyển đổi mới dùng [Vercel + Turso](VERCEL_TURSO_DEPLOY.md); không dùng các lệnh bên dưới với nhánh đó.
+
 Bản này dùng **Cloudflare Workers + D1 + Cloudflare Access**. Không triển khai như một website tĩnh trên Pages: ứng dụng cần máy chủ để lưu dữ liệu và phân quyền.
 
 ## GitHub và build

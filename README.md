@@ -1,8 +1,8 @@
 # LinguaLens AI — Remote pilot
 
-Web học tiếng Anh dùng thử cho 5 người. Bản Cloudflare riêng đăng nhập bằng Cloudflare Access; bản Sites cũ dùng ChatGPT. Chọn một bài đọc, lưu từ mới và gửi góp ý.
+Web học tiếng Anh dùng thử cho 5 người. Nhánh `pilot-simple-login` chạy Next.js trên Vercel và lưu dữ liệu SQLite trên Turso; mỗi người đăng nhập bằng tài khoản riêng được người tổ chức cấp.
 
-**Triển khai hiện tại:** [Hướng dẫn Cloudflare](docs/CLOUDFLARE_DEPLOY.md) · [Kết quả rà soát mã nguồn 27/09/2026](docs/CODE_REVIEW_2026-09-27.md).
+**Hướng triển khai mới:** [Vercel + Turso và tài khoản thử](docs/VERCEL_TURSO_DEPLOY.md). Việc chuyển code không tự chuyển dữ liệu hoặc thay thế website Cloudflare cũ. [Kết quả rà soát trước khi chuyển](docs/CODE_REVIEW_2026-09-27.md).
 
 Định hướng mở rộng mới nhất: [Đặc tả và kế hoạch tiếp nhận ngày 24/09/2026](docs/README.md). Bao gồm 135 yêu cầu sản phẩm, 8 yêu cầu Companion, đối chiếu pilot, thiết kế và danh mục repo tham khảo; không đồng nghĩa toàn bộ đã triển khai.
 
@@ -18,15 +18,16 @@ Quản trị dùng tài khoản đã được cấu hình ở ADMIN_EMAILS. Khô
 
 ## Chạy trên máy
 
-Yêu cầu Node.js 22.13 trở lên. Cài thư viện từ package-lock.json, build, áp dụng migration local rồi chạy preview theo [IMPLEMENTATION.md](IMPLEMENTATION.md).
+Yêu cầu Node.js 22.13 trở lên. Sao chép `.env.example` thành `.env.local`; dùng `TURSO_DATABASE_URL=file:pilot-local.db` để dữ liệu thử chỉ nằm trên máy.
 
 - `npm ci`: cài thư viện.
-- `node scripts/run-framework.mjs build`: tạo bản triển khai.
-- `node scripts/run-framework.mjs dev`: xem thử trên localhost:5173.
-- `node node_modules/typescript/bin/tsc --noEmit`: kiểm tra TypeScript.
-- `node tests/pilot.integration.mjs`: 43 kiểm tra trên built Worker localhost:8787 (xem cấu hình trong IMPLEMENTATION.md).
+- `npm run db:migrate`: tạo/cập nhật bảng dữ liệu.
+- `npm run pilot:accounts`: tạo 5 tài khoản học và 1 quản trị; thông tin riêng nằm trong `.pilot-private/` (không vào Git).
+- `npm run dev`: chạy trên localhost:3000.
+- `npm run build`: tạo bản Next.js triển khai Vercel.
+- `npm run typecheck` và `npm run test:unit`: kiểm tra TypeScript, dữ liệu và xác thực.
 
-Trên local, đăng nhập được mô phỏng thành Seedy; đây không phải cơ chế đăng nhập của đường link triển khai.
+Mặc định trên local cũng dùng đăng nhập thật. Chế độ giả lập header chỉ dành cho integration test trên localhost ở `NODE_ENV=development` và `AUTH_MODE=local-test`; production luôn từ chối header giả mạo.
 
 ## Trạng thái tính năng
 
@@ -34,7 +35,7 @@ Xem [bàn giao pilot và kịch bản cho 5 người](docs/product/pilot-handoff
 
 Dữ liệu bài làm, từ vựng, bài đăng, hỗ trợ và phản hồi lưu thật trên cơ sở dữ liệu. Chưa cấu hình khóa API nên tutor/hội thoại mặc định dùng nội dung soạn sẵn và được ghi nhãn. Gaze là diễn tập camera/hiệu chỉnh; phát âm là sơ đồ giảng dạy và nhận dạng chữ, chưa có chấm điểm âm vị. Xem đầy đủ giới hạn và ma trận yêu cầu trong [IMPLEMENTATION.md](IMPLEMENTATION.md).
 
-Không đưa khóa API vào frontend, mã nguồn hoặc Git. Runtime secrets của bản Cloudflare riêng được quản lý tại Cloudflare Workers; không dùng header ChatGPT làm đăng nhập trực tiếp.
+Không đưa mật khẩu, token Turso hoặc khóa AI vào frontend, mã nguồn hay Git. Cấu hình bí mật trên Vercel và `.env.local`. Giữ `GEMINI_API_KEY` trống để dùng bài tập soạn sẵn.
 
 ## Phase 1 về dữ liệu nghiên cứu
 

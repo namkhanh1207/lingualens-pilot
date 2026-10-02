@@ -1,0 +1,34 @@
+id: T001
+title: Fix hydration mismatch when a workspace page is opened directly by URL hash
+status: ready
+complexity: medium
+depends_on: []
+preferred_agent: [codex, claude-code]
+reviewer_rule: different-vendor-from-implementer
+branch: agent/T001-<agent>
+context:
+  - AGENTS.md
+  - docs/testing.md
+  - docs/agent-workflow.md
+allowed_paths:
+  - app/workspace.tsx
+read_only_paths:
+  - app/**
+goal: |
+  Phát hiện 01/10/2026 bằng `npm run ui:snapshot`: mở trực tiếp `/#discover`, `/#reading`, `/#vocabulary`… (mọi hash khác
+  dashboard) gây lỗi React "Hydration failed because the server rendered text didn't match the client" tại
+  app/workspace.tsx (breadcrumb ở topbar). Nguyên nhân: `useState(() => window.location.hash…)` khởi tạo `page` khác nhau
+  giữa server ("dashboard") và client. Mở trực tiếp `/#admin` (tài khoản admin) và `/#tutor` còn kẹt ở "Đang tải không gian học…".
+  Sửa để server và lần render đầu của client giống nhau, rồi chuyển trang theo hash trong effect sau khi mount,
+  giữ nguyên hành vi hiện có: mở `#reading` tiếp tục buổi đang dở, `#reading/<id>` mở đúng buổi, `#admin`/`#research`
+  chỉ với vai trò phù hợp, `#voice`/`#tutor` khởi tạo hội thoại.
+acceptance:
+  - npm run check
+  - npm run build
+  - "Test tích hợp pilot, phase1, phase2, phase4, completion, review đều đạt (docs/testing.md mục 3)"
+  - "npm run ui:snapshot -- --label after-T001: report.json không còn pageErrors 'Hydration failed' ở 30 ảnh"
+  - "admin-1280.png và tutor-1280.png hiển thị đúng trang, không kẹt Đang tải"
+  - "Không tạo lỗi eslint mới trong app/workspace.tsx (hiện có 7 lỗi, 10 cảnh báo)"
+notes: |
+  Task thử nghiệm đầu tiên của quy trình nhiều agent: đi đủ task YAML → worktree → handoff → review chéo → chủ dự án merge.
+  Ảnh before đã chụp trong cloud ngày 01/10 (font Google bị chặn trong môi trường đó); nên chụp lại before trên máy.
