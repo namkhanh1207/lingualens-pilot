@@ -1,0 +1,8 @@
+# Chuẩn hóa xuống dòng cho mọi môi trường (Windows, WSL, Linux CI, sandbox agent).
+# Trên Windows với core.autocrlf=true, file vẫn được checkout CRLF như cũ.
+* text=auto
+*.png binary
+*.jpg binary
+*.pdf binary
+*.zip binary
+*.db binary
