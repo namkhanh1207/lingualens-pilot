@@ -25,7 +25,17 @@ function Confirm-Install([string]$Question) {
 }
 function Update-SessionPath {
     $env:Path = [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' +
-        [Environment]::GetEnvironmentVariable('Path', 'User') + ';' + (Join-Path $env:USERPROFILE '.local/bin')
+        [Environment]::GetEnvironmentVariable('Path', 'User') + ';' + [System.IO.Path]::Combine($env:USERPROFILE, '.local', 'bin')
+}
+# Installers put binaries in per-user folders; make sure those folders are on the user PATH for every new terminal.
+function Add-UserPathEntry([string]$Dir, [string]$Exe) {
+    if (-not (Test-Path (Join-Path $Dir $Exe))) { return }
+    $userPath = [Environment]::GetEnvironmentVariable('Path', 'User')
+    $entries = @("$userPath" -split ';' | Where-Object { $_ } | ForEach-Object { $_.TrimEnd('\') })
+    if ($entries -contains $Dir.TrimEnd('\')) { return }
+    $newPath = if ($userPath) { $userPath.TrimEnd(';') + ';' + $Dir } else { $Dir }
+    [Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
+    Write-Ok "Added $Dir to your user PATH (takes effect in new terminals)."
 }
 function Get-ToolVersion([string]$Name) {
     if (-not (Get-Command $Name -ErrorAction SilentlyContinue)) { return $null }
@@ -63,6 +73,8 @@ foreach ($tool in $tools) {
     else { Write-Warn "$($tool.Label) not found. Re-run with -Install, or skip it (any two tools are enough)." }
     $versions[$tool.Name] = $version
 }
+Add-UserPathEntry ([System.IO.Path]::Combine($env:USERPROFILE, '.local', 'bin')) 'claude.exe'
+if ($env:LOCALAPPDATA) { Add-UserPathEntry ([System.IO.Path]::Combine($env:LOCALAPPDATA, 'agy', 'bin')) 'agy.exe' }
 $available = @($versions.Values | Where-Object { $_ }).Count
 if ($available -lt 2) {
     Write-Warn 'Fewer than two agent CLIs: reviews must use review-task.ps1 -AllowSameVendor (weaker).'
