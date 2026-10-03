@@ -1,0 +1,10 @@
+{
+    "checkedAt":  "2026-10-03T02:54:22",
+    "node":  "24.13.0",
+    "npm":  "11.6.2",
+    "tools":  {
+                  "claude":  "2.1.287 (Claude Code)",
+                  "codex":  "codex-cli 0.160.0",
+                  "agy":  "1.2.15"
+              }
+}
