@@ -1,0 +1,45 @@
+{
+    "task":  "T001",
+    "agent":  "codex",
+    "status":  "ready_for_review",
+    "branch":  "agent/T001-codex",
+    "commit":  "ee54de6f448c7c15b9d59eaf5d77bf177be59802",
+    "changed_files":  [
+                          "app/workspace.tsx",
+                          ".agent-system/tasks/T001.yaml",
+                          ".agent-system/handoffs/T001.json"
+                      ],
+    "verification":  {
+                         "check":  "pass: npm.cmd run check, exit 0; TypeScript and all 3 unit suites passed (19 authentication checks; companion and portable-db suites). package.json check does not include lint.",
+                         "build":  "pass: npm.cmd run build, exit 0; production webpack compilation, TypeScript and static generation passed.",
+                         "integration":  "pass: PILOT_TEST_URL=http://127.0.0.1:8788; node tests/{pilot,phase1,phase2,phase4,completion,review}.integration.mjs, each exit 0; respectively 43,32,21,22,9,1 checks (128 total).",
+                         "ui_snapshot":  "pass: npm.cmd run ui:snapshot -- --base http://127.0.0.1:8788 --label before-T001 / after-T001; plus after-T001 --reduced-motion. Each exit 0, 30/30 screenshots. Before: 28 hydration page errors; both after runs: zero page errors, zero snapshot failures, zero horizontal overflow. Same ERR_NETWORK_ACCESS_DENIED console message before and after; no new console error.",
+                         "eslint":  "node node_modules/eslint/bin/eslint.js app/workspace.tsx --format json: exit 1 before and after; unchanged 7 errors, 10 warnings and rule sequence. Also ran npx.cmd equivalent baseline with identical results.",
+                         "browser_routes":  "Ad hoc Playwright via UTF-8 PowerShell stdin: exit 0, 9 checks: reading resumes, reading/id selects owned session, missing session shows error, admin content loads, tutor and voice load, learner cannot see admin/research content, guest discover works; no page errors. Initial ad hoc run exit 1 due to PowerShell non-UTF8 Vietnamese string encoding; corrected test transport and reran successfully.",
+                         "setup":  "npm.cmd run db:migrate exit 0 (5 migrations), TURSO_DATABASE_URL=file:T001-test.db, AUTH_MODE=local-test, ADMIN_EMAILS=test-admin@sites.test. npm.cmd run dev -- --hostname 127.0.0.1 --port 8788 reached Ready. Initial npm/npx .ps1 commands blocked by Windows execution policy; .cmd launchers used without changing policy."
+                     },
+    "decisions":  [
+                      "Initialize page solely from signedIn to match server and first client render; reuse existing bootstrap mount effect for hash/session/chat routing. No routing, authorization, research consent or scoring logic changed.",
+                      "Only app/workspace.tsx changed in application source; task status and handoff explicitly requested by user. Existing task branch assignment preserved; status set to verifying.",
+                      "Reviewed all 30 before/after pairs via contact sheets and inspected admin-1280/tutor-1280 at full size. Layout and illustrative labels preserved; red hydration issue indicator disappears. Admin/tutor loading hang was not reproduced in local baseline, but both after images show complete pages.",
+                      "Read-only same-provider reviewer fallback per docs/agent-workflow.md approved with no findings; this is weaker than different-vendor review. No push or merge."
+                  ],
+    "illustrative_only":  [
+                              "Tutor/voice remain prepared-script demonstrations without a connected AI API; existing disclosure retained.",
+                              "Pronunciation and gaze remain illustrative models; no measurement behavior changed."
+                          ],
+    "risks":  [
+                  "Existing workspace ESLint debt remains: 7 errors, 10 warnings.",
+                  "Browser environment blocks a resource with ERR_NETWORK_ACCESS_DENIED in every before/after capture; unchanged.",
+                  "Different-vendor review remains for the project workflow; only same-provider clean-context fallback performed."
+              ],
+    "open_questions":  [
+
+                       ],
+    "artifacts":  [
+                      "artifacts/ui-snapshots/before-T001/",
+                      "artifacts/ui-snapshots/after-T001/",
+                      "artifacts/ui-snapshots/after-T001-reduced-motion/",
+                      "artifacts/ui-snapshots/T001-comparison-0.png through T001-comparison-4.png"
+                  ]
+}
