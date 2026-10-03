@@ -62,14 +62,8 @@ export default function Workspace({ signedIn, signInPath, signOutPath, authLabel
     signOutPath: string;
     authLabel: string;
 }) {
-    const [page, setPage] = useState(() => {
-        if (typeof window !== 'undefined' && window.location.hash) {
-            const h = window.location.hash.slice(1);
-            if (h.startsWith('reading/')) return 'reading';
-            if (nav.some(n => n[0] === h) || ['admin', 'research', 'reading'].includes(h)) return h;
-        }
-        return signedIn ? 'dashboard' : 'discover';
-    }), [mobile, setMobile] = useState(false), [data, setData] = useState<Any | null>(null), [readings, setReadings] = useState<Reading[]>([]), [error, setError] = useState(''), [toast, setToast] = useState(''), [busy, setBusy] = useState(false), [loading, setLoading] = useState(true), [search, setSearch] = useState(''), [level, setLevel] = useState('all');
+    // Match the server on the first client render; the mount effect restores the URL hash.
+    const [page, setPage] = useState(signedIn ? 'dashboard' : 'discover'), [mobile, setMobile] = useState(false), [data, setData] = useState<Any | null>(null), [readings, setReadings] = useState<Reading[]>([]), [error, setError] = useState(''), [toast, setToast] = useState(''), [busy, setBusy] = useState(false), [loading, setLoading] = useState(true), [search, setSearch] = useState(''), [level, setLevel] = useState('all');
     const [active, setActive] = useState<{
         id: string;
         data: Any;

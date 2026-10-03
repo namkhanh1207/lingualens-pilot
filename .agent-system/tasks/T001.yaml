@@ -1,11 +1,11 @@
 id: T001
 title: Fix hydration mismatch when a workspace page is opened directly by URL hash
-status: ready
+status: verifying
 complexity: medium
 depends_on: []
 preferred_agent: [codex, claude-code]
 reviewer_rule: different-vendor-from-implementer
-branch: agent/T001-<agent>
+branch: agent/T001-codex
 context:
   - AGENTS.md
   - docs/testing.md
